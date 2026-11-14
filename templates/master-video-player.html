@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEMA ANALYSIS · Broadcast Suite Player (Nov 13, 2026)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=IBM+Plex+Mono:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #090B0E;
+    --card: #12151C;
+    --card-hover: #1A1F2B;
+    --accent: #F2CF1D;
+    --gold: #D4B064;
+    --paper: #FFFFFF;
+    --muted: #8B94A5;
+    --bullish: #10B981;
+    --bullish-bright: #34D399;
+    --breaking: #FE6B3D;
+    --cyan: #22D3EE;
+    --border: rgba(255, 255, 255, 0.14);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--paper);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 28px 44px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .title-group h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  .title-group h1 span { color: var(--accent); }
+  .title-group p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--gold);
+    margin-top: 8px;
+    letter-spacing: 0.06em;
+  }
+
+  .badges-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 7px 14px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .badge-live {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid var(--bullish);
+    color: var(--bullish-bright);
+  }
+  .badge-tmpl {
+    background: rgba(242, 207, 29, 0.15);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--bullish-bright);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--bullish-bright);
+  }
+
+  .grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 28px;
+    flex: 1;
+  }
+  @media (max-width: 1200px) {
+    .grid-layout { grid-template-columns: 1fr; }
+  }
+
+  .player-card {
+    background: #000;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.8);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+  }
+  video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    outline: none;
+  }
+
+  .info-strip {
+    background: var(--card);
+    padding: 14px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .spec-item {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .spec-item strong { color: var(--paper); }
+
+  .dl-strip {
+    background: #0D1016;
+    padding: 14px 22px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .dl-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .dl-chip {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
+    color: var(--paper);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .dl-chip:hover {
+    background: rgba(242, 207, 29, 0.15);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .panel-box {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+  }
+  .panel-heading {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+  }
+
+  .chapter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 380px;
+    overflow-y: auto;
+  }
+  .ch-row {
+    background: #171B24;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    text-align: left;
+    cursor: pointer;
+    color: var(--paper);
+    transition: all 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ch-row:hover {
+    background: var(--card-hover);
+    border-color: var(--accent);
+  }
+  .ch-row.active {
+    background: rgba(242, 207, 29, 0.12);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .ch-title {
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .ch-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .ch-stamp {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .reels-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .reel-link {
+    background: #171B24;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    color: var(--paper);
+    text-decoration: none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .reel-link:hover {
+    border-color: var(--accent);
+    background: var(--card-hover);
+    color: var(--accent);
+  }
+  .reel-link strong { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title-group">
+    <h1>DEMA <span>ANALYSIS</span> · DAILY BROADCAST SUITE</h1>
+    <p>NOV 13, 2026 POST-MARKET BRIEF · ADANI SUITE ARCHITECTURE (ENGLISH + CAPTIONS)</p>
+  </div>
+  <div class="badges-row">
+    <div class="badge badge-tmpl">⚡ NEWS PACKAGE GOLD STANDARD</div>
+    <div class="badge badge-tmpl" style="background:rgba(34,211,238,0.15); border-color:var(--cyan); color:var(--cyan);">
+      🎙️ ENGLISH VOICE (PRABHAT NEURAL)
+    </div>
+    <div class="badge badge-live">
+      <div class="dot"></div>
+      ON-SCREEN CAPTIONS + SRT/VTT
+    </div>
+  </div>
+</header>
+
+<div class="grid-layout">
+  <!-- Video Player Column -->
+  <div class="player-card">
+    <div class="video-wrapper">
+      <video id="broadcast-video" controls autoplay>
+        <source src="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Analysis_Daily_Broadcast_16x9_EN.mp4" type="video/mp4">
+        <source src="master-broadcast-16x9.mp4" type="video/mp4">
+        <source src="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Analysis_Daily_Broadcast_16x9.mp4" type="video/mp4">
+        <track id="en-subtitles" src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English (CC)" default>
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+
+    <div class="info-strip">
+      <div class="spec-item">RUNTIME: <strong>~03:34</strong> (6,435 Frames)</div>
+      <div class="spec-item">AUDIO: <strong style="color:var(--bullish-bright);">English (en-IN-PrabhatNeural) + 120BPM Bed</strong></div>
+      <div class="spec-item">CAPTIONS: <strong style="color:var(--accent);">Active Word/Sentence Sync Overlay</strong></div>
+      <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Analysis_Daily_Broadcast_16x9_EN.mp4" download class="dl-chip" style="background:var(--accent); color:#000; font-weight:800;">
+        ⬇ DOWNLOAD ENGLISH MASTER MP4
+      </a>
+    </div>
+
+    <div class="dl-strip">
+      <span class="dl-label">EXPORTS & ASSETS:</span>
+      <a href="subtitles_en.srt" download class="dl-chip" style="color:var(--accent); border-color:var(--accent);">📄 Subtitles (.SRT)</a>
+      <a href="subtitles_en.vtt" download class="dl-chip" style="color:var(--cyan); border-color:var(--cyan);">📄 Subtitles (.VTT)</a>
+      <a href="templates/DEMA_Broadcast_Master_Template/README.md" target="_blank" class="dl-chip" style="color:var(--bullish-bright); border-color:var(--bullish);">📦 Reusable Template Kit</a>
+      <a href="DEMA_Daily_Suite_20261113/02_Thumbnails/DEMA_Full_Broadcast_Thumbnail_1280x720.jpg" target="_blank" class="dl-chip">🖼 Broadcast Thumbnail</a>
+      <a href="DEMA_Daily_Suite_20261113/04_YouTube_Kit/DEMA_DAILY_SUITE_YOUTUBE_KIT_EN.md" target="_blank" class="dl-chip">📋 YouTube Kit (.MD)</a>
+    </div>
+  </div>
+
+  <!-- Side Navigation & Reels Panel -->
+  <div class="side-panel">
+    <!-- Chapter Jumps -->
+    <div class="panel-box">
+      <div class="panel-heading">
+        <span>📑</span> Broadcast Chapters
+      </div>
+      <div class="chapter-list">
+        <div class="ch-row active" onclick="seekTo(0)">
+          <div>
+            <div class="ch-title">ACT 1 · Welcome & Educational Notice</div>
+            <div class="ch-sub">Roadmap & Mandatory Compliance</div>
+          </div>
+          <div class="ch-stamp">00:00</div>
+        </div>
+        <div class="ch-row" onclick="seekTo(31.5)">
+          <div>
+            <div class="ch-title">ACT 2 · Macro Summary Desk</div>
+            <div class="ch-sub">Nifty 50 Split-Flap, Metals & Crude</div>
+          </div>
+          <div class="ch-stamp">00:31</div>
+        </div>
+        <div class="ch-row" onclick="seekTo(79.0)">
+          <div>
+            <div class="ch-title">ACT 3 · Nifty 50 Movers & Order Flow</div>
+            <div class="ch-sub">Gainers, Losers & High-Volume Radar</div>
+          </div>
+          <div class="ch-stamp">01:19</div>
+        </div>
+        <div class="ch-row" onclick="seekTo(128.0)">
+          <div>
+            <div class="ch-title">ACT 4 · Featured Study: TMCV & MONEYVIEW</div>
+            <div class="ch-sub">200 DEMA Retest & 96.80M Breakout</div>
+          </div>
+          <div class="ch-stamp">02:08</div>
+        </div>
+        <div class="ch-row" onclick="seekTo(184.5)">
+          <div>
+            <div class="ch-title">ACT 5 · Watchlist Recap & Closing Call</div>
+            <div class="ch-sub">Tomorrow's Critical Levels & Radar</div>
+          </div>
+          <div class="ch-stamp">03:04</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 Vertical Reels Downloads -->
+    <div class="panel-box">
+      <div class="panel-heading">
+        <span>📱</span> 5 Vertical Reels (9:16)
+      </div>
+      <div class="reels-grid">
+        <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Reel_1_Macro_9x16.mp4" download class="reel-link">
+          <strong>REEL 1</strong>
+          <span>Macro Pulse (49s)</span>
+        </a>
+        <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Reel_2_Losers_9x16.mp4" download class="reel-link">
+          <strong>REEL 2</strong>
+          <span>Top Losers (38s)</span>
+        </a>
+        <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Reel_3_Gainers_9x16.mp4" download class="reel-link">
+          <strong>REEL 3</strong>
+          <span>Top Gainers (38s)</span>
+        </a>
+        <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Reel_4_Momentum_9x16.mp4" download class="reel-link">
+          <strong>REEL 4</strong>
+          <span>Volume Radar (36s)</span>
+        </a>
+        <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Reel_5_DeepDive_9x16.mp4" download class="reel-link" style="grid-column: span 2;">
+          <strong>REEL 5</strong>
+          <span>TMCV & Moneyview Deep Dive (37s)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const video = document.getElementById('broadcast-video');
+  const rows = document.querySelectorAll('.ch-row');
+
+  function seekTo(sec) {
+    video.currentTime = sec;
+    video.play();
+  }
+
+  video.addEventListener('timeupdate', () => {
+    const cur = video.currentTime;
+    const timestamps = [0, 31.5, 79.0, 128.0, 184.5];
+    let activeIdx = 0;
+    for (let i = timestamps.length - 1; i >= 0; i--) {
+      if (cur >= timestamps[i] - 0.4) {
+        activeIdx = i;
+        break;
+      }
+    }
+    rows.forEach((r, idx) => {
+      r.classList.toggle('active', idx === activeIdx);
+    });
+  });
+</script>
+
+</body>
+</html>

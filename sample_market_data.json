@@ -1,0 +1,388 @@
+{
+  "date": "Nov 13, 2026",
+  "session": "NSE Live / Post-Market",
+  "market_summary": [
+    {
+      "name": "NIFTY 50",
+      "symbol": "^NSEI",
+      "ltp": "\u20b925,144.30",
+      "ltp_num": 25144.3,
+      "change": "-110.80",
+      "change_num": -110.8,
+      "pct": "-0.44%",
+      "pct_num": -0.44,
+      "high": "\u20b925,246.35",
+      "low": "\u20b925,054.40",
+      "prev_close": "\u20b925,255.10"
+    },
+    {
+      "name": "GOLD (COMEX)",
+      "symbol": "GC=F",
+      "ltp": ",886.30",
+      "ltp_num": 3886.3,
+      "change": "+.00",
+      "change_num": 1.0,
+      "pct": "+0.03%",
+      "pct_num": 0.03,
+      "high": ",927.20",
+      "low": ",871.10",
+      "prev_close": ",885.30"
+    },
+    {
+      "name": "SILVER (COMEX)",
+      "symbol": "SI=F",
+      "ltp": ".12",
+      "ltp_num": 49.12,
+      "change": "-.94",
+      "change_num": -0.94,
+      "pct": "-1.89%",
+      "pct_num": -1.89,
+      "high": ".73",
+      "low": ".41",
+      "prev_close": ".06"
+    },
+    {
+      "name": "CRUDE OIL (WTI)",
+      "symbol": "CL=F",
+      "ltp": ".56",
+      "ltp_num": 88.56,
+      "change": "-.18",
+      "change_num": -0.18,
+      "pct": "-0.20%",
+      "pct_num": -0.2,
+      "high": ".64",
+      "low": ".80",
+      "prev_close": ".74"
+    },
+    {
+      "name": "CRUDE OIL (BRENT)",
+      "symbol": "BZ=F",
+      "ltp": ".84",
+      "ltp_num": 95.84,
+      "change": "+.02",
+      "change_num": 0.02,
+      "pct": "+0.02%",
+      "pct_num": 0.02,
+      "high": ".12",
+      "low": ".07",
+      "prev_close": ".82"
+    }
+  ],
+  "top_gainers": [
+    {
+      "symbol": "CUMMINSIND",
+      "ltp": "\u20b94,369.00",
+      "pct": 2.6,
+      "dema": "Above 20 DEMA",
+      "rsi": 44.7,
+      "image": "charts/CUMMINSIND_1D_chart.png"
+    },
+    {
+      "symbol": "ABB",
+      "ltp": "\u20b97,054.50",
+      "pct": 1.9,
+      "dema": "Above 20 DEMA",
+      "rsi": 58.4,
+      "image": "charts/ABB_1D_chart.png"
+    },
+    {
+      "symbol": "BHEL",
+      "ltp": "\u20b9436.30",
+      "pct": 1.18,
+      "dema": "Above 20 DEMA",
+      "rsi": 58.5
+    },
+    {
+      "symbol": "AUROPHARMA",
+      "ltp": "\u20b91,823.20",
+      "pct": 0.89,
+      "dema": "Above 20 DEMA",
+      "rsi": 67.4,
+      "image": "charts/AUROPHARMA_1D_chart.png"
+    },
+    {
+      "symbol": "PNB",
+      "ltp": "\u20b9142.81",
+      "pct": 0.72,
+      "dema": "Above 20 DEMA",
+      "rsi": 81.5,
+      "image": "charts/PNB_1D_chart.png"
+    }
+  ],
+  "top_losers": [
+    {
+      "symbol": "PIDILITIND",
+      "ltp": "\u20b91,525.70",
+      "pct": -3.42,
+      "dema": "Below 20 DEMA",
+      "rsi": 51.1
+    },
+    {
+      "symbol": "RVNL",
+      "ltp": "\u20b9199.46",
+      "pct": -2.89,
+      "dema": "Above 20 DEMA",
+      "rsi": 53.9
+    },
+    {
+      "symbol": "ICICIPRULI",
+      "ltp": "\u20b9455.55",
+      "pct": -2.44,
+      "dema": "Above 20 DEMA",
+      "rsi": 58.6
+    },
+    {
+      "symbol": "IRFC",
+      "ltp": "\u20b983.30",
+      "pct": -2.33,
+      "dema": "Above 20 DEMA",
+      "rsi": 61.2
+    },
+    {
+      "symbol": "BOSCHLTD",
+      "ltp": "\u20b949,390.00",
+      "pct": -2.2,
+      "dema": "Below 20 DEMA",
+      "rsi": 56.4,
+      "image": "charts/BOSCHLTD_1D_chart.png"
+    }
+  ],
+  "momentum_stocks": [
+    {
+      "symbol": "CUMMINSIND",
+      "ltp": "\u20b94,369.00",
+      "pct": 2.6,
+      "vol": "1.10 M",
+      "dema": "Above 20 DEMA",
+      "rsi": 44.7,
+      "image": "charts/CUMMINSIND_1D_chart.png"
+    },
+    {
+      "symbol": "POLYCAB",
+      "ltp": "\u20b97,904.00",
+      "pct": -2.18,
+      "vol": "433.5 K",
+      "dema": "Above 20 DEMA",
+      "rsi": 47.2,
+      "image": "charts/POLYCAB_1D_chart.png"
+    },
+    {
+      "symbol": "ABB",
+      "ltp": "\u20b97,054.50",
+      "pct": 1.9,
+      "vol": "551.4 K",
+      "dema": "Above 20 DEMA",
+      "rsi": 58.4,
+      "image": "charts/ABB_1D_chart.png"
+    },
+    {
+      "symbol": "PNB",
+      "ltp": "\u20b9142.81",
+      "pct": 0.72,
+      "vol": "61.24 M",
+      "dema": "Above 20 DEMA",
+      "rsi": 81.5,
+      "image": "charts/PNB_1D_chart.png"
+    },
+    {
+      "symbol": "INDIGO",
+      "ltp": "\u20b95,587.30",
+      "pct": -1.28,
+      "vol": "862.9 K",
+      "dema": "Above 20 DEMA",
+      "rsi": 72.6,
+      "image": "charts/INDIGO_1D_chart.png"
+    }
+  ],
+  "deep_dive_stocks": {
+    "coalindia": {
+      "symbol": "COALINDIA",
+      "name": "Coal India Limited",
+      "ltp": "\u20b9403.50",
+      "changeStr": "-0.80 (-0.20%)",
+      "prevClose": "\u20b9404.30",
+      "ohlc": {
+        "open": "\u20b9404.60",
+        "high": "\u20b9406.20",
+        "low": "\u20b9402.30",
+        "close": "\u20b9403.50"
+      },
+      "vol": "4.67 M",
+      "oi": "65% Bullish (Short Buildup)",
+      "rsi": 54.02,
+      "dema": {
+        "d20": "\u20b9398.41",
+        "d50": "\u20b9396.79",
+        "d100": "\u20b9399.00",
+        "d200": "\u20b9407.54"
+      },
+      "vp": {
+        "vah": "\u20b9417.18",
+        "poc": "\u20b9403.50",
+        "val": "\u20b9394.38"
+      },
+      "image": "charts/COALINDIA_1D_chart.png"
+    },
+    "iiflcaps": {
+      "symbol": "IIFLCAPS",
+      "name": "IIFL Capital Services",
+      "ltp": "\u20b9353.55",
+      "changeStr": "+1.30 (+0.37%)",
+      "prevClose": "\u20b9352.25",
+      "ohlc": {
+        "open": "\u20b9353.25",
+        "high": "\u20b9360.95",
+        "low": "\u20b9351.50",
+        "close": "\u20b9353.55"
+      },
+      "vol": "13.81 M",
+      "oi": "85% Bullish (Long Buildup)",
+      "rsi": 72.11,
+      "dema": {
+        "d20": "\u20b9351.14",
+        "d50": "\u20b9349.42",
+        "d100": "\u20b9348.34",
+        "d200": "\u20b9344.81"
+      },
+      "vp": {
+        "vah": "\u20b9355.54",
+        "poc": "\u20b9347.58",
+        "val": "\u20b9347.58"
+      },
+      "image": "charts/IIFLCAPS_1D_chart.png"
+    },
+    "bluestarco": {
+      "symbol": "BLUESTARCO",
+      "name": "Blue Star Limited",
+      "ltp": "\u20b91,587.20",
+      "changeStr": "+4.70 (+0.30%)",
+      "prevClose": "\u20b91,582.50",
+      "ohlc": {
+        "open": "\u20b91,588.00",
+        "high": "\u20b91,633.00",
+        "low": "\u20b91,567.30",
+        "close": "\u20b91,587.20"
+      },
+      "vol": "639.7 K",
+      "oi": "85% Bullish (Long Buildup)",
+      "rsi": 53.09,
+      "dema": {
+        "d20": "\u20b91,584.66",
+        "d50": "\u20b91,559.51",
+        "d100": "\u20b91,528.96",
+        "d200": "\u20b91,537.98"
+      },
+      "vp": {
+        "vah": "\u20b91,617.05",
+        "poc": "\u20b91,587.20",
+        "val": "\u20b91,557.35"
+      },
+      "image": "charts/BLUESTARCO_1D_chart.png"
+    },
+    "indigo": {
+      "symbol": "INDIGO",
+      "name": "InterGlobe Aviation Limited",
+      "ltp": "\u20b95,587.30",
+      "changeStr": "-72.70 (-1.28%)",
+      "prevClose": "\u20b95,660.00",
+      "ohlc": {
+        "open": "\u20b95,621.00",
+        "high": "\u20b95,626.00",
+        "low": "\u20b95,543.40",
+        "close": "\u20b95,587.30"
+      },
+      "vol": "862.9 K",
+      "oi": "85% Bullish (Long Buildup)",
+      "rsi": 72.63,
+      "dema": {
+        "d20": "\u20b95,381.71",
+        "d50": "\u20b95,087.03",
+        "d100": "\u20b95,059.34",
+        "d200": "\u20b94,978.97"
+      },
+      "vp": {
+        "vah": "\u20b95,699.59",
+        "poc": "\u20b94,688.98",
+        "val": "\u20b94,576.69"
+      },
+      "image": "charts/INDIGO_1D_chart.png"
+    },
+    "cumminsind": {
+      "symbol": "CUMMINSIND",
+      "name": "Cummins India Limited",
+      "ltp": "\u20b94,369.00",
+      "changeStr": "+110.80 (+2.60%)",
+      "prevClose": "\u20b94,258.20",
+      "ohlc": {
+        "open": "\u20b94,258.20",
+        "high": "\u20b94,425.60",
+        "low": "\u20b94,240.00",
+        "close": "\u20b94,369.00"
+      },
+      "vol": "1.10 M",
+      "oi": "85% Bullish (Long Buildup)",
+      "rsi": 44.73,
+      "dema": {
+        "d20": "\u20b94,241.20",
+        "d50": "\u20b94,371.54",
+        "d100": "\u20b94,703.69",
+        "d200": "\u20b95,014.58"
+      },
+      "vp": {
+        "vah": "\u20b94,648.24",
+        "poc": "\u20b94,136.30",
+        "val": "\u20b93,950.14"
+      },
+      "image": "charts/CUMMINSIND_1D_chart.png"
+    },
+    "abb": {
+      "symbol": "ABB",
+      "name": "ABB India Limited",
+      "ltp": "\u20b97,054.50",
+      "changeStr": "+131.50 (+1.90%)",
+      "prevClose": "\u20b96,923.00",
+      "ohlc": {
+        "open": "\u20b96,944.50",
+        "high": "\u20b97,120.00",
+        "low": "\u20b96,922.00",
+        "close": "\u20b97,054.50"
+      },
+      "vol": "551.4 K",
+      "oi": "85% Bullish (Long Buildup)",
+      "rsi": 58.43,
+      "dema": {
+        "d20": "\u20b96,754.36",
+        "d50": "\u20b96,730.56",
+        "d100": "\u20b97,041.33",
+        "d200": "\u20b97,255.75"
+      },
+      "vp": {
+        "vah": "\u20b96,955.55",
+        "poc": "\u20b96,856.60",
+        "val": "\u20b96,460.80"
+      },
+      "image": "charts/ABB_1D_chart.png"
+    }
+  },
+  "voice": "en-IN-PrabhatNeural",
+  "disclaimer": "All content in this video is strictly for technical chart analysis and educational purposes only. Zero investment advice or buy/sell recommendations.",
+  "featured_stock": {
+    "symbol": "COALINDIA",
+    "company": "Coal India Limited",
+    "ltp": "\u20b9403.50",
+    "open": "\u20b9404.60",
+    "high": "\u20b9406.20",
+    "low": "\u20b9402.30",
+    "changeStr": "-0.80 (-0.20%)",
+    "volume": "4.67 M",
+    "rsi14": 54.02,
+    "dema20": "\u20b9398.41",
+    "dema50": "\u20b9396.79",
+    "dema100": "\u20b9399.00",
+    "dema200": "\u20b9407.54",
+    "vah": "\u20b9417.18",
+    "poc": "\u20b9403.50",
+    "val": "\u20b9394.38",
+    "image": "charts/COALINDIA_1D_chart.png"
+  }
+}

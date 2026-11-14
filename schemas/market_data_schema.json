@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DemaBroadcastSuiteDataSchema",
+  "description": "Standard daily post-market telemetry data schema for DEMA Analysis 16:9 Master Broadcast Video and Vertical Reels.",
+  "type": "object",
+  "required": [
+    "date",
+    "session",
+    "voice",
+    "disclaimer",
+    "market_summary",
+    "top_gainers",
+    "top_losers",
+    "momentum_stocks",
+    "featured_stock",
+    "deep_dive_stocks"
+  ],
+  "properties": {
+    "date": { "type": "string", "example": "Nov 13, 2026" },
+    "session": { "type": "string", "example": "NSE Post-Market Institutional Briefing" },
+    "voice": { "type": "string", "example": "en-IN-PrabhatNeural" },
+    "disclaimer": { "type": "string" },
+    "market_summary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "price", "change", "pct", "range", "prevClose"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "ticker": { "type": "string" },
+          "price": { "type": "string" },
+          "rawPrice": { "type": "number" },
+          "change": { "type": "string" },
+          "pct": { "type": "number" },
+          "range": { "type": "string" },
+          "prevClose": { "type": "string" },
+          "bullish": { "type": "boolean" }
+        }
+      }
+    },
+    "top_gainers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["symbol", "name", "ltp", "pct", "dema20", "rsi"],
+        "properties": {
+          "symbol": { "type": "string" },
+          "name": { "type": "string" },
+          "ltp": { "type": "number" },
+          "pct": { "type": "number" },
+          "dema20": { "type": "number" },
+          "rsi": { "type": "number" }
+        }
+      }
+    },
+    "top_losers": { "type": "array" },
+    "momentum_stocks": { "type": "array" },
+    "featured_stock": {
+      "type": "object",
+      "required": ["symbol", "company", "ltp", "open", "high", "low", "changeStr", "volume", "oiSentiment", "rsi14", "dema20", "dema50", "dema100", "dema200", "vah", "poc", "val"]
+    },
+    "deep_dive_stocks": {
+      "type": "object"
+    }
+  }
+}

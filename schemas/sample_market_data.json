@@ -1,0 +1,307 @@
+{
+  "date": "Nov 13, 2026",
+  "session": "NSE Post-Market Institutional Briefing",
+  "voice": "en-IN-PrabhatNeural",
+  "disclaimer": "FOR EDUCATIONAL TECHNICAL STUDY ONLY · NOT SEBI REGISTERED · NOT FINANCIAL ADVICE",
+  "market_summary": [
+    {
+      "id": "nifty",
+      "name": "NIFTY 50",
+      "ticker": "^NSEI",
+      "price": "₹25,144.30",
+      "rawPrice": 25144.3,
+      "change": "-110.80 (-0.44%)",
+      "pct": -0.44,
+      "range": "₹25,054.40 – ₹25,246.35",
+      "prevClose": "₹25,255.10",
+      "bullish": false
+    },
+    {
+      "id": "gold",
+      "name": "GOLD COMEX",
+      "ticker": "GC=F",
+      "price": "$3,886.30",
+      "rawPrice": 3886.3,
+      "change": "+1.00 (+0.03%)",
+      "pct": 0.03,
+      "range": "$3,871.10 – $3,927.20",
+      "prevClose": "$3,885.30",
+      "bullish": true
+    },
+    {
+      "id": "silver",
+      "name": "SILVER COMEX",
+      "ticker": "SI=F",
+      "price": "$49.12",
+      "rawPrice": 49.12,
+      "change": "-0.94 (-1.89%)",
+      "pct": -1.89,
+      "range": "$48.41 – $50.73",
+      "prevClose": "$50.06",
+      "bullish": false
+    },
+    {
+      "id": "wti",
+      "name": "WTI CRUDE",
+      "ticker": "CL=F",
+      "price": "$88.56",
+      "rawPrice": 88.56,
+      "change": "-0.18 (-0.20%)",
+      "pct": -0.2,
+      "range": "$87.80 – $89.64",
+      "prevClose": "$88.74",
+      "bullish": false
+    },
+    {
+      "id": "brent",
+      "name": "BRENT CRUDE",
+      "ticker": "BZ=F",
+      "price": "$95.84",
+      "rawPrice": 95.84,
+      "change": "+0.02 (+0.02%)",
+      "pct": 0.02,
+      "range": "$95.07 – $97.12",
+      "prevClose": "$95.82",
+      "bullish": true
+    }
+  ],
+  "top_gainers": [
+    {
+      "symbol": "CHOLAFIN",
+      "name": "Cholamandalam Investment",
+      "ltp": "₹1,862.00",
+      "pct": 2.6,
+      "dema": "Above 20 DEMA",
+      "rsi": 73.0
+    },
+    {
+      "symbol": "CUMMINSIND",
+      "name": "Cummins India Limited",
+      "ltp": "₹4,369.00",
+      "pct": 2.6,
+      "dema": "Above 20 DEMA",
+      "rsi": 44.7
+    },
+    {
+      "symbol": "ABB",
+      "name": "ABB India Limited",
+      "ltp": "₹7,054.50",
+      "pct": 1.9,
+      "dema": "Above 20 DEMA",
+      "rsi": 58.4
+    },
+    {
+      "symbol": "ICICIGI",
+      "name": "ICICI Lombard General Ins",
+      "ltp": "₹1,700.60",
+      "pct": 1.41,
+      "dema": "Above 20 DEMA",
+      "rsi": 66.7
+    },
+    {
+      "symbol": "EICHERMOT",
+      "name": "Eicher Motors Limited",
+      "ltp": "₹7,650.00",
+      "pct": 1.34,
+      "dema": "Above 20 DEMA",
+      "rsi": 61.7
+    }
+  ],
+  "top_losers": [
+    {
+      "symbol": "PIDILITIND",
+      "name": "Pidilite Industries",
+      "ltp": "₹1,525.70",
+      "pct": -3.42,
+      "dema": "Below 20 DEMA",
+      "rsi": 51.1
+    },
+    {
+      "symbol": "SHRIRAMFIN",
+      "name": "Shriram Finance",
+      "ltp": "₹970.00",
+      "pct": -3.37,
+      "dema": "Above 20 DEMA",
+      "rsi": 57.2
+    },
+    {
+      "symbol": "BPCL",
+      "name": "Bharat Petroleum Corp",
+      "ltp": "₹302.00",
+      "pct": -3.05,
+      "dema": "Below 20 DEMA",
+      "rsi": 50.4
+    },
+    {
+      "symbol": "RVNL",
+      "name": "Rail Vikas Nigam",
+      "ltp": "₹199.46",
+      "pct": -2.89,
+      "dema": "Above 20 DEMA",
+      "rsi": 53.9
+    },
+    {
+      "symbol": "GRASIM",
+      "name": "Grasim Industries",
+      "ltp": "₹3,034.00",
+      "pct": -2.6,
+      "dema": "Below 20 DEMA",
+      "rsi": 48.1
+    }
+  ],
+  "momentum_stocks": [
+    {
+      "symbol": "SHRIRAMFIN",
+      "name": "Shriram Finance",
+      "ltp": "₹970.00",
+      "pct": -3.37,
+      "volume": "6.33 M",
+      "dema": "Above 20 DEMA",
+      "rsi": 57.2
+    },
+    {
+      "symbol": "HDFCBANK",
+      "name": "HDFC Bank Limited",
+      "ltp": "₹804.00",
+      "pct": -1.02,
+      "volume": "23.44 M",
+      "dema": "Above 20 DEMA",
+      "rsi": 73.4
+    },
+    {
+      "symbol": "HINDALCO",
+      "name": "Hindalco Industries",
+      "ltp": "₹943.60",
+      "pct": -2.12,
+      "volume": "8.86 M",
+      "dema": "Above 20 DEMA",
+      "rsi": 54.8
+    },
+    {
+      "symbol": "M&M",
+      "name": "Mahindra & Mahindra",
+      "ltp": "₹3,333.00",
+      "pct": -1.94,
+      "volume": "1.99 M",
+      "dema": "Above 20 DEMA",
+      "rsi": 68.2
+    },
+    {
+      "symbol": "CUMMINSIND",
+      "name": "Cummins India Limited",
+      "ltp": "₹4,369.00",
+      "pct": 2.6,
+      "volume": "1.10 M",
+      "dema": "Above 20 DEMA",
+      "rsi": 44.7
+    }
+  ],
+  "featured_stock": {
+    "symbol": "COALINDIA",
+    "company": "Coal India Limited",
+    "ltp": 403.50,
+    "close": 403.50,
+    "open": 404.60,
+    "high": 406.20,
+    "low": 402.30,
+    "prevClose": 404.30,
+    "changeStr": "-0.80 (-0.20%)",
+    "volume": "4.67 M",
+    "oiSentiment": "65% Bullish (Short Buildup)",
+    "rsi14": 54.02,
+    "dema20": 398.41,
+    "dema50": 396.79,
+    "dema100": 399.00,
+    "dema200": 407.54,
+    "vah": 417.18,
+    "poc": 403.50,
+    "val": 394.38,
+    "chartImage": "coalindia_tradingview_chart.jpg",
+    "structure": "CONSOLIDATION"
+  },
+  "deep_dive_stocks": {
+    "coalindia": {
+      "symbol": "COALINDIA",
+      "company": "Coal India Limited",
+      "ltp": 403.50,
+      "close": 403.50,
+      "open": 404.60,
+      "high": 406.20,
+      "low": 402.30,
+      "prevClose": 404.30,
+      "changeStr": "-0.80 (-0.20%)",
+      "pct": -0.20,
+      "volume": "4.67 M",
+      "oiSentiment": "65% Bullish (Short Buildup)",
+      "rsi14": 54.02,
+      "dema20": 398.41,
+      "dema50": 396.79,
+      "dema100": 399.00,
+      "dema200": 407.54,
+      "vah": 417.18,
+      "poc": 403.50,
+      "val": 394.38,
+      "chartImage": "coalindia_tradingview_chart.jpg",
+      "structure": "CONSOLIDATION"
+    },
+    "iiflcaps": {
+      "symbol": "IIFLCAPS",
+      "company": "IIFL Capital Services Limited",
+      "ltp": 353.55,
+      "close": 353.55,
+      "open": 353.25,
+      "high": 360.95,
+      "low": 351.50,
+      "prevClose": 352.25,
+      "changeStr": "+1.30 (+0.37%)",
+      "pct": 0.37,
+      "volume": "13.81 M",
+      "oiSentiment": "85% Bullish (Long Buildup)",
+      "rsi14": 72.11,
+      "dema20": 351.14,
+      "dema50": 349.42,
+      "dema100": 348.34,
+      "dema200": 344.81,
+      "vah": 355.54,
+      "poc": 347.58,
+      "val": 347.58,
+      "chartImage": "iiflcaps_tradingview_chart.jpg",
+      "structure": "BULLISH BREAKOUT"
+    },
+    "bluestarco": {
+      "symbol": "BLUESTARCO",
+      "company": "Blue Star Limited",
+      "ltp": 1587.20,
+      "close": 1587.20,
+      "open": 1588.00,
+      "high": 1633.00,
+      "low": 1567.30,
+      "prevClose": 1582.50,
+      "changeStr": "+4.70 (+0.30%)",
+      "pct": 0.30,
+      "volume": "639.7 K",
+      "oiSentiment": "85% Bullish (Long Buildup)",
+      "rsi14": 53.09,
+      "dema20": 1584.66,
+      "dema50": 1559.51,
+      "dema100": 1528.96,
+      "dema200": 1537.98,
+      "vah": 1617.05,
+      "poc": 1587.20,
+      "val": 1557.35,
+      "chartImage": "bluestarco_tradingview_chart.jpg",
+      "structure": "BULLISH ACCUMULATION"
+    }
+  },
+  "tomorrow_strategy": {
+    "nifty_support": "₹25,050",
+    "nifty_pivot": "₹25,144",
+    "nifty_resistance": "₹25,250",
+    "trade_bias": "Neutral to Rangebound Squeeze",
+    "key_watch": [
+      "COALINDIA holding POC floor at ₹403.50",
+      "IIFLCAPS continuation above 20 DEMA ₹351.14",
+      "BLUESTARCO sustained trade above ₹1,585 support"
+    ]
+  }
+}
