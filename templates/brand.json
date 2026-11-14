@@ -1,0 +1,23 @@
+{
+  "name": "DEMA ANALYSIS",
+  "tagline": "ALGORITHMIC TECHNICAL CHART STUDIES",
+  "badge": "NSE · COMMODITIES · INSTITUTIONAL TELEMETRY",
+  "kicker": "POST-MARKET DAILY ALGORITHMIC BRIEFING",
+  "disclaimer": "EDUCATIONAL NOTICE: Strictly for technical chart analysis and educational purposes only. Not SEBI-registered financial advice or stock tips.",
+  "cta": "Subscribe for Daily Telemetry →",
+  "ctaSub": "DAILY POST-MARKET BRIEFING · 3:45 PM IST",
+  "nextVideoLabel": "RECOMMENDED STUDY",
+  "logo": "images/dema-logo.svg",
+  "sting": "audio/dema_intro_sting.mp3",
+  "outroBed": "audio/dema_outro_bed.mp3",
+  "bg": "#0C0E11",
+  "surface": "#121417",
+  "surface2": "#1B1E23",
+  "fg": "#F4F1E8",
+  "muted": "#8B94A5",
+  "accent": "#F2CF1D",
+  "gold": "#D4B064",
+  "bullish": "#10B981",
+  "cyan": "#22D3EE",
+  "border": "rgba(244, 241, 232, 0.14)"
+}

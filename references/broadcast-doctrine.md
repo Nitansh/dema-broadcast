@@ -1,12 +1,12 @@
 # Broadcast Visual Doctrine & Layout Architecture
 
-The **DEMA Broadcast Master** layout is designed for institutional financial television aesthetics (Bloomberg / CNBC / TradingView desk) scaled for modern 16:9 1080p rendering (1920×1080).
+The **DEMA Broadcast Master** layout is designed for institutional financial television aesthetics (Bloomberg / CNBC / TradingView desk) scaled for modern 16:9 1080p broadcast rendering (1920×1080) and 9:16 vertical viral reels (1080×1920).
 
 ---
 
-## 1. Frame Geometry & Layer Hierarchy
+## 1. Frame Geometry & Layer Hierarchy (16:9 Master Broadcast)
 
-Every chapter composition adheres to an absolute coordinate grid with 24px edge margins:
+Every 16:9 chapter composition adheres to an absolute coordinate grid with 24px edge margins:
 
 ```text
 +-----------------------------------------------------------------------------------+ 0px
@@ -28,7 +28,7 @@ Every chapter composition adheres to an absolute coordinate grid with 24px edge 
 | |      +-----------------------------------------------------------------+      | | 912px (bottom: 122px)
 | |      | [BROADCAST CAPTION OVERLAY] (CC · EN) Synchronized Capsule      |      | |
 | |      +-----------------------------------------------------------------+      | | 958px
-| +-------------------------------------------------------------------------------+ | 964px
+| | +-------------------------------------------------------------------------------+ | 964px
 | | [MARGIN 12px]                                                                 | |
 | +-------------------------------------------------------------------------------+ | 976px
 | | [LOWER THIRD STRAP] (H: 92px) Dual-Rail: Major Indices + Fast Marquee Ticker  | |
@@ -39,26 +39,7 @@ Every chapter composition adheres to an absolute coordinate grid with 24px edge 
 
 ---
 
-## 2. Core UI Atoms (`SharedNewsPackage.jsx`)
-
-1. **`WideChapterShell`**:
-   - Manages top brand chrome, background micro-grid, timecode clock, watermark, and footer straps.
-   - Houses the `<BroadcastCaptionOverlay />` to ensure identical styling and flawless alignment across every act.
-2. **`LowerThirdStrap`**:
-   - **Top Rail**: Primary index telemetry badges (`NIFTY 50`, `BANKNIFTY`, `SENSEX`, `INDIA VIX`) with real-time green/red delta pills.
-   - **Bottom Rail**: Continuous scrolling ticker displaying full-market stock quotes and commodity prices.
-3. **`SplitFlapBoard` & `SplitFlapChar`**:
-   - Authentic 3D mechanical split-flap simulation with top/bottom flap leaves, shadow crease, and stepped character flipping.
-   - Synchronized to high-frequency mechanical click foley audio.
-4. **`BroadcastCaptionOverlay`**:
-   - High-contrast obsidian glass capsule (`rgba(9, 13, 20, 0.94)`) with signature gold border (`rgba(242, 207, 29, 0.55)`).
-   - Positioned at `bottom: 122px`, ensuring zero visual overlap with either the main stage cards or the lower third strap.
-5. **`TradingViewFootprint`**:
-   - Algorithmic technical chart with candlestick/volume profile bars, 20/50/100/200 DEMA ribbons, POC (Point of Control) golden dashed line, and VAH/VAL value area zones.
-
----
-
-## 3. Five-Act Narrative Structure
+## 2. Five-Act Master Broadcast Narrative Structure (16:9)
 
 * **Act 1: Executive Briefing & Post-Market Telemetry (~31.5s)**
   - Split-flap matrix reveals market stance.
@@ -72,3 +53,78 @@ Every chapter composition adheres to an absolute coordinate grid with 24px edge 
 * **Act 5: Tomorrow's Strategy & Trade Range Plan (~30.0s)**
   - Exact Support, Pivot, and Resistance levels, action plan, and CTA subscription bumper.
 
+---
+
+## 3. 9:16 Vertical Viral Reel Architecture (1080×1920 @ 30fps)
+
+Vertical reels are engineered for high-retention social distribution (YouTube Shorts, Instagram Reels, TikTok) while upholding strict institutional accuracy.
+
+```text
++---------------------------------------------------+ 0px
+| [TOP SAFE ZONE: 180px] Reserved for App Header    |
+| +-----------------------------------------------+ | 60px
+| | [TELEMETRY HEADER] Symbol | CMP | Session Δ%  | |
+| +-----------------------------------------------+ | 140px
+|                                                   |
+|                ACTIVE STAGE AREA                  |
+|                 (Y: 180px - 1450px)               |
+|                                                   |
+|   1. Intro Shockwave & Brand Sting (0:00 - 0:03.5)|
+|   2. 3D Background Watermark Words                |
+|   3. TradingView High-Res Technical Footprint     |
+|   4. Continuous Causal Camera Moves               |
+|   5. POC Golden Laser & Sonar Volume Radar Pulse  |
+|   6. 50/200 DEMA Squeeze Dynamic Targets          |
+|                                                   |
+|   +-------------------------------------------+   | 1680px (bottom: 240px)
+|   | [KINETIC KARAOKE CAPTIONS] 7-Word Window  |   |
+|   +-------------------------------------------+   | 1780px
+|                                                   |
+|   +-------------------------------------------+   | 1808px (bottom: 112px)
+|   | [VERTICAL LOWER THIRD] Key Price Levels   |   |
+|   +-------------------------------------------+   | 1888px
+| [BOTTOM SAFE ZONE: 120px] Reserved for Social UI  |
++---------------------------------------------------+ 1920px
+```
+
+### The 3-Act Reel Sequence
+
+1. **Act 1: DEMA Master Intro Sting (`0:00 – 0:03.5` | Frames `0 – 105`)**
+   - High-tech scanning wireframe crosshair windup snapping to an impact flash at `0.8s` (Frame 24).
+   - Horizontal laser beam shockwave, DEMA logo drop, and *Algorithmic Technical Chart Studies* tagline.
+   - Synchronized to `dema_intro_sting.mp3` with sub-bass drop and shutter snap.
+2. **Act 2: Dynamic Technical Core Breakdown (`0:03.5 – 0:59.37` | Frames `105 – 1781`)**
+   - Seamless cut into the TradingView chart with `IntroZoom` (1.09x -> 1.0x).
+   - 4-Beat or 5-Beat causal camera choreography tracking liquidation cascades and rebounds.
+   - Zero-overlap synthesized voiceover accompanied by procedural 120 BPM newsroom bed.
+3. **Act 3: DEMA Master Outro End Card (`0:59.37 – 1:04.37` | Frames `1781 – 1931`)**
+   - Responsive vertical terminal layout with top telemetry header, centered brand stack, glowing `Subscribe for Daily Telemetry →` CTA button, and regulatory compliance banner.
+   - Native `dema_outro_bed.mp3` with smooth 1.5s outro fade-out.
+
+---
+
+## 4. The 6-Pillar Engagement Formula
+
+To maximize organic viewer retention while maintaining institutional credibility, all DEMA vertical reels combine six specialized skills:
+
+1. **`viral-hooks` (First 3-Second Retention Trigger)**
+   - Opens with curiosity or institutional money revelation: *"Big institutions just absorbed 1.1 million shares in Cummins India..."*
+   - Avoids generic welcomes or channel pleasantries; hits the core thesis in Frame 1.
+2. **`remotion-kinetic-kit` (High-Energy Camera Dynamics)**
+   - `IntroZoom`: Smooth deceleration from 1.09x to 1.0x over the first 24 frames to establish immediate visual depth.
+   - White `FlashCut`: 1-frame to 2-frame opacity flash on major chart phase transitions to reset cognitive attention.
+3. **`motion-doctrine` (Continuous Causal Camera Motion)**
+   - The camera acts as a single continuous lens tracking price momentum.
+   - Downward slide (-Y) tracks liquidation selling cascades.
+   - **16px Physical Recoil**: Squash-and-bounce spring recoil upon hitting structural POC floor.
+   - Forward drive (+Z) zooms into moving average hurdles (e.g. 50 DEMA / 200 DEMA).
+   - **Stillness-Before-Climax**: 0.45s hold before major level breakout or target reveal.
+4. **`reel-css-animations` (Hardware-Accelerated Glow & Radar UI)**
+   - Rotating conic gradient rim (`#10B981`, `#22D3EE`, `#F2CF1D`) behind live quote badges.
+   - Multi-tier neon golden floor (`box-shadow` diffusion) highlighting Point of Control defense.
+   - Expanding sonar radar pulse rings centered on institutional volume spike candles.
+5. **`captions-overlay` (Word-by-Word Kinetic Karaoke & 3D Typography)**
+   - 7-word sliding window anchored at `bottom: 240px` with active-word gold pop pill (`#F2CF1D`, scale 1.10).
+   - Large translucent 3D watermark climax words (`ACCUMULATION`, `LIQUIDATION`, `ABSORPTION`, `BREAKOUT`) composited behind the chart plane.
+6. **`glassmorphism` (Obsidian Technical Finishes)**
+   - Dark obsidian frosted capsules (`rgba(9, 13, 20, 0.94)`) with 20px blur, 1.5px gold borders, and subtle top specular highlights.
