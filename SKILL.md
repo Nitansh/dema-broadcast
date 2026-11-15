@@ -14,7 +14,8 @@ Create institutional-grade **16:9 Master Financial Broadcasts** and **9:16 Viral
 
 Activate this skill whenever the user asks to:
 - "Generate today's DEMA analysis video" or "make daily market broadcast"
-- "Create a viral 9:16 reel for a stock" (e.g. Cummins India, Coal India, Adani Power)
+- "Create a viral 9:16 reel for a stock" (e.g. Cummins India, Waaree Energies, Coal India)
+- "Produce 16:9 single-stock YouTube explainer" (Cummins India, Waaree Energies)
 - "Apply motion-doctrine on a stock chart" or "make technical breakdown reel"
 - "Add DEMA intro and outro to the video"
 - "Produce 16:9 financial newsroom broadcast with split-flap board and charts"
@@ -129,6 +130,7 @@ Open: `http://localhost:8080/master-video-player.html`
 │   └── validate_market_data.py       # JSON schema validator for daily telemetry
 ├── templates/
 │   ├── CumminsYouTubeExplainer16x9.jsx # 16:9 Full Widescreen YouTube Video (Chart + Sidebar Level Matrix)
+│   ├── WaareeYouTubeExplainer16x9.jsx  # 16:9 Full Widescreen YouTube Video for Waaree Energies
 │   ├── CumminsExplainerReel.jsx      # 9:16 Support, Resistance & Target Masterclass (Full chart + DEMA 20/50/100/200)
 │   ├── CumminsMotionDoctrineReel.jsx # 3-Act Next-Gen Cummins Reel with Intro, Outro & 6-Pillar motion
 │   ├── DemaIntro.jsx                 # Master DEMA branded intro sting (3.5s / 105 frames @ 30fps)
