@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DEMA ANALYSIS · Broadcast Suite Player (Nov 13, 2026)</title>
+<title>DEMA ANALYSIS · Daily Market & Stock Study Suite (Nov 13, 2026)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=IBM+Plex+Mono:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -100,7 +100,7 @@
 
   .grid-layout {
     display: grid;
-    grid-template-columns: 1fr 380px;
+    grid-template-columns: 1fr 420px;
     gap: 28px;
     flex: 1;
   }
@@ -253,18 +253,22 @@
     font-size: 12px;
     font-weight: 700;
     color: var(--gold);
+    white-space: nowrap;
+    margin-left: 8px;
   }
 
   .reels-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
+    max-height: 480px;
+    overflow-y: auto;
   }
   .reel-link {
     background: #171B24;
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 10px 12px;
+    padding: 8px 10px;
     color: var(--paper);
     text-decoration: none;
     font-family: 'IBM Plex Mono', monospace;
@@ -273,31 +277,31 @@
     transition: all 0.2s;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
   }
   .reel-link:hover {
     border-color: var(--accent);
     background: var(--card-hover);
     color: var(--accent);
   }
-  .reel-link strong { color: var(--gold); }
+  .reel-link strong { color: var(--gold); font-size: 12px; }
 </style>
 </head>
 <body>
 
 <header>
   <div class="title-group">
-    <h1>DEMA <span>ANALYSIS</span> · DAILY BROADCAST SUITE</h1>
-    <p>NOV 13, 2026 POST-MARKET BRIEF · ADANI SUITE ARCHITECTURE (ENGLISH + CAPTIONS)</p>
+    <h1>DEMA <span>ANALYSIS</span> · DAILY STUDY SUITE</h1>
+    <p>NOV 13, 2026 POST-MARKET BRIEF · LEMO-OPUSCAR NEWS-PACKAGE SUITE (ENGLISH + CAPTIONS)</p>
   </div>
   <div class="badges-row">
     <div class="badge badge-tmpl">⚡ NEWS PACKAGE GOLD STANDARD</div>
     <div class="badge badge-tmpl" style="background:rgba(34,211,238,0.15); border-color:var(--cyan); color:var(--cyan);">
-      🎙️ ENGLISH VOICE (PRABHAT NEURAL)
+      🎙️ EN-IN-PRABHATNEURAL + 120BPM BED
     </div>
     <div class="badge badge-live">
       <div class="dot"></div>
-      ON-SCREEN CAPTIONS + SRT/VTT
+      ACTIVE CAPTION OVERLAY + SRT/VTT
     </div>
   </div>
 </header>
@@ -307,104 +311,154 @@
   <div class="player-card">
     <div class="video-wrapper">
       <video id="broadcast-video" controls autoplay>
-        <source src="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Analysis_Daily_Broadcast_16x9_EN.mp4" type="video/mp4">
+        <source src="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Analysis_Daily_Broadcast_16x9_Master.mp4" type="video/mp4">
         <source src="master-broadcast-16x9.mp4" type="video/mp4">
-        <source src="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Analysis_Daily_Broadcast_16x9.mp4" type="video/mp4">
-        <track id="en-subtitles" src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English (CC)" default>
+        <source src="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Analysis_Daily_Broadcast_16x9_EN.mp4" type="video/mp4">
+        <track id="en-subtitles" src="subtitles_master.vtt" kind="subtitles" srclang="en" label="English (CC)" default>
+        <track id="en-subtitles-rel" src="DEMA_Daily_Suite_20261113/01_Videos/subtitles_master.vtt" kind="subtitles" srclang="en" label="English Direct (CC)">
         Your browser does not support HTML5 video.
       </video>
     </div>
 
     <div class="info-strip">
-      <div class="spec-item">RUNTIME: <strong>~03:34</strong> (6,435 Frames)</div>
-      <div class="spec-item">AUDIO: <strong style="color:var(--bullish-bright);">English (en-IN-PrabhatNeural) + 120BPM Bed</strong></div>
-      <div class="spec-item">CAPTIONS: <strong style="color:var(--accent);">Active Word/Sentence Sync Overlay</strong></div>
-      <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Analysis_Daily_Broadcast_16x9_EN.mp4" download class="dl-chip" style="background:var(--accent); color:#000; font-weight:800;">
-        ⬇ DOWNLOAD ENGLISH MASTER MP4
+      <div class="spec-item">TOTAL RUNTIME: <strong>~03:53</strong> (6,990 Frames @ 30fps)</div>
+      <div class="spec-item">AUDIO: <strong style="color:var(--bullish-bright);">English (en-IN-PrabhatNeural) · -14 LUFS</strong></div>
+      <div class="spec-item">CAPTIONS: <strong style="color:var(--accent);">Synchronized Dynamic Word Capsule</strong></div>
+      <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Analysis_Daily_Broadcast_16x9_Master.mp4" download class="dl-chip" style="background:var(--accent); color:#000; font-weight:800;">
+        ⬇ DOWNLOAD MASTER BROADCAST MP4
       </a>
     </div>
 
     <div class="dl-strip">
       <span class="dl-label">EXPORTS & ASSETS:</span>
-      <a href="subtitles_en.srt" download class="dl-chip" style="color:var(--accent); border-color:var(--accent);">📄 Subtitles (.SRT)</a>
-      <a href="subtitles_en.vtt" download class="dl-chip" style="color:var(--cyan); border-color:var(--cyan);">📄 Subtitles (.VTT)</a>
-      <a href="templates/DEMA_Broadcast_Master_Template/README.md" target="_blank" class="dl-chip" style="color:var(--bullish-bright); border-color:var(--bullish);">📦 Reusable Template Kit</a>
-      <a href="DEMA_Daily_Suite_20261113/02_Thumbnails/DEMA_Full_Broadcast_Thumbnail_1280x720.jpg" target="_blank" class="dl-chip">🖼 Broadcast Thumbnail</a>
-      <a href="DEMA_Daily_Suite_20261113/04_YouTube_Kit/DEMA_DAILY_SUITE_YOUTUBE_KIT_EN.md" target="_blank" class="dl-chip">📋 YouTube Kit (.MD)</a>
+      <a href="subtitles_master.srt" download class="dl-chip" style="color:var(--accent); border-color:var(--accent);">📄 Subtitles (.SRT)</a>
+      <a href="subtitles_master.vtt" download class="dl-chip" style="color:var(--cyan); border-color:var(--cyan);">📄 Subtitles (.VTT)</a>
+      <a href="DEMA_Daily_Suite_20261113/04_YouTube_Kit/DEMA_DAILY_SUITE_YOUTUBE_KIT_EN.md" target="_blank" class="dl-chip" style="color:var(--bullish-bright); border-color:var(--bullish);">📋 YouTube Kit (.MD)</a>
+      <a href="DEMA_Daily_Suite_20261113/render_verification_report.json" target="_blank" class="dl-chip" style="color:var(--cyan); border-color:var(--cyan);">📊 Verification Report</a>
     </div>
   </div>
 
   <!-- Side Navigation & Reels Panel -->
   <div class="side-panel">
-    <!-- Chapter Jumps -->
+    <!-- Featured Cummins India Study -->
+    <div class="panel-box" style="border-color:var(--accent); background:rgba(242, 207, 29, 0.05);">
+      <div class="panel-heading" style="color:var(--accent);">
+        <span>⭐</span> FEATURED: CUMMINS INDIA STUDY
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <button onclick="switchVideo('cummins-support-resistance-explainer-16x9.mp4', 'cummins_explainer_subtitles.vtt', 'Cummins India 16:9 Full YouTube Video (02:01)')" class="ch-row" style="background:#1B202A; border-color:var(--accent); width:100%;">
+          <div>
+            <div class="ch-title" style="color:var(--accent);">▶ CUMMINS 16:9 FULL YOUTUBE VIDEO</div>
+            <div class="ch-sub">Support, Resistance & DEMA Targets (2m 1s)</div>
+          </div>
+          <div class="ch-stamp" style="color:var(--accent);">1080p</div>
+        </button>
+        <button onclick="switchVideo('cummins-support-resistance-explainer-9x16.mp4', 'cummins_explainer_subtitles.vtt', 'Cummins India 9:16 Viral Reel (02:01)')" class="ch-row" style="background:#171B24; width:100%;">
+          <div>
+            <div class="ch-title">📱 CUMMINS 9:16 VIRAL REEL</div>
+            <div class="ch-sub">Shorts / Reels / TikTok Format (2m 1s)</div>
+          </div>
+          <div class="ch-stamp">9:16</div>
+        </button>
+        <button onclick="switchVideo('master-broadcast-16x9.mp4', 'subtitles_master.vtt', 'Daily Master Broadcast Suite (03:53)')" class="ch-row" style="background:#171B24; width:100%;">
+          <div>
+            <div class="ch-title">📺 DAILY 16:9 MASTER BROADCAST</div>
+            <div class="ch-sub">5 Acts: Macro, Heatmaps & Deep Dives (3m 53s)</div>
+          </div>
+          <div class="ch-stamp">16:9</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Chapter Jumps (5 Acts) -->
     <div class="panel-box">
       <div class="panel-heading">
-        <span>📑</span> Broadcast Chapters
+        <span>📑</span> 5 Broadcast Chapters
       </div>
       <div class="chapter-list">
         <div class="ch-row active" onclick="seekTo(0)">
           <div>
-            <div class="ch-title">ACT 1 · Welcome & Educational Notice</div>
-            <div class="ch-sub">Roadmap & Mandatory Compliance</div>
+            <div class="ch-title">ACT 1 · Executive Briefing & Notice</div>
+            <div class="ch-sub">Program Roadmap & Compliance Disclaimer</div>
           </div>
-          <div class="ch-stamp">00:00</div>
+          <div class="ch-stamp">00:00 (31.5s)</div>
         </div>
         <div class="ch-row" onclick="seekTo(31.5)">
           <div>
-            <div class="ch-title">ACT 2 · Macro Summary Desk</div>
-            <div class="ch-sub">Nifty 50 Split-Flap, Metals & Crude</div>
+            <div class="ch-title">ACT 2 · Daily Macro Benchmark</div>
+            <div class="ch-sub">Nifty 50, Gold, Silver & Crude Oil</div>
           </div>
-          <div class="ch-stamp">00:31</div>
+          <div class="ch-stamp">00:31 (47.5s)</div>
         </div>
         <div class="ch-row" onclick="seekTo(79.0)">
           <div>
-            <div class="ch-title">ACT 3 · Nifty 50 Movers & Order Flow</div>
+            <div class="ch-title">ACT 3 · Nifty Next 50 Movers</div>
             <div class="ch-sub">Gainers, Losers & High-Volume Radar</div>
           </div>
-          <div class="ch-stamp">01:19</div>
+          <div class="ch-stamp">01:19 (49.0s)</div>
         </div>
         <div class="ch-row" onclick="seekTo(128.0)">
           <div>
-            <div class="ch-title">ACT 4 · Featured Study: TMCV & MONEYVIEW</div>
-            <div class="ch-sub">200 DEMA Retest & 96.80M Breakout</div>
+            <div class="ch-title">ACT 4 · 6 Stock Technical Deep Dive</div>
+            <div class="ch-sub">TradingView Charts & DEMA/VP Ribbons</div>
           </div>
-          <div class="ch-stamp">02:08</div>
+          <div class="ch-stamp">02:08 (75.0s)</div>
         </div>
-        <div class="ch-row" onclick="seekTo(184.5)">
+        <div class="ch-row" onclick="seekTo(203.0)">
           <div>
-            <div class="ch-title">ACT 5 · Watchlist Recap & Closing Call</div>
-            <div class="ch-sub">Tomorrow's Critical Levels & Radar</div>
+            <div class="ch-title">ACT 5 · Tomorrow's Strategy & Range</div>
+            <div class="ch-sub">Pivot Zones, Floor Invalidation & End Card</div>
           </div>
-          <div class="ch-stamp">03:04</div>
+          <div class="ch-stamp">03:23 (30.0s)</div>
         </div>
       </div>
     </div>
 
-    <!-- 5 Vertical Reels Downloads -->
+    <!-- 10 Vertical Reels Downloads -->
     <div class="panel-box">
       <div class="panel-heading">
-        <span>📱</span> 5 Vertical Reels (9:16)
+        <span>📱</span> 10 Standalone Reels (9:16)
       </div>
       <div class="reels-grid">
         <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Reel_1_Macro_9x16.mp4" download class="reel-link">
           <strong>REEL 1</strong>
-          <span>Macro Pulse (49s)</span>
+          <span>Macro Pulse (38s)</span>
         </a>
         <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Reel_2_Losers_9x16.mp4" download class="reel-link">
           <strong>REEL 2</strong>
-          <span>Top Losers (38s)</span>
+          <span>Top Losers (36s)</span>
         </a>
         <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Reel_3_Gainers_9x16.mp4" download class="reel-link">
           <strong>REEL 3</strong>
-          <span>Top Gainers (38s)</span>
+          <span>Top Gainers (36s)</span>
         </a>
         <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Reel_4_Momentum_9x16.mp4" download class="reel-link">
           <strong>REEL 4</strong>
-          <span>Volume Radar (36s)</span>
+          <span>Momentum Radar (36s)</span>
         </a>
-        <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Reel_5_DeepDive_9x16.mp4" download class="reel-link" style="grid-column: span 2;">
+        <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Reel_5_COALINDIA_9x16.mp4" download class="reel-link">
           <strong>REEL 5</strong>
-          <span>TMCV & Moneyview Deep Dive (37s)</span>
+          <span>COALINDIA (40s)</span>
+        </a>
+        <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Reel_6_IIFLCAPS_9x16.mp4" download class="reel-link">
+          <strong>REEL 6</strong>
+          <span>IIFLCAPS (40s)</span>
+        </a>
+        <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Reel_7_BLUESTARCO_9x16.mp4" download class="reel-link">
+          <strong>REEL 7</strong>
+          <span>BLUESTARCO (40s)</span>
+        </a>
+        <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Reel_8_INDIGO_9x16.mp4" download class="reel-link">
+          <strong>REEL 8</strong>
+          <span>INDIGO (40s)</span>
+        </a>
+        <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Reel_9_CUMMINSIND_9x16.mp4" download class="reel-link">
+          <strong>REEL 9</strong>
+          <span>CUMMINSIND (40s)</span>
+        </a>
+        <a href="DEMA_Daily_Suite_20261113/01_Videos/DEMA_Reel_10_ABB_9x16.mp4" download class="reel-link">
+          <strong>REEL 10</strong>
+          <span>ABB INDIA (40s)</span>
         </a>
       </div>
     </div>
@@ -415,6 +469,16 @@
   const video = document.getElementById('broadcast-video');
   const rows = document.querySelectorAll('.ch-row');
 
+  function switchVideo(src, vtt, label) {
+    video.src = src;
+    const track = document.getElementById('en-subtitles');
+    if (track && vtt) {
+      track.src = vtt;
+    }
+    video.load();
+    video.play();
+  }
+
   function seekTo(sec) {
     video.currentTime = sec;
     video.play();
@@ -422,7 +486,7 @@
 
   video.addEventListener('timeupdate', () => {
     const cur = video.currentTime;
-    const timestamps = [0, 31.5, 79.0, 128.0, 184.5];
+    const timestamps = [0, 31.5, 79.0, 128.0, 203.0];
     let activeIdx = 0;
     for (let i = timestamps.length - 1; i >= 0; i--) {
       if (cur >= timestamps[i] - 0.4) {
