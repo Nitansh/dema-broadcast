@@ -877,6 +877,7 @@ export const KineticBroadcastCaptions = ({
   fps = 30,
   vertical = false,
   bottom = undefined,
+  top = undefined,
 }) => {
   const resolvedManifest = manifest || defaultAudioManifest;
   let chunkList = chunks;
@@ -917,13 +918,14 @@ export const KineticBroadcastCaptions = ({
   const isEnding = frame > endF;
   const opacity = isEnding ? clamp01((endF + 12 - frame) / 12) : fadeProgress;
 
-  const containerBottom = bottom !== undefined ? bottom : (vertical ? 228 : 122);
+  const isTop = top !== undefined;
+  const containerBottom = !isTop ? (bottom !== undefined ? bottom : (vertical ? 228 : 122)) : undefined;
 
   return (
     <div
       style={{
         position: 'absolute',
-        bottom: containerBottom,
+        ...(isTop ? { top } : { bottom: containerBottom }),
         left: vertical ? 44 : '50%',
         right: vertical ? 44 : 'auto',
         transform: vertical ? 'none' : 'translateX(-50%)',

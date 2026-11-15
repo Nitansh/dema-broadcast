@@ -125,3 +125,4 @@ In 16:9 widescreen broadcast, the right telemetry matrix spotlights only the act
 - Inactive level cards dim to `opacity: 0.32` and `scale(1.0)`.
 - Active level card illuminates to `opacity: 1.0`, `scale(1.04)`, and gains a vivid glowing border (`box-shadow: 0 0 20px rgba(...)`).
 - Volume confirmation and Open Interest gauges confirm directional bias.
+

@@ -227,10 +227,10 @@ export const CumminsYouTubeExplainerCore = () => {
         <div
           style={{
             position: 'absolute',
-            top: 24,
+            top: 18,
             left: 28,
             right: 28,
-            height: 68,
+            height: 58,
             backgroundColor: 'rgba(12, 16, 24, 0.94)',
             backdropFilter: 'blur(20px)',
             border: '1.5px solid rgba(244, 241, 232, 0.14)',
@@ -395,10 +395,10 @@ export const CumminsYouTubeExplainerCore = () => {
       <div
         style={{
           position: 'absolute',
-          top: 106,
+          top: 154,
           left: 28,
           right: 28,
-          bottom: 126,
+          bottom: 124,
           display: 'flex',
           gap: 20,
           zIndex: 10,
@@ -1349,14 +1349,14 @@ export const CumminsYouTubeExplainerCore = () => {
         </div>
       </div>
 
-      {/* 4. WIDESCREEN KINETIC KARAOKE CAPTIONS (Clear 195px bottom to sit with elegant breathing space above lower third) */}
+      {/* 4. WIDESCREEN KINETIC KARAOKE CAPTIONS (Positioned at TOP of screen to eliminate any collision with video) */}
       {showHud && (
         <KineticBroadcastCaptions
           chunks={manifest.body_chunks || manifest.chunks}
           frame={frame}
           fps={fps}
           vertical={false}
-          bottom={195}
+          top={86}
         />
       )}
 
@@ -1375,7 +1375,7 @@ export const CumminsYouTubeExplainerCore = () => {
 
       {/* 6. EDUCATIONAL COMPLIANCE WATERMARK RIBBON */}
       {showHud && (
-        <div style={{ position: 'absolute', top: 96, right: 28, zIndex: 25 }}>
+        <div style={{ position: 'absolute', bottom: 18, right: 96, zIndex: 25 }}>
           <EducationalRibbon
             text="FOR TECHNICAL CHART STUDY ONLY · NOT SEBI REGISTERED INVESTMENT ADVICE"
             vertical={false}
