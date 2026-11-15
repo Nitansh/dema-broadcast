@@ -143,6 +143,7 @@ Open: `http://localhost:8080/master-video-player.html`
 │   ├── market_data_schema.json       # JSON Schema definition for daily market telemetry
 │   └── sample_market_data.json       # Example daily market data (indices, commodities, stocks)
 └── references/
+    ├── decluttered-laser-doctrine.md # Single-level isolation, laser sweep, sonar pulse, delta indicators
     ├── broadcast-doctrine.md         # 16:9 and 9:16 screen geometry, safe zones, 6-pillar engagement
     ├── sound-design.md               # Zero voice overlap engine, 120 BPM procedural formulas, loudness
     └── caption-system.md             # Kinetic word-by-word karaoke specs, time-shifted subtitles
@@ -158,5 +159,7 @@ Before publishing or delivering any generated video:
   - 16:9 Broadcast: integrated loudness ~ `-19 LUFS` (peak < `-2.0 dBFS`).
   - 9:16 Vertical Reel: integrated loudness ~ `-14 LUFS` (peak < `-1.5 dBFS`).
 - [ ] **3-Act Structure**: Verify vertical reels include `DemaIntro` (3.5s), Technical Core, and `DemaOutro` (5.0s).
-- [ ] **Subtitles**: Verify `.srt` and `.vtt` timestamps match spoken audio and account for intro offsets.
-- [ ] **Visual Proof**: Ensure active-word karaoke pop pill (`#F2CF1D`) is legible without covering key chart levels.
+- [ ] **Decluttered Single-Level Isolation**: Verify inactive overlay lines disappear during each audio beat, revealing only the level being discussed.
+- [ ] **Left-to-Right Laser Sweeps**: Verify level lines draw on with a leading spark particle (`sweepProgress`).
+- [ ] **Live Price Radar Ping**: Verify CMP maintains a continuous anchor line and dual-wave expanding sonar pulse.
+- [ ] **Subtitles & Caption Clearance**: Verify `.srt` and `.vtt` timestamps match spoken audio and captions do not overlap LowerThirdStrap.

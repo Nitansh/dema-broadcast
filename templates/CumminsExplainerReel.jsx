@@ -60,6 +60,22 @@ export const CumminsExplainerCore = () => {
     frame < cue4 ? 3 :
     frame < cue5 ? 4 : 5;
 
+  const activeCueStart =
+    phase === 0 ? cue0 :
+    phase === 1 ? cue1 :
+    phase === 2 ? cue2 :
+    phase === 3 ? cue3 :
+    phase === 4 ? cue4 : cue5;
+
+  // Left-to-Right Glowing Laser Beam Sweep Progress (22 frames = 0.73s)
+  const sweepProgress = clamp01((frame - activeCueStart) / 22);
+
+  // Live Price (CMP) circle-out sonar ping animation (every 40 frames = 1.33s)
+  const pingCycle = 40;
+  const pingProgress = ((frame % pingCycle) / pingCycle);
+  const pingScale = interpolate(pingProgress, [0, 1], [0.8, 3.6]);
+  const pingOpacity = interpolate(pingProgress, [0, 0.25, 1], [0.95, 0.75, 0]);
+
   // Opening punch-in: 1.08x -> 1.0x over first 24 frames
   const introPunchProgress = clamp01(frame / 24);
   const introZoomScale = interpolate(introPunchProgress, [0, 1], [1.08, 1.0], {
@@ -268,134 +284,40 @@ export const CumminsExplainerCore = () => {
           />
 
           {/* =========================================================
-              LEVEL OVERLAYS & LASER HIGHLIGHTS (Aligned to coordinates)
-              Image displayed height = 1040 * (480 / 1024) = 487.5px
-              Vertical offset inside 980px container = (980 - 487.5) / 2 = 246.25px
-              top_px = 246.25 + (y_pct / 100) * 487.5
-              bottom_pct_in_container = 100 - (top_px / 980 * 100)
+              ISOLATED ACTIVE LEVEL OVERLAYS & LASER HIGHLIGHTS
+              (Inactive lines completely hidden to eliminate visual clutter)
              ========================================================= */}
 
-          {/* DEMA 200 (₹5,155.80 | y_pct=33.3% -> top: 408px / bottom: 58.3%) */}
-          {(phase === 0 || phase === 5) && (
+          {/* FOCUS VIGNETTE MASK (Dims background during focused beats) */}
+          {phase > 0 && (
             <div
               style={{
                 position: 'absolute',
-                left: 0,
-                right: 0,
-                bottom: '58.3%',
-                height: 3,
-                backgroundColor: 'rgba(239, 68, 68, 0.9)',
-                boxShadow: '0 0 12px rgba(239, 68, 68, 0.8), 0 0 24px rgba(239, 68, 68, 0.4)',
-                zIndex: 12,
-                opacity: phase === 5 ? 1.0 : 0.65,
+                inset: 0,
+                backgroundColor: 'rgba(5, 7, 10, 0.22)',
+                pointerEvents: 'none',
+                zIndex: 10,
               }}
-            >
-              <div
-                style={{
-                  position: 'absolute',
-                  right: 14,
-                  bottom: 6,
-                  backgroundColor: 'rgba(239, 68, 68, 0.95)',
-                  color: '#FFFFFF',
-                  fontFamily: FONTS.mono,
-                  fontSize: 11,
-                  fontWeight: 800,
-                  padding: '2px 8px',
-                  borderRadius: 4,
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.6)',
-                }}
-              >
-                DEMA 200: ₹5,155.80 [MACRO RESISTANCE / REVERSAL TARGET]
-              </div>
-            </div>
+            />
           )}
 
-          {/* DEMA 100 (₹4,727.45 | y_pct=53.3% -> top: 506px / bottom: 48.4%) */}
-          {(phase === 0 || phase === 5) && (
-            <div
-              style={{
-                position: 'absolute',
-                left: 0,
-                right: 0,
-                bottom: '48.4%',
-                height: 3,
-                backgroundColor: 'rgba(251, 113, 133, 0.9)',
-                boxShadow: '0 0 12px rgba(251, 113, 133, 0.7)',
-                zIndex: 12,
-                opacity: phase === 5 ? 1.0 : 0.65,
-              }}
-            >
-              <div
-                style={{
-                  position: 'absolute',
-                  right: 14,
-                  bottom: 6,
-                  backgroundColor: 'rgba(251, 113, 133, 0.95)',
-                  color: '#121417',
-                  fontFamily: FONTS.mono,
-                  fontSize: 11,
-                  fontWeight: 800,
-                  padding: '2px 8px',
-                  borderRadius: 4,
-                }}
-              >
-                DEMA 100: ₹4,727.45 [MACRO TARGET]
-              </div>
-            </div>
-          )}
-
-          {/* VAH (₹4,648.24 | y_pct=56.9% -> top: 523px / bottom: 46.6%) */}
-          {(phase === 0 || phase === 4 || phase === 5) && (
-            <div
-              style={{
-                position: 'absolute',
-                left: 0,
-                right: 0,
-                bottom: '46.6%',
-                height: 3.5,
-                backgroundColor: '#22D3EE',
-                boxShadow:
-                  '0 0 10px #22D3EE, 0 0 24px rgba(34, 211, 238, 0.8), 0 0 50px rgba(34, 211, 238, 0.35)',
-                zIndex: 13,
-                opacity: phase === 4 ? 1.0 : 0.75,
-              }}
-            >
-              <div
-                style={{
-                  position: 'absolute',
-                  right: 14,
-                  bottom: 6,
-                  backgroundColor: 'rgba(34, 211, 238, 0.95)',
-                  color: '#121417',
-                  fontFamily: FONTS.mono,
-                  fontSize: 11,
-                  fontWeight: 900,
-                  padding: '3px 10px',
-                  borderRadius: 5,
-                  letterSpacing: '0.04em',
-                }}
-              >
-                ↗ VAH: ₹4,648.24 [PRIMARY TARGET · RESISTANCE]
-              </div>
-            </div>
-          )}
-
-          {/* LIVE CMP & 50 DEMA (₹4,369.00 / ₹4,368.15 | y_pct=69.2% -> bottom: 40.5%) */}
+          {/* =========================================================
+              LIVE PRICE (CMP ₹4,369.00) PERMANENT HIGHLIGHT & SONAR CIRCLE-OUT
+             ========================================================= */}
+          {/* Horizontal Continuous Anchor Line */}
           <div
             style={{
               position: 'absolute',
               left: 0,
               right: 0,
               bottom: '40.5%',
-              height: 3.5,
-              backgroundColor: phase === 3 ? '#F2CF1D' : '#10B981',
-              boxShadow:
-                phase === 3
-                  ? '0 0 12px #F2CF1D, 0 0 28px #F2CF1D, 0 0 60px rgba(242, 207, 29, 0.6)'
-                  : '0 0 10px #10B981, 0 0 24px rgba(16, 185, 129, 0.6)',
-              zIndex: 15,
+              height: 2.5,
+              backgroundColor: '#10B981',
+              boxShadow: '0 0 12px #10B981, 0 0 24px rgba(16, 185, 129, 0.5)',
+              zIndex: 20,
             }}
           >
+            {/* CMP Left Tag */}
             <div
               style={{
                 position: 'absolute',
@@ -413,323 +335,675 @@ export const CumminsExplainerCore = () => {
             >
               ● LIVE CMP: ₹4,369.00
             </div>
-
-            <div
-              style={{
-                position: 'absolute',
-                right: 14,
-                bottom: 6,
-                backgroundColor: phase === 3 ? 'rgba(242, 207, 29, 0.98)' : 'rgba(18, 20, 23, 0.92)',
-                color: phase === 3 ? '#121417' : '#F2CF1D',
-                border: '1px solid #F2CF1D',
-                fontFamily: FONTS.mono,
-                fontSize: 11,
-                fontWeight: 900,
-                padding: '3px 10px',
-                borderRadius: 5,
-              }}
-            >
-              DEMA 50: ₹4,368.15 {phase === 3 ? '[CRITICAL HURDLE]' : '[KEY PIVOT]'}
-            </div>
           </div>
 
-          {/* DEMA 20 (₹4,241.10 | y_pct=76.7% -> top: 620px / bottom: 36.7%) */}
-          {(phase === 0 || phase >= 2) && (
+          {/* Live Price Expanding Circle-Out Sonar Pulse (On latest candle x=73.5%) */}
+          <div
+            style={{
+              position: 'absolute',
+              left: '73.5%',
+              bottom: '40.5%',
+              transform: 'translate(-50%, 50%)',
+              pointerEvents: 'none',
+              zIndex: 22,
+            }}
+          >
+            {/* Inner Solid Core */}
             <div
               style={{
                 position: 'absolute',
-                left: 0,
-                right: 0,
-                bottom: '36.7%',
-                height: 3,
-                backgroundColor: '#10B981',
-                boxShadow: '0 0 10px #10B981, 0 0 20px rgba(16, 185, 129, 0.6)',
-                zIndex: 13,
-                opacity: phase === 2 ? 1.0 : 0.70,
-              }}
-            >
-              <div
-                style={{
-                  position: 'absolute',
-                  right: 14,
-                  bottom: 6,
-                  backgroundColor: 'rgba(16, 185, 129, 0.95)',
-                  color: '#121417',
-                  fontFamily: FONTS.mono,
-                  fontSize: 11,
-                  fontWeight: 900,
-                  padding: '3px 10px',
-                  borderRadius: 5,
-                }}
-              >
-                ✔ DEMA 20: ₹4,241.10 [RECLAIMED DYNAMIC SUPPORT]
-              </div>
-            </div>
-          )}
-
-          {/* POC (₹4,136.30 | y_pct=80.8% -> top: 640px / bottom: 34.7%) */}
-          {(phase === 0 || phase >= 1) && (
-            <div
-              style={{
-                position: 'absolute',
-                left: 0,
-                right: 0,
-                bottom: '34.7%',
-                height: 3.5,
-                backgroundColor: '#F2CF1D',
-                boxShadow:
-                  '0 0 10px #F2CF1D, 0 0 24px #F2CF1D, 0 0 60px rgba(242, 207, 29, 0.6)',
-                zIndex: 14,
-                opacity: phase === 1 ? 1.0 : 0.75,
-              }}
-            >
-              <div
-                style={{
-                  position: 'absolute',
-                  right: 14,
-                  bottom: 6,
-                  backgroundColor: 'rgba(242, 207, 29, 0.96)',
-                  color: '#121417',
-                  fontFamily: FONTS.mono,
-                  fontSize: 11,
-                  fontWeight: 900,
-                  padding: '3px 10px',
-                  borderRadius: 5,
-                  boxShadow: '0 4px 14px rgba(0,0,0,0.6)',
-                }}
-              >
-                ★ POC: ₹4,136.30 (1.10M VOL ABSORPTION FLOOR)
-              </div>
-            </div>
-          )}
-
-          {/* Concentric Radar Pulse Ring at POC absorption cluster (Beat 1) */}
-          {phase === 1 && (
-            <div
-              style={{
-                position: 'absolute',
-                left: '73.5%',
-                bottom: '34.7%',
-                transform: 'translate(-50%, 50%)',
-                width: 24 + ((frame - cue1) * 5) % 90,
-                height: 24 + ((frame - cue1) * 5) % 90,
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: 12,
+                height: 12,
                 borderRadius: '50%',
-                border: '2px solid rgba(242, 207, 29, 0.85)',
-                opacity: 1 - (((frame - cue1) * 5) % 90) / 90,
-                pointerEvents: 'none',
-                zIndex: 16,
+                backgroundColor: '#FFFFFF',
+                boxShadow: '0 0 10px #FFFFFF, 0 0 20px #10B981',
               }}
             />
-          )}
-
-          {/* VAL (₹3,950.14 | y_pct=89.6% -> top: 683px / bottom: 30.3%) */}
-          {(phase === 0 || phase >= 1) && (
+            {/* Expanding Circle-Out Wave 1 */}
             <div
               style={{
                 position: 'absolute',
-                left: 0,
-                right: 0,
-                bottom: '30.3%',
-                height: 3,
-                backgroundColor: 'rgba(239, 68, 68, 0.85)',
-                boxShadow: '0 0 10px rgba(239, 68, 68, 0.6)',
-                zIndex: 12,
-                opacity: phase === 1 ? 1.0 : 0.65,
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: 32,
+                height: 32,
+                borderRadius: '50%',
+                border: '2.5px solid #10B981',
+                transform: `translate(-50%, -50%) scale(${pingScale})`,
+                opacity: pingOpacity,
+                boxShadow: '0 0 16px #10B981',
               }}
-            >
+            />
+            {/* Expanding Circle-Out Wave 2 (Phase Offset) */}
+            <div
+              style={{
+                position: 'absolute',
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: 32,
+                height: 32,
+                borderRadius: '50%',
+                border: '1.5px solid #22D3EE',
+                transform: `translate(-50%, -50%) scale(${interpolate((frame + 20) % pingCycle / pingCycle, [0, 1], [0.8, 3.6])})`,
+                opacity: interpolate((frame + 20) % pingCycle / pingCycle, [0, 0.25, 1], [0.95, 0.75, 0]),
+                boxShadow: '0 0 14px #22D3EE',
+              }}
+            />
+          </div>
+
+          {/* =========================================================
+              BEAT 1: ONLY POC (₹4,136.30) & VAL (₹3,950.14) SHOWN
+             ========================================================= */}
+          {phase === 1 && (
+            <>
+              {/* POC Golden Beam with Left-to-Right Glowing Sweep */}
               <div
                 style={{
                   position: 'absolute',
-                  right: 14,
-                  bottom: 6,
-                  backgroundColor: 'rgba(239, 68, 68, 0.95)',
-                  color: '#FFFFFF',
-                  fontFamily: FONTS.mono,
-                  fontSize: 11,
-                  fontWeight: 800,
-                  padding: '2px 8px',
-                  borderRadius: 4,
+                  left: 0,
+                  right: 0,
+                  bottom: '34.7%',
+                  height: 4.5,
+                  backgroundColor: '#F2CF1D',
+                  boxShadow:
+                    '0 0 16px #F2CF1D, 0 0 35px #F2CF1D, 0 0 70px rgba(242, 207, 29, 0.8)',
+                  zIndex: 25,
+                  clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
                 }}
               >
-                VAL: ₹3,950.14 [ULTIMATE VALUE AREA SUPPORT FLOOR]
+                {/* Leading Laser Spark */}
+                {sweepProgress < 1 && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      left: `${sweepProgress * 100}%`,
+                      top: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      width: 18,
+                      height: 18,
+                      borderRadius: '50%',
+                      backgroundColor: '#FFFFFF',
+                      boxShadow: '0 0 20px #FFFFFF, 0 0 35px #F2CF1D',
+                    }}
+                  />
+                )}
+                {/* Label Badge */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    right: 14,
+                    bottom: 8,
+                    backgroundColor: 'rgba(242, 207, 29, 0.98)',
+                    color: '#121417',
+                    fontFamily: FONTS.mono,
+                    fontSize: 11,
+                    fontWeight: 900,
+                    padding: '3px 10px',
+                    borderRadius: 5,
+                    boxShadow: '0 4px 14px rgba(0,0,0,0.7)',
+                  }}
+                >
+                  ★ POC: ₹4,136.30 (1.10M VOLUME DEFENSE FLOOR)
+                </div>
               </div>
-            </div>
+
+              {/* Concentric Radar Pulse Ring at POC absorption cluster */}
+              <div
+                style={{
+                  position: 'absolute',
+                  left: '73.5%',
+                  bottom: '34.7%',
+                  transform: 'translate(-50%, 50%)',
+                  width: 28 + ((frame - cue1) * 5) % 110,
+                  height: 28 + ((frame - cue1) * 5) % 110,
+                  borderRadius: '50%',
+                  border: '2.5px solid rgba(242, 207, 29, 0.9)',
+                  opacity: 1 - (((frame - cue1) * 5) % 110) / 110,
+                  pointerEvents: 'none',
+                  zIndex: 26,
+                }}
+              />
+
+              {/* VAL Structural Floor */}
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  right: 0,
+                  bottom: '30.3%',
+                  height: 3.5,
+                  backgroundColor: '#EF4444',
+                  boxShadow: '0 0 14px rgba(239, 68, 68, 0.8)',
+                  zIndex: 24,
+                  clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
+                }}
+              >
+                <div
+                  style={{
+                    position: 'absolute',
+                    right: 14,
+                    bottom: 7,
+                    backgroundColor: 'rgba(239, 68, 68, 0.95)',
+                    color: '#FFFFFF',
+                    fontFamily: FONTS.mono,
+                    fontSize: 10,
+                    fontWeight: 800,
+                    padding: '2px 8px',
+                    borderRadius: 4,
+                  }}
+                >
+                  VAL: ₹3,950.14 [VALUE AREA SUPPORT FLOOR]
+                </div>
+              </div>
+
+              {/* Connecting Distance Delta between CMP and POC */}
+              <div
+                style={{
+                  position: 'absolute',
+                  left: '52%',
+                  bottom: '34.7%',
+                  height: '5.8%', // from 34.7% to 40.5%
+                  width: 2,
+                  borderLeft: '2px dashed #F2CF1D',
+                  zIndex: 22,
+                }}
+              >
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: 8,
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    backgroundColor: 'rgba(9, 13, 20, 0.94)',
+                    border: '1px solid #F2CF1D',
+                    padding: '2px 6px',
+                    borderRadius: 4,
+                    fontFamily: FONTS.mono,
+                    fontSize: 10,
+                    fontWeight: 800,
+                    color: '#F2CF1D',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  Δ -₹232.70 (-5.3%) SUPPORT FLOOR
+                </div>
+              </div>
+
+              {/* Bottom Context Badge */}
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 24,
+                  bottom: '22%',
+                  backgroundColor: 'rgba(9, 13, 20, 0.94)',
+                  border: '1.5px solid #F2CF1D',
+                  padding: '8px 16px',
+                  borderRadius: 8,
+                  zIndex: 25,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 10,
+                }}
+              >
+                <span style={{ color: '#F2CF1D', fontSize: 20, fontWeight: 900 }}>↘</span>
+                <div>
+                  <div style={{ color: '#F2CF1D', fontFamily: FONTS.mono, fontSize: 13, fontWeight: 900 }}>
+                    RALLY DOWN EXHAUSTION
+                  </div>
+                  <div style={{ color: '#F4F1E8', fontFamily: FONTS.ui, fontSize: 11 }}>
+                    1.10M Buy Volume absorbs cascade at POC
+                  </div>
+                </div>
+              </div>
+            </>
           )}
 
-          {/* Directional Arrows & Badges per Phase */}
-          {phase === 1 && (
-            <div
-              style={{
-                position: 'absolute',
-                left: 30,
-                bottom: '37%',
-                backgroundColor: 'rgba(9, 13, 20, 0.92)',
-                border: '1.5px solid #F2CF1D',
-                padding: '8px 16px',
-                borderRadius: 8,
-                zIndex: 20,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 10,
-              }}
-            >
-              <span style={{ color: '#F2CF1D', fontSize: 20, fontWeight: 900 }}>↘</span>
-              <div>
-                <div style={{ color: '#F2CF1D', fontFamily: FONTS.mono, fontSize: 13, fontWeight: 900 }}>
-                  RALLY DOWN EXHAUSTION
-                </div>
-                <div style={{ color: '#F4F1E8', fontFamily: FONTS.ui, fontSize: 11 }}>
-                  1.10M Buy Volume absorbs cascade at POC
-                </div>
-              </div>
-            </div>
-          )}
-
+          {/* =========================================================
+              BEAT 2: ONLY DEMA 20 (₹4,241.10) SHOWN
+             ========================================================= */}
           {phase === 2 && (
-            <div
-              style={{
-                position: 'absolute',
-                left: 30,
-                bottom: '39%',
-                backgroundColor: 'rgba(9, 13, 20, 0.92)',
-                border: '1.5px solid #10B981',
-                padding: '8px 16px',
-                borderRadius: 8,
-                zIndex: 20,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 10,
-              }}
-            >
-              <span style={{ color: '#10B981', fontSize: 20, fontWeight: 900 }}>↗</span>
-              <div>
-                <div style={{ color: '#10B981', fontFamily: FONTS.mono, fontSize: 13, fontWeight: 900 }}>
-                  RALLY UP CONFIRMED
-                </div>
-                <div style={{ color: '#F4F1E8', fontFamily: FONTS.ui, fontSize: 11 }}>
-                  Rising Buy Vol + OI push price above DEMA 20
+            <>
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  right: 0,
+                  bottom: '36.7%',
+                  height: 4.5,
+                  backgroundColor: '#10B981',
+                  boxShadow:
+                    '0 0 16px #10B981, 0 0 32px #10B981, 0 0 70px rgba(16, 185, 129, 0.8)',
+                  zIndex: 25,
+                  clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
+                }}
+              >
+                {sweepProgress < 1 && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      left: `${sweepProgress * 100}%`,
+                      top: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      width: 18,
+                      height: 18,
+                      borderRadius: '50%',
+                      backgroundColor: '#FFFFFF',
+                      boxShadow: '0 0 20px #FFFFFF, 0 0 35px #10B981',
+                    }}
+                  />
+                )}
+                <div
+                  style={{
+                    position: 'absolute',
+                    right: 14,
+                    bottom: 8,
+                    backgroundColor: 'rgba(16, 185, 129, 0.98)',
+                    color: '#121417',
+                    fontFamily: FONTS.mono,
+                    fontSize: 11,
+                    fontWeight: 900,
+                    padding: '3px 10px',
+                    borderRadius: 5,
+                  }}
+                >
+                  ✔ DEMA 20: ₹4,241.10 [RECLAIMED DYNAMIC SUPPORT]
                 </div>
               </div>
-            </div>
+
+              {/* Connecting Distance Delta between CMP and DEMA 20 */}
+              <div
+                style={{
+                  position: 'absolute',
+                  left: '52%',
+                  bottom: '36.7%',
+                  height: '3.8%', // from 36.7% to 40.5%
+                  width: 2,
+                  borderLeft: '2px dashed #10B981',
+                  zIndex: 22,
+                }}
+              >
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: 8,
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    backgroundColor: 'rgba(9, 13, 20, 0.94)',
+                    border: '1px solid #10B981',
+                    padding: '2px 6px',
+                    borderRadius: 4,
+                    fontFamily: FONTS.mono,
+                    fontSize: 10,
+                    fontWeight: 800,
+                    color: '#10B981',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  Δ -₹127.90 (-2.9%) RECLAIMED SUPPORT
+                </div>
+              </div>
+
+              {/* Bottom Context Badge */}
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 24,
+                  bottom: '22%',
+                  backgroundColor: 'rgba(9, 13, 20, 0.94)',
+                  border: '1.5px solid #10B981',
+                  padding: '8px 16px',
+                  borderRadius: 8,
+                  zIndex: 25,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 10,
+                }}
+              >
+                <span style={{ color: '#10B981', fontSize: 20, fontWeight: 900 }}>↗</span>
+                <div>
+                  <div style={{ color: '#10B981', fontFamily: FONTS.mono, fontSize: 13, fontWeight: 900 }}>
+                    RALLY UP CONFIRMED
+                  </div>
+                  <div style={{ color: '#F4F1E8', fontFamily: FONTS.ui, fontSize: 11 }}>
+                    Rising Buy Vol + OI push price above DEMA 20
+                  </div>
+                </div>
+              </div>
+            </>
           )}
 
+          {/* =========================================================
+              BEAT 3: ONLY DEMA 50 (₹4,368.15) & CMP SHOWN
+             ========================================================= */}
           {phase === 3 && (
-            <div
-              style={{
-                position: 'absolute',
-                left: 30,
-                bottom: '43%',
-                backgroundColor: 'rgba(9, 13, 20, 0.92)',
-                border: '1.5px solid #F2CF1D',
-                padding: '8px 16px',
-                borderRadius: 8,
-                zIndex: 20,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 10,
-              }}
-            >
-              <span style={{ color: '#F2CF1D', fontSize: 20, fontWeight: 900 }}>⚔</span>
-              <div>
-                <div style={{ color: '#F2CF1D', fontFamily: FONTS.mono, fontSize: 13, fontWeight: 900 }}>
-                  50 DEMA INFLECTION HURDLE
-                </div>
-                <div style={{ color: '#F4F1E8', fontFamily: FONTS.ui, fontSize: 11 }}>
-                  Close above ₹4,368 converts resistance into support
+            <>
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  right: 0,
+                  bottom: '39.9%',
+                  height: 4.5,
+                  backgroundColor: '#F2CF1D',
+                  boxShadow:
+                    '0 0 16px #F2CF1D, 0 0 35px #F2CF1D, 0 0 80px rgba(242, 207, 29, 0.85)',
+                  zIndex: 25,
+                  clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
+                }}
+              >
+                {sweepProgress < 1 && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      left: `${sweepProgress * 100}%`,
+                      top: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      width: 18,
+                      height: 18,
+                      borderRadius: '50%',
+                      backgroundColor: '#FFFFFF',
+                      boxShadow: '0 0 20px #FFFFFF, 0 0 35px #F2CF1D',
+                    }}
+                  />
+                )}
+                <div
+                  style={{
+                    position: 'absolute',
+                    right: 14,
+                    bottom: 8,
+                    backgroundColor: 'rgba(242, 207, 29, 0.98)',
+                    color: '#121417',
+                    fontFamily: FONTS.mono,
+                    fontSize: 11,
+                    fontWeight: 900,
+                    padding: '3px 10px',
+                    borderRadius: 5,
+                  }}
+                >
+                  ⚔ DEMA 50: ₹4,368.15 [INFLECTION HURDLE]
                 </div>
               </div>
-            </div>
+
+              {/* Bottom Context Badge */}
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 24,
+                  bottom: '22%',
+                  backgroundColor: 'rgba(9, 13, 20, 0.94)',
+                  border: '1.5px solid #F2CF1D',
+                  padding: '8px 16px',
+                  borderRadius: 8,
+                  zIndex: 25,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 10,
+                }}
+              >
+                <span style={{ color: '#F2CF1D', fontSize: 20, fontWeight: 900 }}>⚔</span>
+                <div>
+                  <div style={{ color: '#F2CF1D', fontFamily: FONTS.mono, fontSize: 13, fontWeight: 900 }}>
+                    50 DEMA INFLECTION HURDLE
+                  </div>
+                  <div style={{ color: '#F4F1E8', fontFamily: FONTS.ui, fontSize: 11 }}>
+                    CMP ₹4,369 kissing hurdle · Breakout turns resistance to support
+                  </div>
+                </div>
+              </div>
+            </>
           )}
 
+          {/* =========================================================
+              BEAT 4: ONLY VAH (₹4,648.24) SHOWN
+             ========================================================= */}
           {phase === 4 && (
-            <div
-              style={{
-                position: 'absolute',
-                left: 30,
-                bottom: '49%',
-                backgroundColor: 'rgba(9, 13, 20, 0.92)',
-                border: '1.5px solid #22D3EE',
-                padding: '8px 16px',
-                borderRadius: 8,
-                zIndex: 20,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 10,
-              }}
-            >
-              <span style={{ color: '#22D3EE', fontSize: 20, fontWeight: 900 }}>🎯</span>
-              <div>
-                <div style={{ color: '#22D3EE', fontFamily: FONTS.mono, fontSize: 13, fontWeight: 900 }}>
-                  EXPANSION TARGET: VAH
-                </div>
-                <div style={{ color: '#F4F1E8', fontFamily: FONTS.ui, fontSize: 11 }}>
-                  Next overhead resistance corridor at ₹4,648.24
+            <>
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  right: 0,
+                  bottom: '46.6%',
+                  height: 4.5,
+                  backgroundColor: '#22D3EE',
+                  boxShadow:
+                    '0 0 16px #22D3EE, 0 0 35px #22D3EE, 0 0 70px rgba(34, 211, 238, 0.8)',
+                  zIndex: 25,
+                  clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
+                }}
+              >
+                {sweepProgress < 1 && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      left: `${sweepProgress * 100}%`,
+                      top: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      width: 18,
+                      height: 18,
+                      borderRadius: '50%',
+                      backgroundColor: '#FFFFFF',
+                      boxShadow: '0 0 20px #FFFFFF, 0 0 35px #22D3EE',
+                    }}
+                  />
+                )}
+                <div
+                  style={{
+                    position: 'absolute',
+                    right: 14,
+                    bottom: 8,
+                    backgroundColor: 'rgba(34, 211, 238, 0.98)',
+                    color: '#121417',
+                    fontFamily: FONTS.mono,
+                    fontSize: 11,
+                    fontWeight: 900,
+                    padding: '3px 10px',
+                    borderRadius: 5,
+                  }}
+                >
+                  ↗ VAH: ₹4,648.24 [PRIMARY UPSIDE TARGET]
                 </div>
               </div>
-            </div>
+
+              {/* Connecting Distance Delta between CMP and VAH */}
+              <div
+                style={{
+                  position: 'absolute',
+                  left: '52%',
+                  bottom: '40.5%',
+                  height: '6.1%', // from 40.5% to 46.6%
+                  width: 2,
+                  borderLeft: '2px dashed #22D3EE',
+                  zIndex: 22,
+                }}
+              >
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: 8,
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    backgroundColor: 'rgba(9, 13, 20, 0.94)',
+                    border: '1px solid #22D3EE',
+                    padding: '2px 6px',
+                    borderRadius: 4,
+                    fontFamily: FONTS.mono,
+                    fontSize: 10,
+                    fontWeight: 800,
+                    color: '#22D3EE',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  Δ +₹279.24 (+6.4%) TARGET EXPANSION
+                </div>
+              </div>
+
+              {/* Bottom Context Badge */}
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 24,
+                  bottom: '22%',
+                  backgroundColor: 'rgba(9, 13, 20, 0.94)',
+                  border: '1.5px solid #22D3EE',
+                  padding: '8px 16px',
+                  borderRadius: 8,
+                  zIndex: 25,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 10,
+                }}
+              >
+                <span style={{ color: '#22D3EE', fontSize: 20, fontWeight: 900 }}>🎯</span>
+                <div>
+                  <div style={{ color: '#22D3EE', fontFamily: FONTS.mono, fontSize: 13, fontWeight: 900 }}>
+                    EXPANSION TARGET: VAH
+                  </div>
+                  <div style={{ color: '#F4F1E8', fontFamily: FONTS.ui, fontSize: 11 }}>
+                    Next overhead resistance corridor at ₹4,648.24
+                  </div>
+                </div>
+              </div>
+            </>
           )}
 
+          {/* =========================================================
+              BEAT 5: ONLY DEMA 100 (₹4,727.45) & DEMA 200 (₹5,155.80) SHOWN
+             ========================================================= */}
           {phase === 5 && (
-            <div
-              style={{
-                position: 'absolute',
-                left: 20,
-                right: 20,
-                bottom: 24,
-                backgroundColor: 'rgba(9, 13, 20, 0.96)',
-                backdropFilter: 'blur(20px)',
-                border: '1.5px solid rgba(242, 207, 29, 0.6)',
-                borderRadius: 12,
-                padding: '12px 18px',
-                zIndex: 25,
-                boxShadow: '0 16px 40px rgba(0,0,0,0.85)',
-              }}
-            >
+            <>
+              {/* DEMA 100 */}
               <div
                 style={{
-                  fontFamily: FONTS.display,
-                  fontSize: 16,
-                  fontWeight: 900,
-                  color: '#F2CF1D',
-                  letterSpacing: '0.08em',
-                  marginBottom: 6,
+                  position: 'absolute',
+                  left: 0,
+                  right: 0,
+                  bottom: '48.4%',
+                  height: 3.5,
+                  backgroundColor: '#FB7185',
+                  boxShadow: '0 0 14px rgba(251, 113, 133, 0.8)',
+                  zIndex: 24,
+                  clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
                 }}
               >
-                SUMMARY PLAYBOOK · CMP ₹4,369.00
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12 }}>
-                <div style={{ flex: 1 }}>
-                  <div style={{ color: '#10B981', fontFamily: FONTS.mono, fontSize: 11, fontWeight: 800 }}>
-                    SUPPORTS (BELOW CMP)
-                  </div>
-                  <div style={{ color: '#F4F1E8', fontFamily: FONTS.ui, fontSize: 11 }}>
-                    DEMA 20 (₹4,241) → POC (₹4,136) → VAL (₹3,950)
-                  </div>
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ color: '#22D3EE', fontFamily: FONTS.mono, fontSize: 11, fontWeight: 800 }}>
-                    TARGETS (ABOVE CMP)
-                  </div>
-                  <div style={{ color: '#F4F1E8', fontFamily: FONTS.ui, fontSize: 11 }}>
-                    DEMA 50 (₹4,368) → VAH (₹4,648) → 100/200 DEMA
-                  </div>
+                <div
+                  style={{
+                    position: 'absolute',
+                    right: 14,
+                    bottom: 7,
+                    backgroundColor: 'rgba(251, 113, 133, 0.95)',
+                    color: '#121417',
+                    fontFamily: FONTS.mono,
+                    fontSize: 10,
+                    fontWeight: 800,
+                    padding: '2px 8px',
+                    borderRadius: 4,
+                  }}
+                >
+                  DEMA 100: ₹4,727.45 [SECONDARY TARGET]
                 </div>
               </div>
+
+              {/* DEMA 200 */}
               <div
                 style={{
-                  marginTop: 6,
-                  borderTop: '1px solid rgba(244, 241, 232, 0.12)',
-                  paddingTop: 4,
-                  color: '#F2CF1D',
-                  fontFamily: FONTS.mono,
-                  fontSize: 10,
-                  fontWeight: 700,
-                  textAlign: 'center',
+                  position: 'absolute',
+                  left: 0,
+                  right: 0,
+                  bottom: '58.3%',
+                  height: 4.5,
+                  backgroundColor: '#EF4444',
+                  boxShadow:
+                    '0 0 16px #EF4444, 0 0 35px #EF4444, 0 0 70px rgba(239, 68, 68, 0.8)',
+                  zIndex: 25,
+                  clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
                 }}
               >
-                CONFIRM DIRECTION WITH BUY/SELL VOLUME & OPEN INTEREST (OI)
+                <div
+                  style={{
+                    position: 'absolute',
+                    right: 14,
+                    bottom: 8,
+                    backgroundColor: 'rgba(239, 68, 68, 0.98)',
+                    color: '#FFFFFF',
+                    fontFamily: FONTS.mono,
+                    fontSize: 11,
+                    fontWeight: 900,
+                    padding: '3px 10px',
+                    borderRadius: 5,
+                  }}
+                >
+                  DEMA 200: ₹5,155.80 [MACRO TREND REVERSAL TARGET]
+                </div>
               </div>
-            </div>
+
+              {/* Summary Playbook Card at Bottom */}
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 20,
+                  right: 20,
+                  bottom: 24,
+                  backgroundColor: 'rgba(9, 13, 20, 0.96)',
+                  backdropFilter: 'blur(20px)',
+                  border: '1.5px solid rgba(242, 207, 29, 0.6)',
+                  borderRadius: 12,
+                  padding: '12px 18px',
+                  zIndex: 25,
+                  boxShadow: '0 16px 40px rgba(0,0,0,0.85)',
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: FONTS.display,
+                    fontSize: 16,
+                    fontWeight: 900,
+                    color: '#F2CF1D',
+                    letterSpacing: '0.08em',
+                    marginBottom: 6,
+                  }}
+                >
+                  SUMMARY PLAYBOOK · CMP ₹4,369.00
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12 }}>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ color: '#10B981', fontFamily: FONTS.mono, fontSize: 11, fontWeight: 800 }}>
+                      SUPPORTS (BELOW CMP)
+                    </div>
+                    <div style={{ color: '#F4F1E8', fontFamily: FONTS.ui, fontSize: 11 }}>
+                      DEMA 20 (₹4,241) → POC (₹4,136) → VAL (₹3,950)
+                    </div>
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ color: '#22D3EE', fontFamily: FONTS.mono, fontSize: 11, fontWeight: 800 }}>
+                      TARGETS (ABOVE CMP)
+                    </div>
+                    <div style={{ color: '#F4F1E8', fontFamily: FONTS.ui, fontSize: 11 }}>
+                      DEMA 50 (₹4,368) → VAH (₹4,648) → 100/200 DEMA
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style={{
+                    marginTop: 6,
+                    borderTop: '1px solid rgba(244, 241, 232, 0.12)',
+                    paddingTop: 4,
+                    color: '#F2CF1D',
+                    fontFamily: FONTS.mono,
+                    fontSize: 10,
+                    fontWeight: 700,
+                    textAlign: 'center',
+                  }}
+                >
+                  CONFIRM DIRECTION WITH BUY/SELL VOLUME & OPEN INTEREST (OI)
+                </div>
+              </div>
+            </>
           )}
         </div>
       </div>
@@ -958,3 +1232,4 @@ export const CumminsExplainerReel = () => {
     </Series>
   );
 };
+
