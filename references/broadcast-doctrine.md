@@ -103,7 +103,44 @@ Vertical reels are engineered for high-retention social distribution (YouTube Sh
 
 ---
 
-## 4. The 6-Pillar Engagement Formula
+## 5. Support, Resistance & Target Doctrine (The Stock Explainer Formula)
+
+Every individual stock breakdown reel adheres to the universal institutional level hierarchy:
+
+### The Fundamental Rule:
+* **CMP (Current Market Price) is the Active Pivot**:
+  - **Any level BELOW CMP $\rightarrow$ Acts as SUPPORT / SAFETY FLOOR**.
+  - **Any level ABOVE CMP $\rightarrow$ Acts as RESISTANCE / UPWARD TARGET**.
+
+```text
+       +---------------------------------------------+
+       | DEMA 200 (Macro Resistance / Reversal Target)|  ▲
+       +---------------------------------------------+  |
+       | DEMA 100 (Secondary Macro Target)           |  | RALLY UP
+       +---------------------------------------------+  | TARGETS
+       | VAH (Value Area High Expansion Corridor)     |  | (Resistance)
+       +---------------------------------------------+  |
+       | DEMA 50 (Immediate Inflection Hurdle)       |  ▲
+============================================================= LIVE CMP (Current Price)
+       | DEMA 20 (Reclaimed Dynamic Support)         |  ▼
+       +---------------------------------------------+  |
+       | POC (Point of Control / High Volume Floor)  |  | RALLY DOWN
+       +---------------------------------------------+  | SUPPORTS
+       | VAL (Value Area Low / Structural Floor)     |  | (Safety Nets)
+       +---------------------------------------------+  ▼
+```
+
+### Directional Confirmation Rules:
+1. **Falling Sequence (Cascade Down)**:
+   - When a stock liquidates, price breaches short-term moving averages toward lower value boundaries.
+   - The primary safety net is the **Point of Control (POC)** and **Value Area Low (VAL)**.
+   - **Exhaustion Confirmation**: Massive institutional **Buy Volume** at the POC confirms absorption and marks the bottom.
+2. **Rising Sequence (Rally Up & Reversal)**:
+   - When price rebounds from POC, it first reclaims **DEMA 20**, which instantly flips from former resistance into dynamic support.
+   - The immediate inflection battleground is **DEMA 50**. A daily close above DEMA 50 converts it into support and targets **VAH (Value Area High)**.
+   - Breakout above VAH opens the corridor to macro institutional targets: **DEMA 100** and the trend-reversal **DEMA 200**.
+   - **Momentum Confirmation**: Rebounds must be validated by expanding **Buy Volume** and fresh **Open Interest (OI) buildup**. Breakouts without volume/OI expansion are flagged as bull traps.
+
 
 To maximize organic viewer retention while maintaining institutional credibility, all DEMA vertical reels combine six specialized skills:
 

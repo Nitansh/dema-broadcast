@@ -34,6 +34,15 @@ if not Path(FFPROBE).exists():
 
 REEL_CATALOG = [
     {
+        "id": "cummins-explainer",
+        "comp": "CumminsExplainer",
+        "name": "CUMMINSIND_Support_Resistance_Explainer_9x16",
+        "audio": "cummins_explainer_master.mp3",
+        "fallback_audio": "cummins_explainer_master.mp3",
+        "title": "Cummins India Support, Resistance & Target Masterclass",
+        "duration_sec": 121.87,
+    },
+    {
         "id": "cummins",
         "comp": "CumminsMotionDoctrine",
         "name": "CUMMINSIND_MotionDoctrine_9x16",
@@ -302,3 +311,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

@@ -93,6 +93,7 @@ dema-broadcast-master/
 │   ├── render_reels.py               # 9:16 Vertical reels renderer (single & batch) + FFmpeg muxing
 │   └── validate_market_data.py       # Strict JSON schema validator for market telemetry
 ├── templates/
+│   ├── CumminsExplainerReel.jsx      # Support, Resistance & Target Masterclass (Full chart + DEMA 20/50/100/200 + VAL/POC/VAH)
 │   ├── CumminsMotionDoctrineReel.jsx # 3-Act Next-Gen Cummins Reel with Intro, Outro & 6-Pillar motion
 │   ├── DemaIntro.jsx                 # Master DEMA branded intro sting (3.5s / 105 frames @ 30fps)
 │   ├── DemaOutro.jsx                 # Master DEMA responsive outro end card (5.0s / 150 frames @ 30fps)
