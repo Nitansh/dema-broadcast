@@ -1,12 +1,12 @@
 ---
 name: dema-broadcast-master
-description: Production pipeline for daily DEMA financial broadcasts and viral reels (16:9 full-screen newsroom suite, 9:16 high-retention viral reels, zero-overlap synthesized voiceover, procedural 120 BPM score bed, DEMA Intro & Outro stings, kinetic word-by-word karaoke captions, split-flap telemetry, and automated FFmpeg AV muxing). Use when asked to generate daily market broadcasts, create viral 9:16 stock reels, execute motion doctrine technical breakdowns, or replicate the DEMA master video templates.
-version: 2.0.0
+description: Production pipeline for daily DEMA financial broadcasts, viral reels, and full stock explainer video suites (16:9 full-screen newsroom suite, 16:9 widescreen YouTube technical masterclass, 9:16 high-retention viral reels, zero-overlap synthesized voiceover, procedural 120 BPM score bed, DEMA Intro & Outro stings, kinetic word-by-word karaoke captions, split-flap telemetry, and automated FFmpeg AV muxing). Use when asked to generate daily market broadcasts, create viral 9:16 stock reels, render full explainer videos for any chart-attached stock (Cummins, Coal India, IIFL, Blue Star, ABB), execute motion doctrine technical breakdowns, or replicate the DEMA master video templates.
+version: 2.1.0
 ---
 
-# DEMA Broadcast Master: Dual-Format Financial Video & Viral Reels Pipeline
+# DEMA Broadcast Master: Dual-Format Financial Video & Stock Explainer Pipeline
 
-Create institutional-grade **16:9 Master Financial Broadcasts** and **9:16 Viral Social Reels** from daily technical chart studies and post-market telemetry data. This skill packages the end-to-end production workflow: daily data validation, zero-overlap synthesized voiceover, procedural 120 BPM newsroom score synthesis, physical foley & sub-bass drops, branded DEMA Intro (3.5s) & Outro (5.0s) integration, kinetic word-by-word karaoke captions, hardware-accelerated Remotion rendering, automated FFmpeg AV muxing, and interactive web playback.
+Create institutional-grade **16:9 Master Financial Broadcasts**, **16:9 Widescreen Technical Masterclasses**, and **9:16 Viral Social Reels** from daily technical chart studies and market telemetry data. This skill packages the end-to-end production workflow: daily data validation, zero-overlap synthesized voiceover, procedural 120 BPM newsroom score synthesis, physical foley & sub-bass drops, branded DEMA Intro (3.5s) & Outro (5.0s) integration, kinetic word-by-word karaoke captions, hardware-accelerated Remotion rendering, automated FFmpeg AV muxing, and interactive web playback.
 
 ---
 
@@ -14,8 +14,9 @@ Create institutional-grade **16:9 Master Financial Broadcasts** and **9:16 Viral
 
 Activate this skill whenever the user asks to:
 - "Generate today's DEMA analysis video" or "make daily market broadcast"
-- "Create a viral 9:16 reel for a stock" (e.g. Cummins India, Waaree Energies, Coal India)
-- "Produce 16:9 single-stock YouTube explainer" (Cummins India, Waaree Energies)
+- "Create a viral 9:16 reel for a stock" (e.g. Cummins India, Coal India, IIFL Cap, Blue Star, ABB, Waaree)
+- "Render full explainer video like Cummins" for any stock with an attached chart image
+- "Produce 16:9 single-stock YouTube explainer" or "16:9 technical masterclass"
 - "Apply motion-doctrine on a stock chart" or "make technical breakdown reel"
 - "Add DEMA intro and outro to the video"
 - "Produce 16:9 financial newsroom broadcast with split-flap board and charts"
@@ -24,67 +25,90 @@ Activate this skill whenever the user asks to:
 
 ---
 
-## 2. Dual-Format Production Matrix
+## 2. Format & Production Matrix
 
-| Feature | 16:9 Master Television Broadcast | 9:16 Viral Social Reels (Shorts/Reels/TikTok) |
-|---|---|---|
-| **Resolution** | `1920 × 1080` (Horizontal 16:9) | `1080 × 1920` (Vertical 9:16) |
-| **Frame Rate** | 30.00 fps | 30.00 fps |
-| **Narrative Structure** | 5 Acts (~3m 34s to 25m) | 3 Acts (`DemaIntro` 3.5s + Breakdown Core + `DemaOutro` 5.0s) |
-| **Audio Engine** | `build_audio.py` (5 chapters, procedural bed, foley) | `build_reel_audio.py` (Zero-overlap dynamic scheduling, SFX) |
-| **Loudness Spec** | EBU R128 `-19.0 LUFS` (Peak: `-2.0 dBFS`) | EBU R128 `-14.0 LUFS` (Peak: `-1.5 dBFS`) |
-| **Caption Overlay** | `BroadcastCaptionOverlay` (10-word sliding window, `bottom: 122px`) | `KineticBroadcastCaptions` (7-word sliding window, `bottom: 240px`) |
-| **Visual Hooks** | Split-flap mechanical board, global macro split-cards | `IntroZoom` (1.09x -> 1.0x), white `FlashCut`, conic gradient rims |
-| **Render Script** | `scripts/render_broadcast.py` | `scripts/render_reels.py` |
-
----
-
-## 3. The 6-Pillar Engagement Formula (Vertical Reels)
-
-All DEMA vertical reels combine six specialized motion and retention frameworks:
-
-1. **`viral-hooks` (First 3-Second Retention Trigger)**
-   - Opens immediately with institutional volume or high-stakes level defense: *"Big institutions just absorbed 1.1 million shares in Cummins India..."*
-   - Avoids generic welcomes; engages the viewer's curiosity in Frame 1.
-2. **`remotion-kinetic-kit` (High-Energy Visual Dynamics)**
-   - `IntroZoom`: Decelerates from 1.09x to 1.0x over the first 24 frames to establish immediate visual depth.
-   - White `FlashCut`: 1-frame to 2-frame opacity flash on major chart cuts to reset cognitive attention.
-3. **`motion-doctrine` (Continuous Causal Camera Motion)**
-   - The camera acts as a single continuous lens tracking price momentum.
-   - Downward slide (-Y) tracks liquidation selling cascades.
-   - **16px Physical Recoil**: Squash-and-bounce spring recoil upon hitting structural POC floor.
-   - Forward drive (+Z) zooms into moving average hurdles (e.g. 50 DEMA / 200 DEMA).
-   - **Stillness-Before-Climax**: 0.45s hold before major level breakout or target reveal.
-4. **`reel-css-animations` (Hardware-Accelerated Glow & Radar UI)**
-   - Rotating conic gradient rim (`#10B981`, `#22D3EE`, `#F2CF1D`) behind live quote badges.
-   - Multi-tier neon golden floor (`box-shadow` diffusion) highlighting Point of Control defense.
-   - Expanding sonar radar pulse rings centered on institutional volume spike candles.
-5. **`captions-overlay` (Word-by-Word Kinetic Karaoke & 3D Typography)**
-   - 7-word sliding window anchored at `bottom: 240px` with active-word gold pop pill (`#F2CF1D`, scale 1.10).
-   - Large translucent 3D watermark climax words (`ACCUMULATION`, `LIQUIDATION`, `ABSORPTION`, `BREAKOUT`) composited behind the chart plane.
-6. **`glassmorphism` (Obsidian Technical Finishes)**
-   - Dark obsidian frosted capsules (`rgba(9, 13, 20, 0.94)`) with 20px blur, 1.5px gold borders, and subtle top specular highlights.
+| Feature | 16:9 Master Television Broadcast | 16:9 Stock YouTube Masterclass | 9:16 Viral Stock Reel (Shorts/Reels) |
+|---|---|---|---|
+| **Resolution** | `1920 × 1080` (Horizontal 16:9) | `1920 × 1080` (Horizontal 16:9) | `1080 × 1920` (Vertical 9:16) |
+| **Frame Rate** | 30.00 fps | 30.00 fps | 30.00 fps |
+| **Narrative Structure** | 5 Acts (~3m 34s to 25m) | 3 Acts (`DemaIntro` 3.5s + 6-Beat Body + `DemaOutro` 5.0s) | 3 Acts (`DemaIntro` 3.5s + 6-Beat Body + `DemaOutro` 5.0s) |
+| **Audio Engine** | `build_audio.py` (5 chapters, procedural bed, foley) | `build_stock_explainer_audio.py` (6-beat narration, 120 BPM bed, sub-bass drop) | `build_stock_explainer_audio.py` or `build_reel_audio.py` |
+| **Loudness Spec** | EBU R128 `-19.0 LUFS` (Peak: `-2.0 dBFS`) | EBU R128 `-14.0 LUFS` (Peak: `-1.5 dBFS`) | EBU R128 `-14.0 LUFS` (Peak: `-1.5 dBFS`) |
+| **Caption Overlay** | `BroadcastCaptionOverlay` (10-word window, `bottom: 122px`) | `KineticBroadcastCaptions` (10-word window, `top: 86px`) | `KineticBroadcastCaptions` (7-word window, `bottom: 240px`) |
+| **Layout Dynamics** | Full-width split-flap mechanical board & cards | 1390px Chart + 470px Level Matrix Telemetry Sidebar | Centered 1040x980 Chart Canvas + Watermark Climax |
+| **Visual Protocol** | Split-flap board, macro index charts | Decluttered Single-Level Laser Sweeps + Sonar Radar | Decluttered Single-Level Laser Sweeps + Sonar Radar |
+| **Render Scripts** | `scripts/render_broadcast.py` | `scripts/render_stock_explainers.py` | `scripts/render_stock_explainers.py` / `render_reels.py` |
 
 ---
 
-## 4. Quickstart Production Runbooks
+## 3. The Cummins Benchmark Pattern for Stock Explainers
 
-### Runbook A: 9:16 Viral Reel Production (e.g. Cummins India)
+Every stock that has a technical chart image attached (`"image": "charts/<SYMBOL>_1D_chart.png"` in telemetry) qualifies for the **Full Explainer Video Suite** (both 9:16 Reel and 16:9 YouTube Masterclass). Both formats strictly adhere to the Cummins India benchmark doctrine:
 
-#### Step 1: Synthesize Zero-Overlap Audio & Time-Shifted Subtitles
-Generates non-overlapping narration, 120 BPM procedural bed, 45Hz sub-bass impact, concatenates Intro (3.5s) & Outro (5.0s), and outputs `.srt`, `.vtt`, and `.json` manifest:
+### A. The 6-Phase Analytical Structure
+1. **Phase 0: The Core Trading Rule & Chart Overview (Cues 0-1)**
+   - Displays the foundational law: `RULE: BELOW CMP = SUPPORT | ABOVE CMP = TARGET & RESISTANCE`.
+   - Camera: Gentle pull-in establishing the entire daily technical landscape.
+2. **Phase 1: Institutional Accumulation Floor (Cues 1-2)**
+   - Highlights **Point of Control (POC)** and **Value Area Low (VAL)**.
+   - Deep zoom directly into the accumulation cluster where institutional buyers absorbed high volume.
+3. **Phase 2: Reclaimed Dynamic Support (Cues 2-3)**
+   - Focuses on **20 DEMA**.
+   - Camera tracks the upward rebound confirming dynamic price support after floor absorption.
+4. **Phase 3: Critical Inflection Hurdle (Cues 3-4)**
+   - Focuses on **50 DEMA**.
+   - Camera locks onto the 50 DEMA hurdle with physical spring recoil as price kisses resistance.
+5. **Phase 4: Primary Expansion Target (Cues 4-5)**
+   - Focuses on **Value Area High (VAH)**.
+   - Pan up through the target corridor toward the upper volume boundary.
+6. **Phase 5: Macro Trend Reversal Gateway (Cue 5 to End)**
+   - Highlights **100 DEMA** and **200 DEMA**.
+   - Camera pulls back into wide macro perspective outlining the ultimate breakout targets.
+
+### B. Visual & Motion Elements
+- **Decluttered Single-Level Laser Protocol**: Inactive levels disappear during each phase. The discussed level animates smoothly from left to right using `sweepProgress` (22 frames / 0.73s) with a leading spark particle.
+- **Continuous CMP Anchor Line & Sonar Radar**: The live price (`#10B981`) remains permanently anchored with a continuous line and an expanding dual-wave sonar pulse ring on the active candle.
+- **Institutional Telemetry Header**: Top strap featuring the yellow `D` brand box, full stock name, ticker badge, rotating conic gradient live quote rim, and central rule pill.
+- **Right Sidebar Matrix (16:9 YouTube)**: 470px frosted glass sidebar organizing levels into `RESISTANCE & TARGETS (ABOVE CMP)`, `CMP CURRENT PIVOT`, and `DYNAMIC SUPPORTS (BELOW CMP)`, with dynamic spotlight scale and border glow matching the active phase.
+- **Top Floating Karaoke Captions**: Synchronized word-by-word captions with active-word gold pop pill (`#F2CF1D`, scale 1.10).
+- **LowerThirdStrap**: Updating dynamically per phase with specific price levels and institutional volume context.
+
+---
+
+## 4. Production Runbooks
+
+### Runbook A: Full Stock Explainer Video Suite (The Cummins Pattern)
+
+Use this runbook to render both the 9:16 Viral Reel and 16:9 YouTube Masterclass for any stock with an attached chart image.
+
+#### Step 1: Synthesize Audio & Generate Manifest
 ```bash
-python .agents/skills/dema-broadcast-master/scripts/build_reel_audio.py --symbol "CUMMINSIND" --out-dir "outputs/audio"
+# For a single stock (e.g. Coal India)
+python .agents/skills/dema-broadcast-master/scripts/build_stock_explainer_audio.py --symbol COALINDIA
+
+# Or batch generate for ALL stocks with attached chart images
+python .agents/skills/dema-broadcast-master/scripts/build_stock_explainer_audio.py --all-images
 ```
+This script:
+- Reads stock telemetry and computes missing levels (`val`, `poc`, `d20`, `cmp`, `d50`, `d100`, `d200`, `vah`).
+- Synthesizes the 6-beat institutional script using `edge-tts` (`en-IN-PrabhatNeural`).
+- Synthesizes procedural 120 BPM newsroom bed with 45Hz sub-bass drop on POC impact.
+- Normalizes to EBU R128 `-14.0 LUFS` and concatenates `DemaIntro` (3.5s) and `DemaOutro` (5.0s).
+- Exports `<symbol>_explainer_manifest.json` and time-shifted `.srt` and `.vtt` subtitles.
 
-#### Step 2: Render & Mux Vertical Reel (Remotion + FFmpeg)
-Renders Remotion composition with hardware acceleration, muxes the 14 LUFS master audio track, and probes output metrics:
+#### Step 2: Render Explainer Video Suite (Remotion + FFmpeg)
 ```bash
-# Render single reel (e.g. Cummins India Motion Doctrine)
-python .agents/skills/dema-broadcast-master/scripts/render_reels.py --reel cummins --out-dir "outputs/reels"
+# Render both 9:16 Reel and 16:9 YouTube Masterclass for a stock
+python .agents/skills/dema-broadcast-master/scripts/render_stock_explainers.py --symbol COALINDIA --format all
 
-# Or batch render all 10 daily market reels
-python .agents/skills/dema-broadcast-master/scripts/render_reels.py --all --concurrency 4 --out-dir "outputs/reels"
+# Or render only 9:16 Reel
+python .agents/skills/dema-broadcast-master/scripts/render_stock_explainers.py --symbol COALINDIA --format 9x16
+
+# Or render only 16:9 YouTube Masterclass
+python .agents/skills/dema-broadcast-master/scripts/render_stock_explainers.py --symbol COALINDIA --format 16x9
+
+# Or batch render ALL image-attached stocks across both formats
+python .agents/skills/dema-broadcast-master/scripts/render_stock_explainers.py --all-images --format all --concurrency 4
 ```
 
 ---
@@ -97,22 +121,32 @@ python .agents/skills/dema-broadcast-master/scripts/validate_market_data.py path
 ```
 
 #### Step 2: Synthesize Broadcast Audio Suite
-Synthesizes English narration across all 5 acts, 120 BPM procedural score bed, tactile split-flap foley, and auto-generates `.srt` and `.vtt`:
 ```bash
 python .agents/skills/dema-broadcast-master/scripts/build_audio.py --voice "en-IN-PrabhatNeural" --out-dir "outputs/audio"
 ```
 
 #### Step 3: Render & Concatenate Master 16:9 Video
-Renders the 5 chapters with Remotion concurrency, muxes audio, and stitches the continuous master broadcast:
 ```bash
 python .agents/skills/dema-broadcast-master/scripts/render_broadcast.py --concurrency 4 --audio-dir "outputs/audio" --out-dir "outputs/videos"
 ```
 
-#### Step 4: Preview on Interactive Web Player
+---
+
+### Runbook C: 9:16 Daily Market Recap Reels
+
+#### Step 1: Synthesize Reel Audio
 ```bash
-python -m http.server 8080
+python .agents/skills/dema-broadcast-master/scripts/build_reel_audio.py --symbol "CUMMINSIND" --out-dir "outputs/audio"
 ```
-Open: `http://localhost:8080/master-video-player.html`
+
+#### Step 2: Render Vertical Reels
+```bash
+# Render single reel
+python .agents/skills/dema-broadcast-master/scripts/render_reels.py --reel cummins --out-dir "outputs/reels"
+
+# Batch render all daily reels
+python .agents/skills/dema-broadcast-master/scripts/render_reels.py --all --concurrency 4 --out-dir "outputs/reels"
+```
 
 ---
 
@@ -120,35 +154,36 @@ Open: `http://localhost:8080/master-video-player.html`
 
 ```text
 .agents/skills/dema-broadcast-master/
-├── SKILL.md                          # Master instruction manual
-├── README.md                         # Public repository documentation
+├── SKILL.md                                 # Master instruction manual
+├── README.md                                # Public repository documentation
 ├── scripts/
-│   ├── build_audio.py                # 16:9 TTS + 120 BPM score bed + foley + auto-SRT/VTT generator
-│   ├── build_reel_audio.py           # 9:16 Zero-overlap TTS engine + SFX + Intro/Outro concatenation
-│   ├── render_broadcast.py           # 16:9 Remotion concurrency render + FFmpeg muxing + concat
-│   ├── render_reels.py               # 9:16 Vertical reels renderer (single & batch) + FFmpeg muxing
-│   └── validate_market_data.py       # JSON schema validator for daily telemetry
+│   ├── build_stock_explainer_audio.py       # Universal 6-beat stock explainer audio + manifest + subtitles
+│   ├── render_stock_explainers.py           # Universal stock explainer renderer (9:16 & 16:9 + FFmpeg muxing)
+│   ├── build_audio.py                       # 16:9 broadcast TTS + 120 BPM bed + foley + auto-SRT/VTT
+│   ├── build_reel_audio.py                  # 9:16 Zero-overlap TTS engine + SFX + Intro/Outro concatenation
+│   ├── render_broadcast.py                  # 16:9 Remotion concurrency render + FFmpeg muxing + concat
+│   ├── render_reels.py                      # 9:16 Vertical reels renderer (single & batch) + FFmpeg muxing
+│   └── validate_market_data.py              # JSON schema validator for daily telemetry
 ├── templates/
-│   ├── CumminsYouTubeExplainer16x9.jsx # 16:9 Full Widescreen YouTube Video (Chart + Sidebar Level Matrix)
-│   ├── WaareeYouTubeExplainer16x9.jsx  # 16:9 Full Widescreen YouTube Video for Waaree Energies
-│   ├── CumminsExplainerReel.jsx      # 9:16 Support, Resistance & Target Masterclass (Full chart + DEMA 20/50/100/200)
-│   ├── CumminsMotionDoctrineReel.jsx # 3-Act Next-Gen Cummins Reel with Intro, Outro & 6-Pillar motion
-│   ├── DemaIntro.jsx                 # Master DEMA branded intro sting (3.5s / 105 frames @ 30fps)
-│   ├── DemaOutro.jsx                 # Master DEMA responsive outro end card (5.0s / 150 frames @ 30fps)
-│   ├── DemaVerticalReels.jsx         # 10 Standalone 9:16 vertical reels for daily market stocks
-│   ├── SharedNewsPackage.jsx         # Core UI atoms: KineticBroadcastCaptions, SplitFlapChar, Straps
-│   ├── DemaMasterChapters.jsx        # Complete 5-act broadcast Remotion component
-│   ├── DemaMasterRoot.jsx            # Remotion composition root configuration
-│   ├── brand.json                    # Canonical brand tokens (colors, fonts, metadata, handles)
-│   └── master-video-player.html      # Interactive web video player with WebVTT CC support
+│   ├── StockExplainerReel.jsx               # Universal 9:16 Vertical Explainer Reel (Cummins pattern)
+│   ├── StockYouTubeExplainer16x9.jsx        # Universal 16:9 Widescreen Explainer Masterclass (Chart + Sidebar)
+│   ├── CumminsYouTubeExplainer16x9.jsx      # Benchmark 16:9 Widescreen YouTube Explainer
+│   ├── CumminsExplainerReel.jsx             # Benchmark 9:16 Support/Resistance Masterclass Reel
+│   ├── CumminsMotionDoctrineReel.jsx        # 3-Act Next-Gen Cummins Reel with 6-Pillar motion
+│   ├── DemaIntro.jsx                        # Master DEMA branded intro sting (3.5s / 105 frames @ 30fps)
+│   ├── DemaOutro.jsx                        # Master DEMA responsive outro end card (5.0s / 150 frames @ 30fps)
+│   ├── DemaMasterRoot.jsx                   # Universal Remotion Root with pre-registered explainer compositions
+│   ├── SharedNewsPackage.jsx                # UI components: KineticBroadcastCaptions, LowerThirdStrap, Wipes
+│   ├── DemaMasterChapters.jsx               # Complete 5-act broadcast Remotion component
+│   └── brand.json                           # Canonical brand tokens (colors, fonts, metadata)
 ├── schemas/
-│   ├── market_data_schema.json       # JSON Schema definition for daily market telemetry
-│   └── sample_market_data.json       # Example daily market data (indices, commodities, stocks)
+│   ├── market_data_schema.json              # JSON Schema definition for daily market telemetry
+│   └── sample_market_data.json              # Example daily market data with image references
 └── references/
-    ├── decluttered-laser-doctrine.md # Single-level isolation, laser sweep, sonar pulse, delta indicators
-    ├── broadcast-doctrine.md         # 16:9 and 9:16 screen geometry, safe zones, 6-pillar engagement
-    ├── sound-design.md               # Zero voice overlap engine, 120 BPM procedural formulas, loudness
-    └── caption-system.md             # Kinetic word-by-word karaoke specs, time-shifted subtitles
+    ├── decluttered-laser-doctrine.md        # Single-level isolation, laser sweep, sonar pulse specs
+    ├── broadcast-doctrine.md                # 16:9 and 9:16 screen geometry, safe zones, 6-pillar engagement
+    ├── sound-design.md                      # Zero voice overlap engine, 120 BPM procedural formulas
+    └── caption-system.md                    # Kinetic word-by-word karaoke specs, time-shifted subtitles
 ```
 
 ---
@@ -159,9 +194,10 @@ Before publishing or delivering any generated video:
 - [ ] **Zero Voice Overlap**: Confirm sequential chunks have `start_sec[i] >= end_sec[i-1] + 0.45s`.
 - [ ] **Audio Loudness**: Verify with FFprobe/FFmpeg:
   - 16:9 Broadcast: integrated loudness ~ `-19 LUFS` (peak < `-2.0 dBFS`).
-  - 9:16 Vertical Reel: integrated loudness ~ `-14 LUFS` (peak < `-1.5 dBFS`).
-- [ ] **3-Act Structure**: Verify vertical reels include `DemaIntro` (3.5s), Technical Core, and `DemaOutro` (5.0s).
+  - 9:16 Reel & 16:9 Stock Explainer: integrated loudness ~ `-14 LUFS` (peak < `-1.5 dBFS`).
+- [ ] **3-Act Structure**: Verify all stock explainers include `DemaIntro` (3.5s), 6-Beat Technical Core, and `DemaOutro` (5.0s).
 - [ ] **Decluttered Single-Level Isolation**: Verify inactive overlay lines disappear during each audio beat, revealing only the level being discussed.
 - [ ] **Left-to-Right Laser Sweeps**: Verify level lines draw on with a leading spark particle (`sweepProgress`).
 - [ ] **Live Price Radar Ping**: Verify CMP maintains a continuous anchor line and dual-wave expanding sonar pulse.
-- [ ] **Subtitles & Caption Clearance**: Verify `.srt` and `.vtt` timestamps match spoken audio and captions do not overlap LowerThirdStrap.
+- [ ] **16:9 Telemetry Sidebar**: Verify the Level Matrix sidebar synchronizes spotlight scale and border glow to the active phase.
+- [ ] **Subtitles & Caption Clearance**: Verify `.srt` and `.vtt` timestamps match spoken audio and captions do not overlap the LowerThirdStrap or header strap.

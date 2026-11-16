@@ -87,12 +87,16 @@ dema-broadcast-master/
 ├── LICENSE                           # MIT License
 ├── .gitignore                        # Standard exclusions
 ├── scripts/
+│   ├── build_stock_explainer_audio.py # Universal 6-beat stock explainer audio + manifest + subtitles
+│   ├── render_stock_explainers.py     # Universal stock explainer renderer (9:16 & 16:9 + FFmpeg muxing)
 │   ├── build_audio.py                # 16:9 TTS + 120 BPM score bed + foley + auto-SRT/VTT generator
 │   ├── build_reel_audio.py           # 9:16 Zero-overlap TTS engine + SFX + Intro/Outro concatenation
 │   ├── render_broadcast.py           # 16:9 Remotion concurrency render + FFmpeg AV muxing
 │   ├── render_reels.py               # 9:16 Vertical reels renderer (single & batch) + FFmpeg muxing
 │   └── validate_market_data.py       # Strict JSON schema validator for market telemetry
 ├── templates/
+│   ├── StockExplainerReel.jsx        # Universal 9:16 Vertical Explainer Reel (Cummins pattern)
+│   ├── StockYouTubeExplainer16x9.jsx # Universal 16:9 Widescreen Explainer Masterclass (Chart + Sidebar)
 │   ├── CumminsYouTubeExplainer16x9.jsx # 16:9 Full Widescreen YouTube Video (Chart + Sidebar Level Matrix)
 │   ├── CumminsExplainerReel.jsx      # 9:16 Support, Resistance & Target Masterclass (Full chart + DEMA 20/50/100/200)
 │   ├── CumminsMotionDoctrineReel.jsx # 3-Act Next-Gen Cummins Reel with Intro, Outro & 6-Pillar motion
@@ -122,7 +126,20 @@ dema-broadcast-master/
 * Python 3.10+ (`numpy`, `edge-tts`, `jsonschema`)
 * FFmpeg and FFprobe on PATH
 
-### 2. Vertical Reels Pipeline (e.g. Cummins India)
+### 2. Full Stock Explainer Suite (The Cummins Pattern)
+Render both a **9:16 Viral Reel** and a **16:9 Widescreen YouTube Masterclass** for any stock with an attached chart image:
+```bash
+# 1. Synthesize 6-beat audio + intro/outro concatenation + time-shifted subtitles
+python scripts/build_stock_explainer_audio.py --symbol COALINDIA
+
+# 2. Render both 9:16 Reel and 16:9 Masterclass (or use --format 9x16 / 16x9)
+python scripts/render_stock_explainers.py --symbol COALINDIA --format all
+
+# Or batch render ALL image-attached stocks across both formats:
+python scripts/render_stock_explainers.py --all-images --format all --concurrency 4
+```
+
+### 3. Vertical Reels Pipeline (e.g. Cummins India)
 ```bash
 # 1. Synthesize zero-overlap audio + intro/outro concatenation + time-shifted subtitles
 python scripts/build_reel_audio.py --symbol "CUMMINSIND" --out-dir "outputs/audio"
@@ -134,7 +151,7 @@ python scripts/render_reels.py --reel cummins --out-dir "outputs/reels"
 python scripts/render_reels.py --all --concurrency 4 --out-dir "outputs/reels"
 ```
 
-### 3. Master 16:9 Television Broadcast
+### 4. Master 16:9 Television Broadcast
 ```bash
 # 1. Validate daily telemetry numbers
 python scripts/validate_market_data.py schemas/sample_market_data.json
@@ -146,7 +163,7 @@ python scripts/build_audio.py --voice "en-IN-PrabhatNeural" --out-dir "outputs/a
 python scripts/render_broadcast.py --concurrency 4 --audio-dir "outputs/audio" --out-dir "outputs/videos"
 ```
 
-### 4. Interactive Streaming Web Player
+### 5. Interactive Streaming Web Player
 ```bash
 python -m http.server 8080
 ```
