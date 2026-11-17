@@ -174,6 +174,12 @@ def render_stock(
         "iiflcaps": "IiflCapsExplainer",
         "bluestarco": "BlueStarCoExplainer",
         "abb": "AbbExplainer",
+        "itc": "ItcExplainer",
+        "adanient": "AdaniEntExplainer",
+        "cochinship": "CochinShipExplainer",
+        "goldbees": "GoldBeesExplainer",
+        "bharatforg": "BharatForgExplainer",
+        "bharatforge": "BharatForgExplainer",
     }
     dedicated_16x9 = {
         "cumminsind": "CumminsYouTubeExplainer16x9",
@@ -182,6 +188,12 @@ def render_stock(
         "iiflcaps": "IiflCapsYouTubeExplainer16x9",
         "bluestarco": "BlueStarCoYouTubeExplainer16x9",
         "abb": "AbbYouTubeExplainer16x9",
+        "itc": "ItcYouTubeExplainer16x9",
+        "adanient": "AdaniEntYouTubeExplainer16x9",
+        "cochinship": "CochinShipYouTubeExplainer16x9",
+        "goldbees": "GoldBeesYouTubeExplainer16x9",
+        "bharatforg": "BharatForgYouTubeExplainer16x9",
+        "bharatforge": "BharatForgYouTubeExplainer16x9",
     }
 
     props_json = json.dumps({"manifestPath": f"data/{sym}_explainer_manifest.json"})
@@ -267,6 +279,8 @@ def main():
         market_file = Path(args.market_data)
     else:
         candidates = [
+            PUBLIC_DATA / "dema_suite_20261113.json",
+            WORKSPACE / "dema_suite_20261113.json",
             SKILL_DIR / "sample_market_data.json",
             WORKSPACE / "sample_market_data.json",
             PUBLIC_DATA / "dema_market_data_20261113.json",
