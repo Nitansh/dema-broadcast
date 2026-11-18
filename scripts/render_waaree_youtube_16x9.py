@@ -70,10 +70,10 @@ def main():
         print(f"[ERROR] Missing audio file: {AUDIO_FILE}")
         sys.exit(1)
 
-    # 1. Remotion Render
+    # 1. Remotion Render (Turbo Mode: concurrency=8)
     cmd = (
         f'npx.cmd remotion render src/dema-suite-entry.jsx WaareeYouTubeExplainer16x9 "{RAW_MP4}" '
-        f'--concurrency=4 --gl=angle '
+        f'--concurrency=8 --gl=angle '
         f'--browser-executable="{EDGE}" '
         f'--ffmpeg-executable="{FFMPEG}" '
         f'--overwrite'

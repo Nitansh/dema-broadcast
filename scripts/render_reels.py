@@ -144,7 +144,7 @@ REEL_CATALOG = [
 ]
 
 
-def render_comp(entry: str, comp_id: str, raw_mp4: Path, concurrency: int = 4):
+def render_comp(entry: str, comp_id: str, raw_mp4: Path, concurrency: int = 8):
     cmd = (
         f'npx.cmd remotion render "{entry}" {comp_id} "{raw_mp4}" '
         f'--concurrency={concurrency} --gl=angle '
@@ -223,11 +223,16 @@ def main():
     parser.add_argument("--reel", default=None, help="Specific reel ID to render (e.g. cummins, reel1..reel10)")
     parser.add_argument("--all", action="store_true", help="Render all reels in catalog")
     parser.add_argument("--entry", default="src/dema-suite-entry.jsx", help="Remotion entry file relative to modi-remotion")
-    parser.add_argument("--concurrency", type=int, default=4, help="Render concurrency")
+    parser.add_argument("--concurrency", type=int, default=8, help="Render concurrency (Turbo default: 8 cores)")
+    parser.add_argument("--turbo", action="store_true", default=True, help="Force maximum hardware Turbo Mode (concurrency=8, ANGLE WebGL)")
     parser.add_argument("--out-dir", default=None, help="Directory to save final muxed reels")
     parser.add_argument("--audio-dir", default=None, help="Directory containing audio tracks")
     parser.add_argument("--list", action="store_true", help="List all available reels in catalog")
     args = parser.parse_args()
+
+    # Enforce Turbo Mode: default concurrency is 8 cores for rapid single/batch reel renders
+    if args.turbo and args.concurrency < 6:
+        args.concurrency = 8
 
     if args.list:
         print("\n================ DEMA VERTICAL REEL CATALOG ================")
@@ -266,8 +271,9 @@ def main():
     tmp_out.mkdir(parents=True, exist_ok=True)
 
     print("==================================================")
-    print("DEMA BROADCAST MASTER: 9:16 VERTICAL REELS PIPELINE")
+    print("DEMA BROADCAST MASTER: 9:16 VERTICAL REELS PIPELINE [TURBO MODE]")
     print(f"Target Count:     {len(targets)}")
+    print(f"Concurrency:      {args.concurrency} cores (Hardware Accelerated)")
     print(f"Output Directory: {out_dir}")
     print("==================================================")
 

@@ -102,7 +102,7 @@ def render_format(
     raw_mp4: Path,
     final_mp4: Path,
     audio_file: Path,
-    concurrency: int = 4,
+    concurrency: int = 8,
 ):
     print(f"\n--- [REMOTION RENDER] {comp_id} -> {raw_mp4.name} ---")
     raw_mp4.parent.mkdir(parents=True, exist_ok=True)
@@ -154,7 +154,7 @@ def render_stock(
     market_data_file: Path,
     fmt: str = "all",
     out_dir: Path = DEFAULT_OUT_DIR,
-    concurrency: int = 4,
+    concurrency: int = 8,
 ):
     sym = symbol.lower()
     manifest_path = ensure_stock_audio_manifest(symbol, market_data_file)
@@ -180,10 +180,15 @@ def render_stock(
         "goldbees": "GoldBeesExplainer",
         "bharatforg": "BharatForgExplainer",
         "bharatforge": "BharatForgExplainer",
+        "waareeener": "WaareeEnerExplainer",
+        "waaree": "WaareeEnerExplainer",
+        "nhpc": "NhpcExplainer",
     }
     dedicated_16x9 = {
         "cumminsind": "CumminsYouTubeExplainer16x9",
-        "waareeener": "WaareeYouTubeExplainer16x9",
+        "waareeener": "WaareeEnerYouTubeExplainer16x9",
+        "waaree": "WaareeEnerYouTubeExplainer16x9",
+        "nhpc": "NhpcYouTubeExplainer16x9",
         "coalindia": "CoalIndiaYouTubeExplainer16x9",
         "iiflcaps": "IiflCapsYouTubeExplainer16x9",
         "bluestarco": "BlueStarCoYouTubeExplainer16x9",
@@ -269,10 +274,15 @@ def main():
     parser.add_argument("--symbol", type=str, default="", help="Stock symbol to render explainer for (e.g. COALINDIA)")
     parser.add_argument("--all-images", action="store_true", help="Render full explainer videos for ALL stocks having images attached")
     parser.add_argument("--format", type=str, choices=["9x16", "16x9", "all"], default="all", help="Video aspect ratio format")
-    parser.add_argument("--concurrency", type=int, default=4, help="Remotion render concurrency")
+    parser.add_argument("--concurrency", type=int, default=8, help="Remotion render concurrency (Turbo default: 8 cores)")
+    parser.add_argument("--turbo", action="store_true", default=True, help="Force hardware Turbo Mode (concurrency=8, ANGLE WebGL)")
     parser.add_argument("--out-dir", type=str, default=str(DEFAULT_OUT_DIR), help="Output directory")
     parser.add_argument("--market-data", type=str, default="", help="Path to market data JSON file")
     args = parser.parse_args()
+
+    # Enforce Turbo Mode: default concurrency is 8 cores for rapid single/batch explainer renders
+    if args.turbo and args.concurrency < 6:
+        args.concurrency = 8
 
     # Locate market data
     if args.market_data and Path(args.market_data).exists():

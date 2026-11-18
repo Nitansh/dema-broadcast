@@ -95,9 +95,12 @@ def create_16x9_viral_thumbnail(
     draw.text((150, 72), "DEMA ANALYSIS", font=fonts["pill"], fill=(244, 241, 232, 255))
 
     # Live Badge
-    badge_w = 340
-    draw.rounded_rectangle([390, 72, 390 + badge_w, 122], radius=8, fill=(239, 68, 68, 240))
-    draw.text((410, 80), f"● {badge_text}", font=fonts["badge"], fill=(255, 255, 255, 255))
+    dema_len = int(draw.textlength("DEMA ANALYSIS", font=fonts["pill"]))
+    badge_x = 150 + dema_len + 25
+    badge_str = f"● {badge_text}"
+    badge_w = int(draw.textlength(badge_str, font=fonts["badge"])) + 36
+    draw.rounded_rectangle([badge_x, 72, badge_x + badge_w, 122], radius=8, fill=(239, 68, 68, 240))
+    draw.text((badge_x + 18, 80), badge_str, font=fonts["badge"], fill=(255, 255, 255, 255))
 
     # 4. Bold Impact Headline (Left Column)
     tx = 60
@@ -127,11 +130,15 @@ def create_16x9_viral_thumbnail(
         ]
 
     by = 540
+    card_w = 660
     for sym, val, col in stock_pills:
-        draw.rounded_rectangle([tx, by, tx + 620, by + 86], radius=14, fill=(27, 30, 35, 230), outline=(55, 65, 81, 255), width=2)
+        draw.rounded_rectangle([tx, by, tx + card_w, by + 86], radius=14, fill=(27, 30, 35, 230), outline=(55, 65, 81, 255), width=2)
         draw.text((tx + 24, by + 22), sym, font=fonts["pill"], fill=(255, 255, 255, 255))
-        draw.rounded_rectangle([tx + 320, by + 16, tx + 600, by + 70], radius=10, fill=(col[0], col[1], col[2], 50), outline=col, width=2)
-        draw.text((tx + 340, by + 24), val, font=fonts["badge"], fill=col)
+        val_w = int(draw.textlength(val, font=fonts["badge"])) + 32
+        vx2 = tx + card_w - 18
+        vx1 = vx2 - max(val_w, 200)
+        draw.rounded_rectangle([vx1, by + 16, vx2, by + 70], radius=10, fill=(col[0], col[1], col[2], 50), outline=col, width=2)
+        draw.text((vx1 + 16, by + 24), val, font=fonts["badge"], fill=col)
         by += 105
 
     # 6. Bottom Strap Notice

@@ -295,6 +295,39 @@ def generate_6_beat_script(info: dict) -> list:
                 "text": f"Higher macro hurdles stand at the 100 DEMA of {d100_str} and the 200 DEMA at {d200_str}. Watch for volume confirmation at the 110 rupee floor.",
             },
         ]
+    elif sym in ["WAAREEENER", "WAAREE"]:
+        return [
+            {
+                "id": "c0_master_rule",
+                "phase": 0,
+                "text": f"Here is the golden trading rule for {name} at current market price {cmp_str}. Any level below current market price serves as dynamic support. Any level above serves as overhead resistance and upward targets.",
+            },
+            {
+                "id": "c1_val_poc",
+                "phase": 1,
+                "text": f"During the multi-month sell-off, institutional buyers defended the Value Area Low at {val_str}, absorbing supply and establishing a solid double-bottom accumulation base before sparking the recovery.",
+            },
+            {
+                "id": "c2_dema20",
+                "phase": 2,
+                "text": f"Rallying out of the baseline, buy volume pushed Waaree above both the 50 DEMA at {info['d50_str']} and the 100 DEMA at {d100_str}. Because price sits above them, both now serve as our primary dynamic support shelf.",
+            },
+            {
+                "id": "c3_dema50",
+                "phase": 3,
+                "text": f"Facing short-term profit booking, current price at {cmp_str} is confronting the short-term 20 DEMA at {d20_str}. A decisive daily push above 2,437 is needed to clear immediate dynamic selling pressure.",
+            },
+            {
+                "id": "c4_vah",
+                "phase": 4,
+                "text": f"Above 20 DEMA, the ultimate institutional gateway stands at the 200 DEMA at {d200_str} and the Monthly Point of Control at {poc_str}, where heavy supply previously rejected the initial breakout attempt.",
+            },
+            {
+                "id": "c5_macro",
+                "phase": 5,
+                "text": f"Clearing the 2,568 Point of Control unlocks the Value Area High at {vah_str} and targets our reference line at 2,624 rupees. Defend the 2,360 support floor. Trade with the levels, confirm with volume.",
+            },
+        ]
     elif sym in ["BHARATFORG", "BHARATFORGE"]:
         return [
             {
@@ -326,6 +359,39 @@ def generate_6_beat_script(info: dict) -> list:
                 "id": "c5_macro",
                 "phase": 5,
                 "text": f"For a complete macro trend reversal, Bharat Forge must conquer the overhead 100 DEMA at {d100_str} and the major 200 DEMA at {d200_str}. Manage risk tightly with trailing stops against the 1,700 rupee demand base.",
+            },
+        ]
+    elif sym == "NHPC":
+        return [
+            {
+                "id": "c0_master_rule",
+                "phase": 0,
+                "text": f"Here is the golden trading rule for NHPC Limited at current market price {cmp_str}. Any level below current market price serves as dynamic support. Any level above serves as overhead resistance and upward targets.",
+            },
+            {
+                "id": "c1_val_poc",
+                "phase": 1,
+                "text": f"Following a sharp rejection from the 84 rupee swing peak, NHPC slipped below its moving averages. The primary institutional demand floor is now positioned at Value Area Low {val_str}, where buyers previously absorbed supply to build a double bottom base.",
+            },
+            {
+                "id": "c2_dema20",
+                "phase": 2,
+                "text": f"Overhead, NHPC faces an ultra-tight dynamic confluence zone: the 100 DEMA at {d100_str}, the 200 DEMA at {d200_str}, and the 50 DEMA at {info['d50_str']}. Conquering this 75.50 triple confluence is the first mandatory requirement for bulls.",
+            },
+            {
+                "id": "c3_dema50",
+                "phase": 3,
+                "text": f"Clearing 75.50 immediately exposes the short-term 20 DEMA dynamic ceiling at {d20_str}. A decisive daily breakout above 76.75 is required to break the downtrend structure and neutralize selling pressure.",
+            },
+            {
+                "id": "c4_vah",
+                "phase": 4,
+                "text": f"Above the moving averages, the primary institutional volume target stands at the Monthly Point of Control at {poc_str}. Because price sits below POC, it marks the heaviest overhead consensus supply node.",
+            },
+            {
+                "id": "c5_macro",
+                "phase": 5,
+                "text": f"Sustained volume expansion beyond 79.50 unlocks the ultimate swing target at Value Area High {vah_str} and the 84.50 rejection peak. Defend the {val_str} floor, manage risk, confirm with volume.",
             },
         ]
 
@@ -656,6 +722,108 @@ def get_strap_config(info: dict) -> dict:
                 "rightSource": "TREND REVERSAL",
             },
         }
+    elif sym in ["WAAREEENER", "WAAREE"]:
+        return {
+            "0": {
+                "tabLabel": "CORE TRADING LAW",
+                "tabBg": "#F2CF1D",
+                "tabColor": "#0C0E12",
+                "contextChip": f"NSE · {info['symbol']}",
+                "headline": "BELOW CMP = SUPPORT | ABOVE CMP = TARGET & RESISTANCE",
+                "rightSource": f"CMP ₹{info['cmp']:.2f}",
+            },
+            "1": {
+                "tabLabel": "VAL ABSORPTION FLOOR",
+                "tabBg": "#FF4D4D",
+                "tabColor": "#0C0E12",
+                "contextChip": "INSTITUTIONAL BASE",
+                "headline": f"DOUBLE BOTTOM ABSORBS SUPPLY AT VALUE AREA LOW ₹{info['val']:.2f}",
+                "rightSource": "BUY VOL CONFIRMS",
+            },
+            "2": {
+                "tabLabel": "50 & 100 DEMA SUPPORT",
+                "tabBg": "#10B981",
+                "tabColor": "#0C0E12",
+                "contextChip": "DYNAMIC BASE",
+                "headline": f"RECLAIMED 50 DEMA (₹{info['d50']:.2f}) & 100 DEMA (₹{info['d100']:.2f}) · SUPPORT CORRIDOR",
+                "rightSource": "OI SUPPORT",
+            },
+            "3": {
+                "tabLabel": "20 DEMA HURDLE",
+                "tabBg": "#00E5FF",
+                "tabColor": "#0C0E12",
+                "contextChip": "DYNAMIC CEILING",
+                "headline": f"CMP ₹{info['cmp']:.2f} CONFRONTS 20 DEMA (₹{info['d20']:.2f}) · SHORT-TERM HURDLE",
+                "rightSource": "HURDLE ₹2,437",
+            },
+            "4": {
+                "tabLabel": "200 DEMA & POC GATEWAY",
+                "tabBg": "#FFB800",
+                "tabColor": "#0C0E12",
+                "contextChip": "SUPPLY CLUSTER",
+                "headline": f"MAJOR SUPPLY WALL: 200 DEMA ₹{info['d200']:.2f} & MONTH POINT OF CONTROL ₹{info['poc']:.2f}",
+                "rightSource": "PRIMARY HURDLE",
+            },
+            "5": {
+                "tabLabel": "VAH & TARGET EXPANSION",
+                "tabBg": "#22D3EE",
+                "tabColor": "#0C0E12",
+                "contextChip": "TARGET CORRIDOR",
+                "headline": f"CLEARING POC UNLOCKS VAH ₹{info['vah']:.2f} & REFERENCE TARGET ₹2,624.70",
+                "rightSource": "TARGET ₹2,624",
+            },
+        }
+    elif sym == "NHPC":
+        return {
+            "0": {
+                "tabLabel": "CORE TRADING LAW",
+                "tabBg": "#F2CF1D",
+                "tabColor": "#0C0E12",
+                "contextChip": f"NSE · {info['symbol']}",
+                "headline": "BELOW CMP = SUPPORT | ABOVE CMP = TARGET & RESISTANCE",
+                "rightSource": f"CMP ₹{info['cmp']:.2f}",
+            },
+            "1": {
+                "tabLabel": "VAL DEMAND FLOOR",
+                "tabBg": "#FF4D4D",
+                "tabColor": "#0C0E12",
+                "contextChip": "INSTITUTIONAL BASE",
+                "headline": f"KEY DEMAND BASE AT VALUE AREA LOW ₹{info['val']:.2f} · ACCUMULATION FLOOR",
+                "rightSource": f"{info['vol_str']} VOL",
+            },
+            "2": {
+                "tabLabel": "DEMA CLUSTER CONFLUENCE",
+                "tabBg": "#3B82F6",
+                "tabColor": "#FFFFFF",
+                "contextChip": "TRIPLE RESISTANCE",
+                "headline": f"100 DEMA (₹{info['d100']:.2f}), 200 DEMA (₹{info['d200']:.2f}) & 50 DEMA (₹{info['d50']:.2f}) CONFLUENCE",
+                "rightSource": "TRIPLE CONFLUENCE",
+            },
+            "3": {
+                "tabLabel": "20 DEMA DYNAMIC CEILING",
+                "tabBg": "#F59E0B",
+                "tabColor": "#0C0E12",
+                "contextChip": "TREND REVERSAL PIVOT",
+                "headline": f"DECISIVE CLOSE ABOVE 20 DEMA (₹{info['d20']:.2f}) REQUIRED TO REVERSE DOWNTREND",
+                "rightSource": "HURDLE ₹76.75",
+            },
+            "4": {
+                "tabLabel": "POINT OF CONTROL TARGET",
+                "tabBg": "#10B981",
+                "tabColor": "#0C0E12",
+                "contextChip": "PRIMARY SUPPLY NODE",
+                "headline": f"PRIMARY INSTITUTIONAL VOLUME TARGET: POC AT ₹{info['poc']:.2f}",
+                "rightSource": "MAX VOLUME NODE",
+            },
+            "5": {
+                "tabLabel": "MACRO VAH EXPANSION",
+                "tabBg": "#8B5CF6",
+                "tabColor": "#FFFFFF",
+                "contextChip": "SWING CEILING",
+                "headline": f"MACRO RESISTANCE CEILING AT VALUE AREA HIGH ₹{info['vah']:.2f} & TARGET ₹84.50",
+                "rightSource": "TARGET ₹82.40 - ₹84.50",
+            },
+        }
     return {
         "0": {
             "tabLabel": "CORE TRADING LAW",
@@ -745,6 +913,24 @@ def get_watermark_words(info: dict) -> dict:
             "3": "SUPPLY NODE",
             "4": "VAH TARGET",
             "5": "MACRO HURDLES",
+        }
+    elif sym in ["WAAREEENER", "WAAREE"]:
+        return {
+            "0": "UNIVERSAL LAW",
+            "1": "ABSORPTION FLOOR",
+            "2": "DYNAMIC SUPPORT",
+            "3": "INFLECTION HURDLE",
+            "4": "SUPPLY GATEWAY",
+            "5": "TARGET CORRIDOR",
+        }
+    elif sym == "NHPC":
+        return {
+            "0": "UNIVERSAL LAW",
+            "1": "DEMAND FLOOR",
+            "2": "DEMA CONFLUENCE",
+            "3": "TREND PIVOT",
+            "4": "POC TARGET",
+            "5": "MACRO EXPANSION",
         }
     return {
         "0": "UNIVERSAL LAW",
@@ -1005,8 +1191,8 @@ def load_all_image_stocks(market_data_file: Path) -> list:
                 found_stocks.append(v)
                 seen_symbols.add(sym)
 
-    # 2. Check top_gainers, top_losers, momentum_stocks
-    for category in ["top_gainers", "momentum_stocks", "top_losers"]:
+    # 2. Check top_gainers, top_losers, momentum_stocks, stocks
+    for category in ["top_gainers", "momentum_stocks", "top_losers", "stocks"]:
         items = data.get(category, [])
         for item in items:
             sym = item.get("symbol", "").upper()

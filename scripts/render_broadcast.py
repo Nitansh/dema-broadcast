@@ -34,9 +34,9 @@ CHAPTERS = [
 ]
 
 
-def render_comp(entry: str, comp_id: str, raw_mp4: Path, concurrency: int = 4):
+def render_comp(entry: str, comp_id: str, raw_mp4: Path, concurrency: int = 8):
     cmd = (
-        f'npx remotion render "{entry}" {comp_id} "{raw_mp4}" '
+        f'npx.cmd remotion render "{entry}" {comp_id} "{raw_mp4}" '
         f'--concurrency={concurrency} --gl=angle '
         f'--browser-executable="{EDGE}" '
         f'--ffmpeg-executable="{FFMPEG}" '
@@ -96,11 +96,16 @@ def ffprobe_info(path: Path) -> dict:
 def main():
     parser = argparse.ArgumentParser(description="Render 16:9 DEMA Master Broadcast.")
     parser.add_argument("--entry", default="src/dema-suite-entry.jsx", help="Remotion entry file relative to modi-remotion")
-    parser.add_argument("--concurrency", type=int, default=4, help="Render concurrency")
+    parser.add_argument("--concurrency", type=int, default=8, help="Render concurrency (Turbo default: 8 cores)")
+    parser.add_argument("--turbo", action="store_true", default=True, help="Force hardware Turbo Mode (concurrency=8, ANGLE WebGL)")
     parser.add_argument("--audio-dir", default=None, help="Directory containing fv_chX_*.mp3 audio files")
     parser.add_argument("--out-dir", default=None, help="Output directory for rendered video files")
     parser.add_argument("--output-name", default="DEMA_Analysis_Daily_Broadcast_16x9_EN.mp4", help="Final master filename")
     args = parser.parse_args()
+
+    # Enforce Turbo Mode: default concurrency is 8 cores for rapid single/batch renders
+    if args.turbo and args.concurrency < 6:
+        args.concurrency = 8
 
     audio_dir = Path(args.audio_dir) if args.audio_dir else WORKSPACE_ROOT / "DEMA_Daily_Suite_20261113" / "03_Audio_EN"
     out_dir = Path(args.out_dir) if args.out_dir else WORKSPACE_ROOT / "DEMA_Daily_Suite_20261113" / "01_Videos"

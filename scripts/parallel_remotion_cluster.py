@@ -34,7 +34,8 @@ def render_single_remotion_comp(args_dict: dict) -> dict:
     remotion_dir = args_dict.get("remotion_dir")
     props = args_dict.get("props", {})
     gl = args_dict.get("gl", "angle")
-    concurrency = args_dict.get("concurrency", 4)
+    # Turbo Mode: 8 threads for single comp render, 4 threads when batched in cluster
+    concurrency = args_dict.get("concurrency", 8)
     audio_path = args_dict.get("audio_path")
     ffmpeg_bin = args_dict.get("ffmpeg_bin", "ffmpeg")
 
@@ -89,15 +90,24 @@ def render_single_remotion_comp(args_dict: dict) -> dict:
     return {"comp_id": comp_id, "success": True, "out_mp4": out_mp4, "duration": dur, "size_mb": file_size_mb}
 
 def run_parallel_render_cluster(jobs: list, max_parallel_comps: int = 3, remotion_dir: str = None) -> list:
-    """Executes a batch of Remotion compositions in parallel across worker processes."""
+    """Executes a batch of Remotion compositions in parallel across worker processes.
+    Enforces Turbo Mode:
+    - Single video/reel job -> Concurrency=8 cores
+    - Multi-video batch cluster -> max_parallel_comps workers with Concurrency=4 cores each
+    """
     rem_path = Path(remotion_dir) if remotion_dir else find_remotion_entry()
+    is_single = len(jobs) == 1
+    turbo_threads_per_job = 8 if is_single else 4
+
     print(f"\n=======================================================")
-    print(f"PARALLEL REMOTION CLUSTER: Dispatching {len(jobs)} jobs")
-    print(f"Concurrent Workers: {max_parallel_comps} | Engine: {rem_path}")
+    print(f"PARALLEL REMOTION CLUSTER: Dispatching {len(jobs)} jobs [TURBO MODE]")
+    print(f"Concurrent Workers: {max_parallel_comps} | Concurrency/Job: {turbo_threads_per_job} | Engine: {rem_path}")
     print(f"=======================================================\n")
 
     for j in jobs:
         j["remotion_dir"] = str(rem_path)
+        if "concurrency" not in j or j["concurrency"] is None:
+            j["concurrency"] = turbo_threads_per_job
 
     results = []
     t_start = time.time()
