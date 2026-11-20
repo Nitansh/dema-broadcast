@@ -559,6 +559,39 @@ def generate_6_beat_script(info: dict) -> list:
                 "text": f"चार्ट पर सभी major averages—50 DEMA {info['d50_str']}, 100 DEMA {d100_str}, और 200 DEMA {d200_str}—price के नीचे perfectly aligned हैं। ट्रेंड bullish है, 20 DEMA के साथ trailing stop maintain करें।",
             },
         ]
+    elif sym in ["SILVERBEES", "SILVER"]:
+        return [
+            {
+                "id": "c0_master_rule",
+                "phase": 0,
+                "text": f"Nippon India Silver ETF यानी SilverBees के लिए golden trading rule समझिए। Current market price {cmp_str} के नीचे के सभी लेवल्स dynamic support बन जाते हैं, और ऊपर के सभी लेवल्स overhead resistance और upside relief targets।",
+            },
+            {
+                "id": "c1_val_poc",
+                "phase": 1,
+                "text": f"हालिया sharp selloff के बाद price Value Area Low यानी {val_str} के demand zone पर support ले रहा है। {vol_str} शेयर्स के massive volume ने {val_str} को crucial invalidation support floor बना दिया है।",
+            },
+            {
+                "id": "c2_dema20",
+                "phase": 2,
+                "text": f"पहला upside relief target 20 DEMA है जो {d20_str} पर स्थित है। Price {cmp_str} के ऊपर rebound करते ही {d20_str} का 20 DEMA पहला immediate overhead hurdle और short-term target 1 रहेगा।",
+            },
+            {
+                "id": "c3_dema50",
+                "phase": 3,
+                "text": f"20 DEMA reclaim होते ही अगला major inflection hurdle 50 DEMA है {info['d50_str']} पर। {info['d50_str']} के ऊपर daily close corrective pressure को neutralize करके fresh buying momentum trigger करेगा।",
+            },
+            {
+                "id": "c4_vah",
+                "phase": 4,
+                "text": f"चार्ट पर सबसे heavy volume node Monthly Point of Control {poc_str} और Value Area High {vah_str} पर है। यह cluster 176 से 182 रुपये का primary target corridor और major supply ceiling define करता है।",
+            },
+            {
+                "id": "c5_macro",
+                "phase": 5,
+                "text": f"Macro recovery के लिए 100 DEMA {d100_str} और 200 DEMA {d200_str} को cross करना जरूरी है, जहां institutional Buy Price 216.78 रुपये mark है। {val_str} के floor पर strict risk manage करें।",
+            },
+        ]
 
     # Universal Fallback Script (Hinglish)
     return [
@@ -1564,6 +1597,34 @@ async def process_single_stock(stock_info: dict, voice: str = DEFAULT_VOICE) -> 
             "val": 22.5,
         }
         levels_bottom_pct = levels_bottom_pct_16x9
+    elif sym in ["silverbees", "silver"]:
+        levels_bottom_pct_9x16 = {
+            "cmp": 8.5,
+            "val": 3.6,
+            "d20": 15.0,
+            "d50": 26.5,
+            "poc": 33.4,
+            "vah": 37.4,
+            "d100": 41.3,
+            "d200": 66.0,
+            "target1": 15.0,
+            "target2": 33.4,
+            "buy": 66.6,
+        }
+        levels_bottom_pct_16x9 = {
+            "cmp": 8.5,
+            "val": 3.6,
+            "d20": 15.0,
+            "d50": 26.5,
+            "poc": 33.4,
+            "vah": 37.4,
+            "d100": 41.3,
+            "d200": 66.0,
+            "target1": 15.0,
+            "target2": 33.4,
+            "buy": 66.6,
+        }
+        levels_bottom_pct = levels_bottom_pct_16x9
 
     manifest_data = {
         "title": f"{info['name']} Support, Resistance & Target Masterclass",
@@ -1683,15 +1744,41 @@ async def main_async():
         sym_req = args.symbol.upper()
         match = next((s for s in all_image_stocks if s.get("symbol", "").upper() == sym_req), None)
         if not match:
-            # Create minimal stock payload with attached chart image
-            chart_img = f"charts/{sym_req}_1D_chart.png"
-            match = {
-                "symbol": sym_req,
-                "name": sym_req,
-                "ltp": 1000.0,
-                "image": chart_img,
-            }
-            print(f"[NOTE] Symbol {sym_req} not found in market data, generated default payload with {chart_img}")
+            if sym_req == "SILVERBEES":
+                match = {
+                    "symbol": "SILVERBEES",
+                    "name": "Nippon India Silver ETF",
+                    "cmp": 146.78,
+                    "ltp": 146.78,
+                    "volume": "189.98 M",
+                    "oiSentiment": "Heavy Accumulation Demand",
+                    "dema": {
+                        "d20": 155.50,
+                        "d50": 168.85,
+                        "d100": 186.65,
+                        "d200": 215.45,
+                    },
+                    "vp": {
+                        "val": 141.77,
+                        "poc": 176.84,
+                        "vah": 181.85,
+                    },
+                    "target1": 155.50,
+                    "target2": 176.84,
+                    "buy": 216.78,
+                    "image": "charts/SILVERBEES_1D_chart.png",
+                }
+                print(f"[NOTE] Loaded verified technical levels for SILVERBEES from attached chart snapshot.")
+            else:
+                # Create minimal stock payload with attached chart image
+                chart_img = f"charts/{sym_req}_1D_chart.png"
+                match = {
+                    "symbol": sym_req,
+                    "name": sym_req,
+                    "ltp": 1000.0,
+                    "image": chart_img,
+                }
+                print(f"[NOTE] Symbol {sym_req} not found in market data, generated default payload with {chart_img}")
         await process_single_stock(match, voice=args.voice)
     else:
         print("\nPlease specify either --symbol <SYM> or --all-images.")

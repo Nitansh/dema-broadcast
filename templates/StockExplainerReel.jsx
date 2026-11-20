@@ -340,7 +340,158 @@ export const StockExplainerCore = ({ manifest: propManifest, manifestPath }) => 
   let activeLevel = null;
   let isVolumeActive = false;
 
-  if (phase === 0) {
+  if (manifest.symbol === 'SILVERBEES') {
+    if (phase === 0) {
+      if (frame < 360) {
+        activeLevel = {
+          key: 'cmp',
+          name: 'LIVE CMP',
+          label: 'LIVE CMP',
+          price: parseNum(levels.cmp),
+          bottom: cmpBottom,
+          color: '#10B981',
+          context: 'CURRENT MARKET PIVOT',
+        };
+      } else if (frame < 520) {
+        activeLevel = {
+          key: 'val',
+          name: 'VAL SUPPORT',
+          label: 'VAL: ₹141.77 (SUPPORT)',
+          price: parseNum(levels.val),
+          bottom: valBottom,
+          color: '#FE6B3D',
+          context: 'DYNAMIC SUPPORT (BELOW LIVE)',
+        };
+      } else {
+        activeLevel = {
+          key: 'd20',
+          name: '20 DEMA',
+          label: '20 DEMA: ₹155.50 (TARGET 1)',
+          price: parseNum(levels.d20),
+          bottom: d20Bottom,
+          color: '#10B981',
+          context: 'UPSIDE TARGET 1 (ABOVE LIVE)',
+        };
+      }
+    } else if (phase === 1) {
+      if (frame < 910) {
+        activeLevel = {
+          key: 'val',
+          name: 'VAL FLOOR',
+          label: 'VAL: ₹141.77 (DEMAND FLOOR)',
+          price: parseNum(levels.val),
+          bottom: valBottom,
+          color: '#FE6B3D',
+          context: 'VALUE AREA LOW ACCUMULATION FLOOR',
+        };
+      } else if (frame < 1110) {
+        activeLevel = {
+          key: 'val',
+          name: 'INVALIDATION',
+          label: 'VAL: ₹141.77 (STRICT FLOOR)',
+          price: parseNum(levels.val),
+          bottom: valBottom,
+          color: '#FE6B3D',
+          context: 'CRUCIAL INVALIDATION SUPPORT FLOOR',
+        };
+      } else {
+        isVolumeActive = true;
+        activeLevel = {
+          key: 'val_volume',
+          name: '189.98M DEMAND',
+          label: '189.98M VOL DEMAND',
+          price: parseNum(levels.val),
+          bottom: valBottom,
+          color: '#F2CF1D',
+          context: '189.98M INSTITUTIONAL ACCUMULATION DEMAND',
+        };
+      }
+    } else if (phase === 2) {
+      activeLevel = {
+        key: 'd20',
+        name: '20 DEMA',
+        label: '20 DEMA (TARGET 1)',
+        price: parseNum(levels.d20),
+        bottom: d20Bottom,
+        color: '#10B981',
+        context: 'IMMEDIATE OVERHEAD HURDLE / TARGET 1',
+      };
+    } else if (phase === 3) {
+      activeLevel = {
+        key: 'd50',
+        name: '50 DEMA',
+        label: '50 DEMA (HURDLE)',
+        price: parseNum(levels.d50),
+        bottom: d50Bottom,
+        color: '#00E5FF',
+        context: 'SECONDARY INFLECTION HURDLE',
+      };
+    } else if (phase === 4) {
+      if (frame < 2850) {
+        activeLevel = {
+          key: 'poc',
+          name: 'POC',
+          label: 'POC: ₹176.84 (TARGET 2)',
+          price: parseNum(levels.poc),
+          bottom: pocBottom,
+          color: '#10B981',
+          context: 'HEAVY VOLUME POINT OF CONTROL NODE',
+        };
+      } else {
+        activeLevel = {
+          key: 'vah',
+          name: 'VAH',
+          label: 'VAH: ₹181.85 (CEILING)',
+          price: parseNum(levels.vah),
+          bottom: vahBottom,
+          color: '#10B981',
+          context: 'VALUE AREA HIGH SUPPLY CEILING',
+        };
+      }
+    } else if (phase === 5) {
+      if (frame < 3400) {
+        activeLevel = {
+          key: 'd100',
+          name: '100 DEMA',
+          label: '100 DEMA',
+          price: parseNum(levels.d100),
+          bottom: d100Bottom,
+          color: '#10B981',
+          context: '100-DAY EXPONENTIAL AVERAGE',
+        };
+      } else if (frame < 3650) {
+        activeLevel = {
+          key: 'd200',
+          name: '200 DEMA',
+          label: '200 DEMA (MACRO)',
+          price: parseNum(levels.d200),
+          bottom: d200Bottom,
+          color: '#10B981',
+          context: '200-DAY TREND REVERSAL AVERAGE',
+        };
+      } else if (frame < 3900) {
+        activeLevel = {
+          key: 'buy',
+          name: 'BUY PRICE',
+          label: 'BUY PRICE ₹216.78',
+          price: parseNum(levels.buy || 216.78),
+          bottom: customBottom.buy ?? d200Bottom,
+          color: '#10B981',
+          context: 'INSTITUTIONAL BUY PRICE ANCHOR',
+        };
+      } else {
+        activeLevel = {
+          key: 'val_stop',
+          name: 'RISK FLOOR',
+          label: 'VAL: ₹141.77 (RISK FLOOR)',
+          price: parseNum(levels.val),
+          bottom: valBottom,
+          color: '#FE6B3D',
+          context: 'STRICT RISK MANAGEMENT FLOOR',
+        };
+      }
+    }
+  } else if (phase === 0) {
     if (frame < 360) {
       activeLevel = {
         key: 'cmp',

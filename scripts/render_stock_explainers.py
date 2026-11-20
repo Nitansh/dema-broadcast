@@ -208,6 +208,8 @@ def render_stock(
         "greateastern": "GEShipExplainer",
         "lici": "LiciExplainer",
         "lic": "LiciExplainer",
+        "silverbees": "SilverbeesExplainer",
+        "silver": "SilverbeesExplainer",
     }
     dedicated_16x9 = {
         "cumminsind": "CumminsYouTubeExplainer16x9",
@@ -234,6 +236,8 @@ def render_stock(
         "greateastern": "GEShipYouTubeExplainer16x9",
         "lici": "LiciYouTubeExplainer16x9",
         "lic": "LiciYouTubeExplainer16x9",
+        "silverbees": "SilverbeesYouTubeExplainer16x9",
+        "silver": "SilverbeesYouTubeExplainer16x9",
     }
 
     props_json = json.dumps({"manifestPath": f"data/{sym}_explainer_manifest.json"})

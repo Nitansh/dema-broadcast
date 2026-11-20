@@ -14,92 +14,92 @@ import {
 let defaultManifest = {};
 try {
   defaultManifest = require('../../public/data/cummins_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 let coalindiaManifest = {};
 try {
   coalindiaManifest = require('../../public/data/coalindia_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 let iiflcapsManifest = {};
 try {
   iiflcapsManifest = require('../../public/data/iiflcaps_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 let bluestarcoManifest = {};
 try {
   bluestarcoManifest = require('../../public/data/bluestarco_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 let abbManifest = {};
 try {
   abbManifest = require('../../public/data/abb_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 let waareeManifest = {};
 try {
   waareeManifest = require('../../public/data/waaree_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 let itcManifest = {};
 try {
   itcManifest = require('../../public/data/itc_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 let adanientManifest = {};
 try {
   adanientManifest = require('../../public/data/adanient_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 let cochinshipManifest = {};
 try {
   cochinshipManifest = require('../../public/data/cochinship_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 let goldbeesManifest = {};
 try {
   goldbeesManifest = require('../../public/data/goldbees_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 let bharatforgManifest = {};
 try {
   bharatforgManifest = require('../../public/data/bharatforg_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 let nhpcManifest = {};
 try {
   nhpcManifest = require('../../public/data/nhpc_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 let titanManifest = {};
 try {
   titanManifest = require('../../public/data/titan_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 let hindunilvrManifest = {};
 try {
   hindunilvrManifest = require('../../public/data/hindunilvr_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 let marutiManifest = {};
 try {
   marutiManifest = require('../../public/data/maruti_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 let lenskartManifest = {};
 try {
   lenskartManifest = require('../../public/data/lenskart_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 let geshipManifest = {};
 try {
   geshipManifest = require('../../public/data/geship_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 let liciManifest = {};
 try {
   liciManifest = require('../../public/data/lici_explainer_manifest.json');
-} catch (e) {}
+} catch (e) { }
 
 const MANIFEST_MAP = {
   cummins: defaultManifest,
@@ -188,7 +188,7 @@ export const StockYouTubeExplainerCore = ({ manifest: propManifest, manifestPath
 
   const manifest = getStockManifest(manifestPath, propManifest);
 
-  const cues = manifest.cue_frames || manifest.body_cue_frames || [120, 691, 1359, 1842, 2335, 2803];
+  const cues = manifest.body_cue_frames || [15, 527, 1152, 1647, 2202, 2721];
   const cue0 = cues[0] || 15;
   const cue1 = cues[1] || 527;
   const cue2 = cues[2] || 1152;
@@ -201,17 +201,17 @@ export const StockYouTubeExplainerCore = ({ manifest: propManifest, manifestPath
   // Active Phase (0 to 5)
   const phase =
     frame < cue1 ? 0 :
-    frame < cue2 ? 1 :
-    frame < cue3 ? 2 :
-    frame < cue4 ? 3 :
-    frame < cue5 ? 4 : 5;
+      frame < cue2 ? 1 :
+        frame < cue3 ? 2 :
+          frame < cue4 ? 3 :
+            frame < cue5 ? 4 : 5;
 
   const activeCueStart =
     phase === 0 ? cue0 :
-    phase === 1 ? cue1 :
-    phase === 2 ? cue2 :
-    phase === 3 ? cue3 :
-    phase === 4 ? cue4 : cue5;
+      phase === 1 ? cue1 :
+        phase === 2 ? cue2 :
+          phase === 3 ? cue3 :
+            phase === 4 ? cue4 : cue5;
 
   // Left-to-Right Glowing Laser Beam Sweep Progress (22 frames = 0.73s)
   const sweepProgress = clamp01((frame - activeCueStart) / 22);
@@ -291,7 +291,7 @@ export const StockYouTubeExplainerCore = ({ manifest: propManifest, manifestPath
 
   const chartImg = manifest.chart_image || `charts/${manifest.symbol}_1D_chart.png`;
   const levels = manifest.levels || {
-    cmp: parseNum(manifest.cmp, 1000),
+    cmp: manifest.cmp || 1000,
     poc: parseNum(manifest.cmp, 1000) * 0.95,
     val: parseNum(manifest.cmp, 1000) * 0.91,
     d20: parseNum(manifest.cmp, 1000) * 0.97,
@@ -299,12 +299,10 @@ export const StockYouTubeExplainerCore = ({ manifest: propManifest, manifestPath
     d100: parseNum(manifest.cmp, 1000) * 1.08,
     d200: parseNum(manifest.cmp, 1000) * 1.18,
     vah: parseNum(manifest.cmp, 1000) * 1.06,
-    target1: parseNum(manifest.cmp, 1000) * 1.01,
-    target2: parseNum(manifest.cmp, 1000) * 1.03,
   };
 
   // Adaptive Price-to-Position Mapper
-  const allLevelVals = [levels.val, levels.poc, levels.d20, levels.cmp, levels.d50, levels.vah, levels.d100, levels.d200, levels.target1, levels.target2]
+  const allLevelVals = [levels.val, levels.poc, levels.d20, levels.cmp, levels.d50, levels.vah, levels.d100, levels.d200]
     .map((v) => parseNum(v))
     .filter(Boolean);
   const minPrice = Math.min(...allLevelVals) * 0.985;
@@ -325,14 +323,165 @@ export const StockYouTubeExplainerCore = ({ manifest: propManifest, manifestPath
   const vahBottom = customBottom.vah ?? customBottom.buy ?? priceToYPct(levels.vah);
   const d100Bottom = customBottom.d100 ?? priceToYPct(levels.d100);
   const d200Bottom = customBottom.d200 ?? priceToYPct(levels.d200);
-  const target1Bottom = customBottom.target1 ?? priceToYPct(levels.target1 || 414.0);
-  const target2Bottom = customBottom.target2 ?? priceToYPct(levels.target2 || 422.5);
+  const target1Bottom = customBottom.target1 ?? priceToYPct(levels.target1 || levels.d20 || 414.0);
+  const target2Bottom = customBottom.target2 ?? priceToYPct(levels.target2 || levels.poc || 422.5);
 
-  // Active Technical Level & Directional Geometry across every spoken frame
+  // Active Technical Level & Directional Geometry
   let activeLevel = null;
   let isVolumeActive = false;
 
-  if (phase === 0) {
+  if (manifest.symbol === 'SILVERBEES') {
+    if (phase === 0) {
+      if (frame < 360) {
+        activeLevel = {
+          key: 'cmp',
+          name: 'LIVE CMP',
+          label: 'LIVE CMP',
+          price: parseNum(levels.cmp),
+          bottom: cmpBottom,
+          color: '#10B981',
+          context: 'CURRENT MARKET PIVOT',
+        };
+      } else if (frame < 520) {
+        activeLevel = {
+          key: 'val',
+          name: 'VAL SUPPORT',
+          label: 'VAL: ₹141.77 (SUPPORT)',
+          price: parseNum(levels.val),
+          bottom: valBottom,
+          color: '#FE6B3D',
+          context: 'DYNAMIC SUPPORT (BELOW LIVE)',
+        };
+      } else {
+        activeLevel = {
+          key: 'd20',
+          name: '20 DEMA',
+          label: '20 DEMA: ₹155.50 (TARGET 1)',
+          price: parseNum(levels.d20),
+          bottom: d20Bottom,
+          color: '#10B981',
+          context: 'UPSIDE TARGET 1 (ABOVE LIVE)',
+        };
+      }
+    } else if (phase === 1) {
+      if (frame < 910) {
+        activeLevel = {
+          key: 'val',
+          name: 'VAL FLOOR',
+          label: 'VAL: ₹141.77 (DEMAND FLOOR)',
+          price: parseNum(levels.val),
+          bottom: valBottom,
+          color: '#FE6B3D',
+          context: 'VALUE AREA LOW ACCUMULATION FLOOR',
+        };
+      } else if (frame < 1110) {
+        activeLevel = {
+          key: 'val',
+          name: 'INVALIDATION',
+          label: 'VAL: ₹141.77 (STRICT FLOOR)',
+          price: parseNum(levels.val),
+          bottom: valBottom,
+          color: '#FE6B3D',
+          context: 'CRUCIAL INVALIDATION SUPPORT FLOOR',
+        };
+      } else {
+        isVolumeActive = true;
+        activeLevel = {
+          key: 'val_volume',
+          name: '189.98M DEMAND',
+          label: '189.98M VOL DEMAND',
+          price: parseNum(levels.val),
+          bottom: valBottom,
+          color: '#F2CF1D',
+          context: '189.98M INSTITUTIONAL ACCUMULATION DEMAND',
+        };
+      }
+    } else if (phase === 2) {
+      activeLevel = {
+        key: 'd20',
+        name: '20 DEMA',
+        label: '20 DEMA (TARGET 1)',
+        price: parseNum(levels.d20),
+        bottom: d20Bottom,
+        color: '#10B981',
+        context: 'IMMEDIATE OVERHEAD HURDLE / TARGET 1',
+      };
+    } else if (phase === 3) {
+      activeLevel = {
+        key: 'd50',
+        name: '50 DEMA',
+        label: '50 DEMA (HURDLE)',
+        price: parseNum(levels.d50),
+        bottom: d50Bottom,
+        color: '#00E5FF',
+        context: 'SECONDARY INFLECTION HURDLE',
+      };
+    } else if (phase === 4) {
+      if (frame < 2850) {
+        activeLevel = {
+          key: 'poc',
+          name: 'POC',
+          label: 'POC: ₹176.84 (TARGET 2)',
+          price: parseNum(levels.poc),
+          bottom: pocBottom,
+          color: '#10B981',
+          context: 'HEAVY VOLUME POINT OF CONTROL NODE',
+        };
+      } else {
+        activeLevel = {
+          key: 'vah',
+          name: 'VAH',
+          label: 'VAH: ₹181.85 (CEILING)',
+          price: parseNum(levels.vah),
+          bottom: vahBottom,
+          color: '#10B981',
+          context: 'VALUE AREA HIGH SUPPLY CEILING',
+        };
+      }
+    } else if (phase === 5) {
+      if (frame < 3400) {
+        activeLevel = {
+          key: 'd100',
+          name: '100 DEMA',
+          label: '100 DEMA',
+          price: parseNum(levels.d100),
+          bottom: d100Bottom,
+          color: '#10B981',
+          context: '100-DAY EXPONENTIAL AVERAGE',
+        };
+      } else if (frame < 3650) {
+        activeLevel = {
+          key: 'd200',
+          name: '200 DEMA',
+          label: '200 DEMA (MACRO)',
+          price: parseNum(levels.d200),
+          bottom: d200Bottom,
+          color: '#10B981',
+          context: '200-DAY TREND REVERSAL AVERAGE',
+        };
+      } else if (frame < 3900) {
+        activeLevel = {
+          key: 'buy',
+          name: 'BUY PRICE',
+          label: 'BUY PRICE ₹216.78',
+          price: parseNum(levels.buy || 216.78),
+          bottom: customBottom.buy ?? d200Bottom,
+          color: '#10B981',
+          context: 'INSTITUTIONAL BUY PRICE ANCHOR',
+        };
+      } else {
+        activeLevel = {
+          key: 'val_stop',
+          name: 'RISK FLOOR',
+          label: 'VAL: ₹141.77 (RISK FLOOR)',
+          price: parseNum(levels.val),
+          bottom: valBottom,
+          color: '#FE6B3D',
+          context: 'STRICT RISK MANAGEMENT FLOOR',
+        };
+      }
+    }
+  } else if (phase === 0) {
     if (frame < 360) {
       activeLevel = {
         key: 'cmp',
@@ -399,7 +548,6 @@ export const StockYouTubeExplainerCore = ({ manifest: propManifest, manifestPath
     }
   } else if (phase === 2) {
     activeLevel = {
-      key: 'd20',
       name: '20 DEMA',
       label: '20 DEMA',
       price: parseNum(levels.d20),
@@ -408,79 +556,42 @@ export const StockYouTubeExplainerCore = ({ manifest: propManifest, manifestPath
       context: 'RECLAIMED DYNAMIC SUPPORT',
     };
   } else if (phase === 3) {
-    activeLevel = {
-      key: 'vah',
-      name: 'VAH',
-      label: 'VAH',
-      price: parseNum(levels.vah),
-      bottom: vahBottom,
-      color: '#00E5FF',
-      context: 'MONTHLY VAH BREAKOUT LEVEL',
-    };
-  } else if (phase === 4) {
-    if (frame < 2570) {
-      activeLevel = {
-        key: 'target1',
-        name: 'TARGET 1',
-        label: 'TARGET 1 (SESSION HIGH)',
-        price: parseNum(levels.target1 || 414.0),
-        bottom: target1Bottom,
-        color: '#10B981',
-        context: 'SESSION HIGH BREAKOUT TARGET',
-      };
-    } else {
-      activeLevel = {
-        key: 'target2',
-        name: 'TARGET 2',
-        label: 'TARGET 2 (CORRIDOR)',
-        price: parseNum(levels.target2 || 422.5),
-        bottom: target2Bottom,
-        color: '#22D3EE',
-        context: 'EXPANSION CORRIDOR (₹420-₹425)',
-      };
-    }
-  } else if (phase === 5) {
-    if (frame < 3040) {
-      activeLevel = {
-        key: 'd50',
+    const isVahBreakout = parseNum(levels.cmp) >= parseNum(levels.vah);
+    activeLevel = isVahBreakout
+      ? {
+        name: 'VAH',
+        label: 'VAH',
+        price: parseNum(levels.vah),
+        bottom: vahBottom,
+        color: '#00E5FF',
+        context: 'MONTHLY VAH BREAKOUT LEVEL',
+      }
+      : {
         name: '50 DEMA',
         label: '50 DEMA',
         price: parseNum(levels.d50),
         bottom: d50Bottom,
         color: '#00E5FF',
-        context: '50-DAY EXPONENTIAL AVERAGE',
+        context: 'CRITICAL INFLECTION HURDLE',
       };
-    } else if (frame < 3280) {
-      activeLevel = {
-        key: 'd100',
-        name: '100 DEMA',
-        label: '100 DEMA',
-        price: parseNum(levels.d100),
-        bottom: d100Bottom,
-        color: '#FFB800',
-        context: '100-DAY EXPONENTIAL AVERAGE',
-      };
-    } else if (frame < 3520) {
-      activeLevel = {
-        key: 'd200',
-        name: '200 DEMA',
-        label: '200 DEMA',
-        price: parseNum(levels.d200),
-        bottom: d200Bottom,
-        color: '#FF3366',
-        context: '200-DAY MACRO MOVING AVERAGE',
-      };
-    } else {
-      activeLevel = {
-        key: 'trailing_d20',
-        name: 'TRAILING STOP',
-        label: 'TRAILING STOP (20 DEMA)',
-        price: parseNum(levels.d20),
-        bottom: d20Bottom,
-        color: '#10B981',
-        context: 'BULLISH TRAILING STOP ANCHOR',
-      };
-    }
+  } else if (phase === 4) {
+    activeLevel = {
+      name: 'VAH',
+      label: 'VAH',
+      price: parseNum(levels.vah),
+      bottom: vahBottom,
+      color: '#22D3EE',
+      context: 'PRIMARY EXPANSION TARGET',
+    };
+  } else if (phase === 5) {
+    activeLevel = {
+      name: '200 DEMA',
+      label: '200 DEMA',
+      price: parseNum(levels.d200),
+      bottom: d200Bottom,
+      color: '#FF3366',
+      context: 'TREND REVERSAL GATEWAY',
+    };
   }
 
   const livePriceVal = parseNum(levels.cmp);
@@ -879,7 +990,7 @@ export const StockYouTubeExplainerCore = ({ manifest: propManifest, manifestPath
             </div>
 
             {/* ACTIVE TALKING LEVEL: RADAR BEEPING SONAR, PRICE OVER IT & DIRECTIONAL ARROW FROM LIVE PRICE */}
-            {activeLevel && activeLevel.key !== 'cmp' && (() => {
+            {activeLevel && (() => {
               const Y_live = 600 * (1 - cmpBottom / 100);
               const Y_level = 600 * (1 - activeLevel.bottom / 100);
               const x1 = 505; // Starts at Live Candle Tip
@@ -1107,216 +1218,90 @@ export const StockYouTubeExplainerCore = ({ manifest: propManifest, manifestPath
               );
             })()}
 
-            {/* =========================================================
-               INTERACTIVE VOLUME PROFILE SCANNER & HIGHLIGHT OVERLAY
-               ========================================================= */}
-            {(isVolumeActive || (phase === 1 && frame >= 1100)) && (
+            {/* PHASE 1: POC & VAL ACCUMULATION FLOOR */}
+            {phase === 1 && (
               <>
-                {/* 1. Neon Glowing Bounding Box over Horizontal Volume Profile */}
                 <div
                   style={{
                     position: 'absolute',
                     left: 0,
-                    bottom: `${Math.min(valBottom, pocBottom) - 4}%`,
-                    width: '24%',
-                    height: `${Math.abs(vahBottom - valBottom) + 8}%`,
-                    border: '2px solid #F2CF1D',
-                    borderRadius: 8,
-                    backgroundColor: 'rgba(242, 207, 29, 0.10)',
-                    boxShadow: '0 0 35px rgba(242, 207, 29, 0.7), inset 0 0 25px rgba(242, 207, 29, 0.3)',
-                    zIndex: 26,
-                    pointerEvents: 'none',
-                    overflow: 'hidden',
+                    right: 0,
+                    bottom: `${pocBottom}%`,
+                    height: 4.5,
+                    backgroundColor: '#F2CF1D',
+                    boxShadow: '0 0 16px #F2CF1D, 0 0 35px #F2CF1D, 0 0 80px rgba(242, 207, 29, 0.8)',
+                    zIndex: 25,
+                    clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
                   }}
                 >
-                  {/* High-speed Laser Scanner Sweep Bar */}
+                  {sweepProgress < 1 && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        left: `${sweepProgress * 100}%`,
+                        top: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        width: 18,
+                        height: 18,
+                        borderRadius: '50%',
+                        backgroundColor: '#FFFFFF',
+                        boxShadow: '0 0 20px #FFFFFF, 0 0 35px #F2CF1D',
+                      }}
+                    />
+                  )}
                   <div
                     style={{
                       position: 'absolute',
-                      top: 0,
-                      bottom: 0,
-                      width: 40,
-                      left: `${((frame * 5.0) % 130) - 20}%`,
-                      background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85), rgba(242, 207, 29, 0.95), transparent)',
-                      boxShadow: '0 0 25px #F2CF1D',
+                      right: 20,
+                      bottom: 8,
+                      backgroundColor: 'rgba(242, 207, 29, 0.98)',
+                      color: '#121417',
+                      fontFamily: FONTS.mono,
+                      fontSize: 12,
+                      fontWeight: 900,
+                      padding: '4px 12px',
+                      borderRadius: 6,
                     }}
-                  />
-                </div>
-
-                {/* 2. POC Max Volume Node Bar Pulsing Highlight */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    left: 0,
-                    bottom: `${pocBottom - 1.2}%`,
-                    width: '21%',
-                    height: '3%',
-                    backgroundColor: 'rgba(242, 207, 29, 0.85)',
-                    boxShadow: '0 0 30px #F2CF1D, 0 0 60px rgba(242, 207, 29, 0.8)',
-                    border: '1.5px solid #FFFFFF',
-                    borderRadius: 4,
-                    zIndex: 28,
-                    pointerEvents: 'none',
-                  }}
-                />
-
-                {/* 3. Floating Interactive Volume Telemetry Badge */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    left: '25%',
-                    bottom: `${pocBottom}%`,
-                    transform: 'translateY(50%)',
-                    backgroundColor: 'rgba(12, 16, 24, 0.96)',
-                    border: '2px solid #F2CF1D',
-                    borderRadius: 10,
-                    padding: '6px 14px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 10,
-                    boxShadow: '0 10px 30px rgba(0,0,0,0.9), 0 0 20px rgba(242, 207, 29, 0.6)',
-                    zIndex: 35,
-                    pointerEvents: 'none',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 10,
-                      height: 10,
-                      borderRadius: '50%',
-                      backgroundColor: '#F2CF1D',
-                      boxShadow: '0 0 12px #F2CF1D',
-                    }}
-                  />
-                  <div>
-                    <div style={{ fontFamily: FONTS.mono, fontSize: 13, fontWeight: 900, color: '#F2CF1D', letterSpacing: 0.5 }}>
-                      ⚡ 16.01M ACCUMULATION VOLUME
-                    </div>
-                    <div style={{ fontFamily: FONTS.mono, fontSize: 10, fontWeight: 700, color: '#FFFFFF', opacity: 0.9 }}>
-                      INSTITUTIONAL DEMAND CLUSTER CONFIRMED
-                    </div>
+                  >
+                    ★ POC: ₹{fmtPrice(levels.poc)} [INSTITUTIONAL ACCUMULATION FLOOR]
                   </div>
                 </div>
 
-                {/* 4. Energy Flow Connector from Volume Node to Live Candle */}
-                <svg
+                <div
                   style={{
                     position: 'absolute',
-                    inset: 0,
-                    width: '100%',
-                    height: '100%',
-                    pointerEvents: 'none',
-                    zIndex: 31,
+                    left: 0,
+                    right: 0,
+                    bottom: `${valBottom}%`,
+                    height: 3.5,
+                    backgroundColor: '#EF4444',
+                    boxShadow: '0 0 14px rgba(239, 68, 68, 0.8)',
+                    zIndex: 24,
+                    clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
                   }}
-                  viewBox="0 0 1000 600"
-                  preserveAspectRatio="none"
                 >
-                  <line
-                    x1={220}
-                    y1={600 * (1 - pocBottom / 100)}
-                    x2={505}
-                    y2={600 * (1 - cmpBottom / 100)}
-                    stroke="#F2CF1D"
-                    strokeWidth="2.5"
-                    strokeDasharray="6 6"
-                    strokeDashoffset={-frame * 3}
-                    style={{
-                      filter: 'drop-shadow(0 0 8px rgba(242, 207, 29, 0.8))',
-                    }}
-                  />
-                </svg>
-              </>
-            )}
-
-            {/* =========================================================
-               DYNAMIC TECHNICAL LEVEL LINES ACROSS ALL ACTS
-               ========================================================= */}
-            {/* POC LINE */}
-            {(phase === 1 || activeLevel?.key === 'poc' || activeLevel?.key === 'val_volume') && (
-              <div
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  right: 0,
-                  bottom: `${pocBottom}%`,
-                  height: 4.5,
-                  backgroundColor: '#F2CF1D',
-                  boxShadow: '0 0 16px #F2CF1D, 0 0 35px #F2CF1D, 0 0 80px rgba(242, 207, 29, 0.8)',
-                  zIndex: 25,
-                  clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
-                }}
-              >
-                {sweepProgress < 1 && (
                   <div
                     style={{
                       position: 'absolute',
-                      left: `${sweepProgress * 100}%`,
-                      top: '50%',
-                      transform: 'translate(-50%, -50%)',
-                      width: 18,
-                      height: 18,
-                      borderRadius: '50%',
-                      backgroundColor: '#FFFFFF',
-                      boxShadow: '0 0 20px #FFFFFF, 0 0 35px #F2CF1D',
+                      right: 20,
+                      bottom: 7,
+                      backgroundColor: 'rgba(239, 68, 68, 0.95)',
+                      color: '#FFFFFF',
+                      fontFamily: FONTS.mono,
+                      fontSize: 11,
+                      fontWeight: 800,
+                      padding: '3px 10px',
+                      borderRadius: 5,
                     }}
-                  />
-                )}
-                <div
-                  style={{
-                    position: 'absolute',
-                    right: 20,
-                    bottom: 8,
-                    backgroundColor: 'rgba(242, 207, 29, 0.98)',
-                    color: '#121417',
-                    fontFamily: FONTS.mono,
-                    fontSize: 12,
-                    fontWeight: 900,
-                    padding: '4px 12px',
-                    borderRadius: 6,
-                  }}
-                >
-                  ★ POC: ₹{fmtPrice(levels.poc)} [MONTHLY POINT OF CONTROL]
+                  >
+                    VAL: ₹{fmtPrice(levels.val)} [VALUE AREA LOW]
+                  </div>
                 </div>
-              </div>
+              </>
             )}
 
-            {/* VAL LINE */}
-            {(phase === 1 || activeLevel?.key === 'val') && (
-              <div
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  right: 0,
-                  bottom: `${valBottom}%`,
-                  height: 3.5,
-                  backgroundColor: '#EF4444',
-                  boxShadow: '0 0 14px rgba(239, 68, 68, 0.8)',
-                  zIndex: 24,
-                  clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
-                }}
-              >
-                <div
-                  style={{
-                    position: 'absolute',
-                    right: 20,
-                    bottom: 7,
-                    backgroundColor: 'rgba(239, 68, 68, 0.95)',
-                    color: '#FFFFFF',
-                    fontFamily: FONTS.mono,
-                    fontSize: 11,
-                    fontWeight: 800,
-                    padding: '3px 10px',
-                    borderRadius: 5,
-                  }}
-                >
-                  VAL: ₹{fmtPrice(levels.val)} [VALUE AREA LOW FLOOR]
-                </div>
-              </div>
-            )}
-
-            {/* 20 DEMA LINE */}
-            {(phase === 2 || activeLevel?.key === 'd20' || activeLevel?.key === 'trailing_d20') && (
+            {/* PHASE 2: 20 DEMA RECLAIMED SUPPORT */}
+            {phase === 2 && (
               <div
                 style={{
                   position: 'absolute',
@@ -1364,14 +1349,14 @@ export const StockYouTubeExplainerCore = ({ manifest: propManifest, manifestPath
               </div>
             )}
 
-            {/* VAH LINE */}
-            {(phase === 3 || activeLevel?.key === 'vah') && (
+            {/* PHASE 3: 50 DEMA INFLECTION HURDLE */}
+            {phase === 3 && (
               <div
                 style={{
                   position: 'absolute',
                   left: 0,
                   right: 0,
-                  bottom: `${vahBottom}%`,
+                  bottom: `${d50Bottom}%`,
                   height: 4.5,
                   backgroundColor: '#00E5FF',
                   boxShadow: '0 0 16px #00E5FF, 0 0 35px #00E5FF, 0 0 80px rgba(0, 229, 255, 0.8)',
@@ -1408,22 +1393,22 @@ export const StockYouTubeExplainerCore = ({ manifest: propManifest, manifestPath
                     borderRadius: 6,
                   }}
                 >
-                  ↗ VAH: ₹{fmtPrice(levels.vah)} [MONTHLY BREAKOUT LEVEL]
+                  ⚔ DEMA 50: ₹{fmtPrice(levels.d50)} [CRITICAL INFLECTION HURDLE]
                 </div>
               </div>
             )}
 
-            {/* TARGET 1 (SESSION HIGH 414) LINE */}
-            {(phase === 4 || activeLevel?.key === 'target1') && (
+            {/* PHASE 4: VAH TARGET CORRIDOR */}
+            {phase === 4 && (
               <div
                 style={{
                   position: 'absolute',
                   left: 0,
                   right: 0,
-                  bottom: `${target1Bottom}%`,
-                  height: 4.0,
-                  backgroundColor: '#10B981',
-                  boxShadow: '0 0 16px #10B981, 0 0 35px #10B981, 0 0 70px rgba(16, 185, 129, 0.8)',
+                  bottom: `${vahBottom}%`,
+                  height: 4.5,
+                  backgroundColor: '#22D3EE',
+                  boxShadow: '0 0 16px #22D3EE, 0 0 35px #22D3EE, 0 0 80px rgba(34, 211, 238, 0.8)',
                   zIndex: 25,
                   clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
                 }}
@@ -1439,44 +1424,10 @@ export const StockYouTubeExplainerCore = ({ manifest: propManifest, manifestPath
                       height: 18,
                       borderRadius: '50%',
                       backgroundColor: '#FFFFFF',
-                      boxShadow: '0 0 20px #FFFFFF, 0 0 35px #10B981',
+                      boxShadow: '0 0 20px #FFFFFF, 0 0 35px #22D3EE',
                     }}
                   />
                 )}
-                <div
-                  style={{
-                    position: 'absolute',
-                    right: 20,
-                    bottom: 8,
-                    backgroundColor: 'rgba(16, 185, 129, 0.98)',
-                    color: '#121417',
-                    fontFamily: FONTS.mono,
-                    fontSize: 12,
-                    fontWeight: 900,
-                    padding: '4px 12px',
-                    borderRadius: 6,
-                  }}
-                >
-                  🎯 TARGET 1: ₹{fmtPrice(levels.target1 || 414)} [SESSION HIGH BREAKOUT]
-                </div>
-              </div>
-            )}
-
-            {/* TARGET 2 (CORRIDOR 422.50) LINE */}
-            {(phase === 4 || activeLevel?.key === 'target2') && (
-              <div
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  right: 0,
-                  bottom: `${target2Bottom}%`,
-                  height: 4.0,
-                  backgroundColor: '#22D3EE',
-                  boxShadow: '0 0 16px #22D3EE, 0 0 35px #22D3EE, 0 0 70px rgba(34, 211, 238, 0.8)',
-                  zIndex: 25,
-                  clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
-                }}
-              >
                 <div
                   style={{
                     position: 'absolute',
@@ -1491,126 +1442,91 @@ export const StockYouTubeExplainerCore = ({ manifest: propManifest, manifestPath
                     borderRadius: 6,
                   }}
                 >
-                  🎯 TARGET 2: ₹{fmtPrice(levels.target2 || 422.5)} [EXPANSION CORRIDOR ₹420-₹425]
+                  ↗ VAH: ₹{fmtPrice(levels.vah)} [PRIMARY EXPANSION TARGET]
                 </div>
               </div>
             )}
 
-            {/* 50 DEMA LINE */}
-            {(phase === 5 || activeLevel?.key === 'd50') && (
-              <div
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  right: 0,
-                  bottom: `${d50Bottom}%`,
-                  height: 3.5,
-                  backgroundColor: '#00E5FF',
-                  boxShadow: '0 0 14px rgba(0, 229, 255, 0.8)',
-                  zIndex: 24,
-                  clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
-                }}
-              >
+            {/* PHASE 5: 100 & 200 DEMA MACRO REVERSAL */}
+            {phase === 5 && (
+              <>
                 <div
                   style={{
                     position: 'absolute',
-                    right: 20,
-                    bottom: 7,
-                    backgroundColor: 'rgba(0, 229, 255, 0.95)',
-                    color: '#121417',
-                    fontFamily: FONTS.mono,
-                    fontSize: 11,
-                    fontWeight: 900,
-                    padding: '3px 10px',
-                    borderRadius: 5,
+                    left: 0,
+                    right: 0,
+                    bottom: `${d100Bottom}%`,
+                    height: 3.5,
+                    backgroundColor: '#FFB800',
+                    boxShadow: '0 0 14px rgba(255, 184, 0, 0.8)',
+                    zIndex: 24,
+                    clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
                   }}
                 >
-                  ⚔ 50 DEMA: ₹{fmtPrice(levels.d50)} [INFLECTION HURDLE]
-                </div>
-              </div>
-            )}
-
-            {/* 100 DEMA LINE */}
-            {(phase === 5 || activeLevel?.key === 'd100') && (
-              <div
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  right: 0,
-                  bottom: `${d100Bottom}%`,
-                  height: 3.5,
-                  backgroundColor: '#FFB800',
-                  boxShadow: '0 0 14px rgba(255, 184, 0, 0.8)',
-                  zIndex: 24,
-                  clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
-                }}
-              >
-                <div
-                  style={{
-                    position: 'absolute',
-                    right: 20,
-                    bottom: 7,
-                    backgroundColor: 'rgba(255, 184, 0, 0.95)',
-                    color: '#121417',
-                    fontFamily: FONTS.mono,
-                    fontSize: 11,
-                    fontWeight: 900,
-                    padding: '3px 10px',
-                    borderRadius: 5,
-                  }}
-                >
-                  100 DEMA: ₹{fmtPrice(levels.d100)} [INTERMEDIATE TARGET]
-                </div>
-              </div>
-            )}
-
-            {/* 200 DEMA LINE */}
-            {(phase === 5 || activeLevel?.key === 'd200') && (
-              <div
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  right: 0,
-                  bottom: `${d200Bottom}%`,
-                  height: 4.5,
-                  backgroundColor: '#FF3366',
-                  boxShadow: '0 0 18px #FF3366, 0 0 38px #FF3366, 0 0 80px rgba(255, 51, 102, 0.8)',
-                  zIndex: 25,
-                  clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
-                }}
-              >
-                {sweepProgress < 1 && (
                   <div
                     style={{
                       position: 'absolute',
-                      left: `${sweepProgress * 100}%`,
-                      top: '50%',
-                      transform: 'translate(-50%, -50%)',
-                      width: 18,
-                      height: 18,
-                      borderRadius: '50%',
-                      backgroundColor: '#FFFFFF',
-                      boxShadow: '0 0 20px #FFFFFF, 0 0 35px #FF3366',
+                      right: 20,
+                      bottom: 7,
+                      backgroundColor: 'rgba(255, 184, 0, 0.95)',
+                      color: '#121417',
+                      fontFamily: FONTS.mono,
+                      fontSize: 11,
+                      fontWeight: 900,
+                      padding: '3px 10px',
+                      borderRadius: 5,
                     }}
-                  />
-                )}
+                  >
+                    100 DEMA: ₹{fmtPrice(levels.d100)} [INTERMEDIATE TARGET]
+                  </div>
+                </div>
+
                 <div
                   style={{
                     position: 'absolute',
-                    right: 20,
-                    bottom: 8,
-                    backgroundColor: 'rgba(255, 51, 102, 0.98)',
-                    color: '#FFFFFF',
-                    fontFamily: FONTS.mono,
-                    fontSize: 12,
-                    fontWeight: 900,
-                    padding: '4px 12px',
-                    borderRadius: 6,
+                    left: 0,
+                    right: 0,
+                    bottom: `${d200Bottom}%`,
+                    height: 4.5,
+                    backgroundColor: '#FF3366',
+                    boxShadow: '0 0 18px #FF3366, 0 0 38px #FF3366, 0 0 80px rgba(255, 51, 102, 0.8)',
+                    zIndex: 25,
+                    clipPath: `inset(0 ${100 - sweepProgress * 100}% 0 0)`,
                   }}
                 >
-                  🚀 200 DEMA: ₹{fmtPrice(levels.d200)} [TREND REVERSAL GATEWAY]
+                  {sweepProgress < 1 && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        left: `${sweepProgress * 100}%`,
+                        top: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        width: 18,
+                        height: 18,
+                        borderRadius: '50%',
+                        backgroundColor: '#FFFFFF',
+                        boxShadow: '0 0 20px #FFFFFF, 0 0 35px #FF3366',
+                      }}
+                    />
+                  )}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      right: 20,
+                      bottom: 8,
+                      backgroundColor: 'rgba(255, 51, 102, 0.98)',
+                      color: '#FFFFFF',
+                      fontFamily: FONTS.mono,
+                      fontSize: 12,
+                      fontWeight: 900,
+                      padding: '4px 12px',
+                      borderRadius: 6,
+                    }}
+                  >
+                    🚀 200 DEMA: ₹{fmtPrice(levels.d200)} [TREND REVERSAL GATEWAY]
+                  </div>
                 </div>
-              </div>
+              </>
             )}
           </div>
         </div>
@@ -1660,16 +1576,16 @@ export const StockYouTubeExplainerCore = ({ manifest: propManifest, manifestPath
               </span>
             </div>
 
-{/* LEVEL CARDS STACK WITH SYNCHRONIZED SPOTLIGHT */}
+            {/* LEVEL CARDS STACK WITH SYNCHRONIZED SPOTLIGHT */}
 
             {/* 1. RESISTANCE & TARGETS (ABOVE CMP) */}
-            <div style={{ marginBottom: 10 }}>
+            <div style={{ marginBottom: 12 }}>
               <div
                 style={{
                   fontFamily: FONTS.mono,
                   fontSize: 11,
                   fontWeight: 800,
-                  color: COLORS.bullish,
+                  color: COLORS.breaking,
                   letterSpacing: '0.08em',
                   marginBottom: 6,
                 }}
@@ -1677,58 +1593,106 @@ export const StockYouTubeExplainerCore = ({ manifest: propManifest, manifestPath
                 ▲ RESISTANCE & TARGETS (ABOVE CMP)
               </div>
 
-              {/* Target 2 Card */}
+              {/* DEMA 200 Card */}
               <div
                 style={{
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  padding: '6px 12px',
+                  padding: '7px 12px',
                   borderRadius: 6,
-                  backgroundColor: activeLevel?.key === 'target2' ? 'rgba(34, 211, 238, 0.32)' : 'rgba(244, 241, 232, 0.03)',
-                  border: activeLevel?.key === 'target2' ? '2px solid #22D3EE' : '1px solid rgba(244, 241, 232, 0.06)',
-                  boxShadow: activeLevel?.key === 'target2' ? '0 0 18px rgba(34, 211, 238, 0.5)' : 'none',
-                  transform: activeLevel?.key === 'target2' ? 'scale(1.04)' : 'scale(1.0)',
-                  opacity: phase === 0 || activeLevel?.key === 'target2' ? 1.0 : 0.35,
-                  marginBottom: 4,
+                  backgroundColor: phase === 5 ? 'rgba(239, 68, 68, 0.28)' : 'rgba(244, 241, 232, 0.03)',
+                  border: phase === 5 ? '1.5px solid #EF4444' : '1px solid rgba(244, 241, 232, 0.06)',
+                  boxShadow: phase === 5 ? '0 0 16px rgba(239, 68, 68, 0.4)' : 'none',
+                  transform: phase === 5 ? 'scale(1.03)' : 'scale(1.0)',
+                  opacity: phase === 0 || phase === 5 ? 1.0 : 0.32,
+                  marginBottom: 5,
                   transition: 'all 0.15s ease',
                 }}
               >
                 <span style={{ fontFamily: FONTS.mono, fontSize: 12, fontWeight: 700, color: '#FFFFFF' }}>
-                  🎯 Target 2 (Corridor)
+                  DEMA 200 (Macro)
                 </span>
-                <span style={{ fontFamily: FONTS.mono, fontSize: 13, fontWeight: 900, color: '#22D3EE' }}>
-                  ₹{fmtPrice(levels.target2 || 422.5)}
+                <span style={{ fontFamily: FONTS.mono, fontSize: 13, fontWeight: 900, color: '#EF4444' }}>
+                  ₹{fmtPrice(levels.d200)}
                 </span>
               </div>
 
-              {/* Target 1 Card */}
+              {/* DEMA 100 Card */}
               <div
                 style={{
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  padding: '6px 12px',
+                  padding: '7px 12px',
                   borderRadius: 6,
-                  backgroundColor: activeLevel?.key === 'target1' ? 'rgba(16, 185, 129, 0.32)' : 'rgba(244, 241, 232, 0.03)',
-                  border: activeLevel?.key === 'target1' ? '2px solid #10B981' : '1px solid rgba(244, 241, 232, 0.06)',
-                  boxShadow: activeLevel?.key === 'target1' ? '0 0 18px rgba(16, 185, 129, 0.5)' : 'none',
-                  transform: activeLevel?.key === 'target1' ? 'scale(1.04)' : 'scale(1.0)',
-                  opacity: phase === 0 || activeLevel?.key === 'target1' ? 1.0 : 0.35,
-                  marginBottom: 4,
+                  backgroundColor: phase === 5 ? 'rgba(251, 113, 133, 0.28)' : 'rgba(244, 241, 232, 0.03)',
+                  border: phase === 5 ? '1.5px solid #FB7185' : '1px solid rgba(244, 241, 232, 0.06)',
+                  transform: phase === 5 ? 'scale(1.03)' : 'scale(1.0)',
+                  opacity: phase === 0 || phase === 5 ? 1.0 : 0.32,
+                  marginBottom: 5,
                   transition: 'all 0.15s ease',
                 }}
               >
                 <span style={{ fontFamily: FONTS.mono, fontSize: 12, fontWeight: 700, color: '#FFFFFF' }}>
-                  🎯 Target 1 (Session High)
+                  DEMA 100 (Target)
                 </span>
-                <span style={{ fontFamily: FONTS.mono, fontSize: 13, fontWeight: 900, color: '#10B981' }}>
-                  ₹{fmtPrice(levels.target1 || 414.0)}
+                <span style={{ fontFamily: FONTS.mono, fontSize: 13, fontWeight: 900, color: '#FB7185' }}>
+                  ₹{fmtPrice(levels.d100)}
+                </span>
+              </div>
+
+              {/* VAH Card */}
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '7px 12px',
+                  borderRadius: 6,
+                  backgroundColor: phase === 4 ? 'rgba(34, 211, 238, 0.30)' : 'rgba(244, 241, 232, 0.03)',
+                  border: phase === 4 ? '2px solid #22D3EE' : '1px solid rgba(244, 241, 232, 0.06)',
+                  boxShadow: phase === 4 ? '0 0 20px rgba(34, 211, 238, 0.45)' : 'none',
+                  transform: phase === 4 ? 'scale(1.04)' : 'scale(1.0)',
+                  opacity: phase === 0 || phase === 4 ? 1.0 : 0.32,
+                  marginBottom: 5,
+                  transition: 'all 0.15s ease',
+                }}
+              >
+                <span style={{ fontFamily: FONTS.mono, fontSize: 12, fontWeight: 800, color: '#22D3EE' }}>
+                  ↗ VAH Corridor
+                </span>
+                <span style={{ fontFamily: FONTS.mono, fontSize: 13, fontWeight: 900, color: '#22D3EE' }}>
+                  ₹{fmtPrice(levels.vah)}
+                </span>
+              </div>
+
+              {/* DEMA 50 Card */}
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '7px 12px',
+                  borderRadius: 6,
+                  backgroundColor: phase === 3 ? 'rgba(242, 207, 29, 0.30)' : 'rgba(244, 241, 232, 0.03)',
+                  border: phase === 3 ? '2px solid #F2CF1D' : '1px solid rgba(244, 241, 232, 0.06)',
+                  boxShadow: phase === 3 ? '0 0 20px rgba(242, 207, 29, 0.45)' : 'none',
+                  transform: phase === 3 ? 'scale(1.04)' : 'scale(1.0)',
+                  opacity: phase === 0 || phase === 3 ? 1.0 : 0.32,
+                  transition: 'all 0.15s ease',
+                }}
+              >
+                <span style={{ fontFamily: FONTS.mono, fontSize: 12, fontWeight: 800, color: '#F2CF1D' }}>
+                  ⚔ DEMA 50 (Hurdle)
+                </span>
+                <span style={{ fontFamily: FONTS.mono, fontSize: 13, fontWeight: 900, color: '#F2CF1D' }}>
+                  ₹{fmtPrice(levels.d50)}
                 </span>
               </div>
             </div>
 
-                        {/* 2. ACTIVE PIVOT (CMP) - ALWAYS PROMINENT */}
+            {/* 2. ACTIVE PIVOT (CMP) - ALWAYS PROMINENT */}
             <div
               style={{
                 backgroundColor: 'rgba(16, 185, 129, 0.20)',
