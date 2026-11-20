@@ -122,23 +122,58 @@ def create_16x9_viral_thumbnail(
 
     # 5. Stock Badges Matrix
     if not stock_pills:
-        stock_pills = [
-            ("FIRSTCRY", "+12.85%", (16, 185, 129)),
-            ("TECHM", "50 DEMA TEST", (59, 130, 246)),
-            ("ONGC", "SUPPORT LEVEL", (245, 158, 11)),
-            ("TATAPOWER", "POC DEFENSE", (239, 68, 68)),
-        ]
+        # Try loading dynamically from dema_suite_20261113.json
+        suite_json = Path(r"C:\VideoGen\web motion\claude\Thales\modi-remotion\public\data\dema_suite_20261113.json")
+        if suite_json.exists():
+            try:
+                with open(suite_json, "r", encoding="utf-8") as jf:
+                    jdata = json.load(jf)
+                    dds = jdata.get("deep_dive_stocks", {})
+                    # Pick 4 primary stocks
+                    keys = [k for k in ["lici", "shadowfax", "cub", "dixon", "pwl", "urbanco", "heromotoco", "ltfoods"] if k in dds]
+                    seen = set()
+                    pills = []
+                    for k in keys:
+                        s = dds[k]
+                        sym = s.get("symbol", k.upper())
+                        if sym in seen:
+                            continue
+                        seen.add(sym)
+                        pct = s.get("pct", 0)
+                        pct_str = f"+{pct:.2f}%" if pct > 0 else f"{pct:.2f}%"
+                        col = (16, 185, 129) if pct >= 0 else (239, 68, 68)
+                        pills.append((sym, pct_str, col))
+                        if len(pills) == 4:
+                            break
+                    if len(pills) == 4:
+                        stock_pills = pills
+            except Exception as e:
+                print(f"Warning: could not auto-load pills from JSON: {e}")
+
+        if not stock_pills:
+            stock_pills = [
+                ("LICI", "+1.63% VAH RUN", (16, 185, 129)),
+                ("SHADOWFAX", "-2.46% DEMA TEST", (239, 68, 68)),
+                ("CUB", "+6.25% DAY HIGH", (16, 185, 129)),
+                ("DIXON", "+0.51% VAH SHELF", (59, 130, 246)),
+            ]
 
     by = 540
     card_w = 660
     for sym, val, col in stock_pills:
-        draw.rounded_rectangle([tx, by, tx + card_w, by + 86], radius=14, fill=(27, 30, 35, 230), outline=(55, 65, 81, 255), width=2)
+        col = tuple(col)
+        draw.rounded_rectangle([tx, by, tx + card_w, by + 86], radius=14, fill=(27, 30, 35, 255), outline=(55, 65, 81, 255), width=2)
         draw.text((tx + 24, by + 22), sym, font=fonts["pill"], fill=(255, 255, 255, 255))
-        val_w = int(draw.textlength(val, font=fonts["badge"])) + 32
+        val_w = int(draw.textlength(val, font=fonts["badge"])) + 36
+        badge_box_w = max(val_w, 240)
         vx2 = tx + card_w - 18
-        vx1 = vx2 - max(val_w, 200)
-        draw.rounded_rectangle([vx1, by + 16, vx2, by + 70], radius=10, fill=(col[0], col[1], col[2], 50), outline=col, width=2)
-        draw.text((vx1 + 16, by + 24), val, font=fonts["badge"], fill=col)
+        vx1 = vx2 - badge_box_w
+        badge_bg = (int(col[0] * 0.25), int(col[1] * 0.25), int(col[2] * 0.25), 255)
+        draw.rounded_rectangle([vx1, by + 16, vx2, by + 70], radius=10, fill=badge_bg, outline=col, width=2)
+        
+        tw = int(draw.textlength(val, font=fonts["badge"]))
+        tx_pos = vx1 + (badge_box_w - tw) // 2
+        draw.text((tx_pos, by + 22), val, font=fonts["badge"], fill=(255, 255, 255, 255))
         by += 105
 
     # 6. Bottom Strap Notice
@@ -214,9 +249,17 @@ if __name__ == "__main__":
     parser.add_argument("--sub", type=str, default="136M Volume Breakout! बड़ा उलटफेर?")
     parser.add_argument("--ticker", type=str, default="NIFTY 50")
     parser.add_argument("--chart", type=str, default=None)
+    parser.add_argument("--pills", type=str, default=None)
     args = parser.parse_args()
 
+    pills_data = None
+    if args.pills:
+        try:
+            pills_data = json.loads(args.pills)
+        except Exception:
+            pills_data = None
+
     if args.format == "16x9":
-        create_16x9_viral_thumbnail(args.out, args.headline, args.sub, chart_path=args.chart)
+        create_16x9_viral_thumbnail(args.out, args.headline, args.sub, chart_path=args.chart, stock_pills=pills_data)
     else:
         create_9x16_reel_thumbnail(args.out, args.headline, args.sub, args.ticker, chart_path=args.chart)

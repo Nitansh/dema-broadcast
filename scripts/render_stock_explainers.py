@@ -20,10 +20,21 @@ import argparse
 import json
 import os
 import shutil
+import socket
 import subprocess
 import sys
 import time
 from pathlib import Path
+
+def get_free_port(start=3600) -> int:
+    for p in range(start, start + 100):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            try:
+                s.bind(('127.0.0.1', p))
+                return p
+            except OSError:
+                continue
+    return start
 
 def find_workspace(start_dir: Path) -> Path:
     for p in [start_dir] + list(start_dir.parents):
@@ -103,8 +114,9 @@ def render_format(
     final_mp4: Path,
     audio_file: Path,
     concurrency: int = 8,
+    port: int = 3500,
 ):
-    print(f"\n--- [REMOTION RENDER] {comp_id} -> {raw_mp4.name} ---")
+    print(f"\n--- [REMOTION RENDER] {comp_id} -> {raw_mp4.name} (Port: {port}) ---")
     raw_mp4.parent.mkdir(parents=True, exist_ok=True)
     final_mp4.parent.mkdir(parents=True, exist_ok=True)
 
@@ -115,6 +127,7 @@ def render_format(
         str(raw_mp4),
         f"--concurrency={concurrency}",
         "--gl=angle",
+        f"--port={port}",
         f"--browser-executable={EDGE}",
         f"--ffmpeg-executable={FFMPEG}",
         "--overwrite",
@@ -126,6 +139,7 @@ def render_format(
     subprocess.run(cmd, cwd=str(REMOTION_DIR), check=True)
     t_remotion = time.time() - t0
     print(f"[REMOTION COMPLETE] Rendered in {t_remotion:.1f}s")
+    time.sleep(5)
 
     print(f"\n--- [FFMPEG AV MUX] Muxing master audio {audio_file.name} ---")
     mux_cmd = [
@@ -141,6 +155,7 @@ def render_format(
         str(final_mp4),
     ]
     subprocess.run(mux_cmd, check=True)
+    time.sleep(5)
 
     info = ffprobe_info(final_mp4)
     print(f"[FINAL MP4 CREATED] {final_mp4.name}:")
@@ -183,6 +198,16 @@ def render_stock(
         "waareeener": "WaareeEnerExplainer",
         "waaree": "WaareeEnerExplainer",
         "nhpc": "NhpcExplainer",
+        "titan": "TitanExplainer",
+        "hindunilvr": "HindunilvrExplainer",
+        "hul": "HindunilvrExplainer",
+        "maruti": "MarutiExplainer",
+        "lenskart": "LenskartExplainer",
+        "lenskartsolutions": "LenskartExplainer",
+        "geship": "GEShipExplainer",
+        "greateastern": "GEShipExplainer",
+        "lici": "LiciExplainer",
+        "lic": "LiciExplainer",
     }
     dedicated_16x9 = {
         "cumminsind": "CumminsYouTubeExplainer16x9",
@@ -199,6 +224,16 @@ def render_stock(
         "goldbees": "GoldBeesYouTubeExplainer16x9",
         "bharatforg": "BharatForgYouTubeExplainer16x9",
         "bharatforge": "BharatForgYouTubeExplainer16x9",
+        "titan": "TitanYouTubeExplainer16x9",
+        "hindunilvr": "HindunilvrYouTubeExplainer16x9",
+        "hul": "HindunilvrYouTubeExplainer16x9",
+        "maruti": "MarutiYouTubeExplainer16x9",
+        "lenskart": "LenskartYouTubeExplainer16x9",
+        "lenskartsolutions": "LenskartYouTubeExplainer16x9",
+        "geship": "GEShipYouTubeExplainer16x9",
+        "greateastern": "GEShipYouTubeExplainer16x9",
+        "lici": "LiciYouTubeExplainer16x9",
+        "lic": "LiciYouTubeExplainer16x9",
     }
 
     props_json = json.dumps({"manifestPath": f"data/{sym}_explainer_manifest.json"})
@@ -220,6 +255,7 @@ def render_stock(
             final_mp4=final_9x16,
             audio_file=audio_file,
             concurrency=concurrency,
+            port=get_free_port(3600),
         )
         shutil.copy2(final_9x16, root_copy_9x16)
 
@@ -240,6 +276,7 @@ def render_stock(
             final_mp4=final_16x9,
             audio_file=audio_file,
             concurrency=concurrency,
+            port=get_free_port(3880),
         )
         shutil.copy2(final_16x9, root_copy_16x9)
 

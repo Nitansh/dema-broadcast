@@ -35,7 +35,7 @@ edge_tts.communicate._SSL_CTX = ctx
 
 SR = 48000
 FPS = 30
-DEFAULT_VOICE = "en-IN-PrabhatNeural"
+DEFAULT_VOICE = "hi-IN-SwaraNeural"
 
 def find_workspace(start_dir: Path) -> Path:
     for p in [start_dir] + list(start_dir.parents):
@@ -126,25 +126,25 @@ def extract_stock_levels(stock_info: dict) -> dict:
         "symbol": symbol,
         "name": name,
         "cmp": cmp_val,
-        "cmp_str": f"{format_rupees(cmp_val)} rupees",
+        "cmp_str": f"{format_rupees(cmp_val)} रुपये",
         "vol_str": vol_str,
         "oi_str": oi_str,
         "val": val,
-        "val_str": f"{format_rupees(val)} rupees",
+        "val_str": f"{format_rupees(val)} रुपये",
         "poc": poc,
-        "poc_str": f"{format_rupees(poc)} rupees",
+        "poc_str": f"{format_rupees(poc)} रुपये",
         "d20": d20,
-        "d20_str": f"{format_rupees(d20)} rupees",
+        "d20_str": f"{format_rupees(d20)} रुपये",
         "d50": d50,
-        "d50_str": f"{format_rupees(d50)} rupees",
+        "d50_str": f"{format_rupees(d50)} रुपये",
         "d100": d100,
-        "d100_str": f"{format_rupees(d100)} rupees",
+        "d100_str": f"{format_rupees(d100)} रुपये",
         "d200": d200,
-        "d200_str": f"{format_rupees(d200)} rupees",
+        "d200_str": f"{format_rupees(d200)} रुपये",
         "vah": vah,
-        "vah_str": f"{format_rupees(vah)} rupees",
+        "vah_str": f"{format_rupees(vah)} रुपये",
         "hurdle_name": hurdle_name,
-        "hurdle_str": f"{format_rupees(hurdle_lvl)} rupees",
+        "hurdle_str": f"{format_rupees(hurdle_lvl)} रुपये",
         "image": image_path,
     }
 
@@ -254,12 +254,12 @@ def generate_6_beat_script(info: dict) -> list:
             {
                 "id": "c4_vah",
                 "phase": 4,
-                "text": f"Once the moving average cluster is cleared, the primary upside target is the heavy volume Point of Control and Value Area High cluster at {vah_str}.",
+                "text": f"Once the moving average cluster is cleared, the primary upside target is the heavy volume Point of Control at {poc_str}, followed by Value Area High at {vah_str}.",
             },
             {
                 "id": "c5_macro",
                 "phase": 5,
-                "text": f"Beyond 1,212 rupees, extended macro resistance levels are positioned at the 100 DEMA at {d100_str} and the 200 DEMA at {d200_str}. Manage risk tightly against the {val_str} floor.",
+                "text": f"Beyond Value Area High, extended macro resistance levels are positioned at the 100 DEMA at {d100_str} and the trend reversal 200 DEMA at {d200_str}. Manage risk tightly against the {val_str} floor.",
             },
         ]
     elif sym == "GOLDBEES":
@@ -394,38 +394,203 @@ def generate_6_beat_script(info: dict) -> list:
                 "text": f"Sustained volume expansion beyond 79.50 unlocks the ultimate swing target at Value Area High {vah_str} and the 84.50 rejection peak. Defend the {val_str} floor, manage risk, confirm with volume.",
             },
         ]
+    elif sym in ["HINDUNILVR", "HUL", "HINDUSTANUNILEVER"]:
+        return [
+            {
+                "id": "c0_master_rule",
+                "phase": 0,
+                "text": f"Here is the golden trading rule for {name} at current market price {cmp_str}. Any level below current market price serves as dynamic support. Any level above serves as overhead resistance and upward targets.",
+            },
+            {
+                "id": "c1_val_poc",
+                "phase": 1,
+                "text": f"During the previous corrective phase, institutional buyers defended Value Area Low at {val_str}, sparking a powerful accumulation rally straight through Monthly Point of Control at {poc_str}. Heavy accumulation volume of {vol_str} shares confirmed this unbreakable accumulation base.",
+            },
+            {
+                "id": "c2_dema20",
+                "phase": 2,
+                "text": f"Expanding bullish momentum pushed Hindustan Unilever decisively above the 20 DEMA at {d20_str}. With the stock surging over 2.5 percent to close at {cmp_str}, the 20 DEMA has officially flipped into rock-solid dynamic support.",
+            },
+            {
+                "id": "c3_dema50",
+                "phase": 3,
+                "text": f"Providing strong structural cushion below, the 200 DEMA stands at {d200_str}, the 50 DEMA at {info['d50_str']}, and 100 DEMA at {d100_str}. With all major moving averages stacked firmly below price, the medium term uptrend structure is fully confirmed.",
+            },
+            {
+                "id": "c4_vah",
+                "phase": 4,
+                "text": f"Directly overhead, the primary upside resistance target is the institutional Buy Price supply zone at {vah_str}. Because price is trading just 3.5 percent below this ceiling, a continuation push unlocks the path towards 2,118 rupees.",
+            },
+            {
+                "id": "c5_macro",
+                "phase": 5,
+                "text": f"With the Relative Strength Index at 69.5 and open interest sentiment standing at 85 percent bullish, buyers maintain aggressive control. Trail risk tightly along the rising {d20_str} support. Trade with the levels, confirm with volume.",
+            },
+        ]
+    elif sym in ["MARUTI", "MARUTISUZUKI"]:
+        return [
+            {
+                "id": "c0_master_rule",
+                "phase": 0,
+                "text": f"Here is the golden trading rule for {name} at current market price {cmp_str}. Any level below current market price serves as dynamic support. Any level above serves as overhead resistance and upward targets.",
+            },
+            {
+                "id": "c1_val_poc",
+                "phase": 1,
+                "text": f"Tracing the macro structure, Maruti formed an extensive accumulation base anchored at Value Area Low {val_str}. Buyers absorbed heavy supply right at the Monthly Point of Control at {poc_str}, creating the launchpad for today's explosive breakout.",
+            },
+            {
+                "id": "c2_dema20",
+                "phase": 2,
+                "text": f"In today's historic session, massive institutional buying ignited a 792 rupee expansion, surging over 6.2 percent to close at {cmp_str}. This expansion blew decisively past the 20 DEMA at {d20_str}, turning it into rock-solid dynamic support.",
+            },
+            {
+                "id": "c3_dema50",
+                "phase": 3,
+                "text": f"Crucially, today's rally punched straight through Value Area High at {vah_str} with 909,000 shares traded. Because price closed decisively above Value Area High, this former resistance ceiling has now flipped into a major support zone.",
+            },
+            {
+                "id": "c4_vah",
+                "phase": 4,
+                "text": f"Providing deep structural cushion below, the 200 DEMA stands at {d200_str}, the 50 DEMA at {info['d50_str']}, and 100 DEMA at {d100_str}. With all four major moving averages stacked below price, the broader trend is firmly bullish.",
+            },
+            {
+                "id": "c5_macro",
+                "phase": 5,
+                "text": f"With Value Area High cleared and bears trapped, Maruti opens the path toward the psychological 13,800 to 14,000 rupee target corridor. Maintain trailing stops along the rising {vah_str} support floor. Trade with the levels, confirm with volume.",
+            },
+        ]
+    elif sym in ["LENSKART", "LENSKARTSOLUTIONS"]:
+        return [
+            {
+                "id": "c0_master_rule",
+                "phase": 0,
+                "text": f"Here is the golden trading rule for {name} at current market price {cmp_str}. Any level below current market price serves as dynamic support. Any level above serves as overhead resistance and upward targets.",
+            },
+            {
+                "id": "c1_val_poc",
+                "phase": 1,
+                "text": f"Tracing the market structure, Lenskart established an extensive demand floor anchored at Value Area Low {val_str}. Institutional buyers absorbed heavy supply right at the Monthly Point of Control at {poc_str}, creating a powerful accumulation base.",
+            },
+            {
+                "id": "c2_dema20",
+                "phase": 2,
+                "text": f"Surging off the Point of Control launchpad with 3.77 million shares traded, expanding bullish momentum pushed Lenskart decisively above the 20 DEMA at {d20_str}, officially flipping it into immediate dynamic support.",
+            },
+            {
+                "id": "c3_dema50",
+                "phase": 3,
+                "text": f"Crucially, today's rally punched straight through Value Area High at {vah_str} to close at {cmp_str}. Because price closed decisively above Value Area High, this former supply ceiling has now flipped into a major support buffer.",
+            },
+            {
+                "id": "c4_vah",
+                "phase": 4,
+                "text": f"Providing deep structural cushion below, the 50 DEMA stands at {info['d50_str']}, the 100 DEMA at {d100_str}, and the 200 DEMA at {d200_str}. With all major moving averages stacked firmly below price, the trend structure is decisively bullish.",
+            },
+            {
+                "id": "c5_macro",
+                "phase": 5,
+                "text": f"With open interest sentiment standing at 85 percent bullish, Lenskart opens upside target pathways toward 760 and the 780 rupee swing corridor. Maintain trailing stops along the rising {d20_str} 20 DEMA support floor. Trade with the levels, confirm with volume.",
+            },
+        ]
+    elif sym in ["GESHIP", "GREAT_EASTERN", "GREATEASTERN"]:
+        return [
+            {
+                "id": "c0_master_rule",
+                "phase": 0,
+                "text": f"Here is the golden trading rule for {name} at current market price {cmp_str}. Any level below current price becomes support. Any level above becomes resistance and upward targets.",
+            },
+            {
+                "id": "c1_val_poc",
+                "phase": 1,
+                "text": f"The Great Eastern Shipping Company exhibits confirmed structural strength, holding firmly above its key volume profile nodes. Trading volume of {vol_str} shares is defending the massive Point of Control support shelf at {poc_str}.",
+            },
+            {
+                "id": "c2_dema20",
+                "phase": 2,
+                "text": f"Immediate dynamic support is anchored by the 20 DEMA at {d20_str}, tightly confluent with the 50 DEMA at {info['d50_str']}. As long as GESHIP trades above this moving average cluster, short-term momentum favors the bulls.",
+            },
+            {
+                "id": "c3_dema50",
+                "phase": 3,
+                "text": f"Just below, institutional defense is reinforced by the dual 100 DEMA at {d100_str} and 200 DEMA at {d200_str}. This establishes a rock-solid dual support cushion between 1,511 and 1,527 rupees.",
+            },
+            {
+                "id": "c4_vah",
+                "phase": 4,
+                "text": f"Overhead, the immediate upside hurdle is Value Area High at {vah_str}. A decisive daily breakout above 1,555 rupees clears the local supply zone and targets extended swing highs toward 1,600 and 1,620 rupees.",
+            },
+            {
+                "id": "c5_macro",
+                "phase": 5,
+                "text": f"With price sustaining above all four major moving averages, the structural trend remains bullish with 85 percent long buildup sentiment. Manage risk against the {poc_str} Point of Control floor. Trade with the levels, confirm with volume.",
+            },
+        ]
+    elif sym in ["LICI", "LIC"]:
+        return [
+            {
+                "id": "c0_master_rule",
+                "phase": 0,
+                "text": f"Life Insurance Corporation of India यानी LIC के लिए golden trading rule समझिए। Current market price {cmp_str} के नीचे के सभी लेवल्स dynamic support बन जाते हैं, और ऊपर के लेवल्स overhead resistance और upside targets।",
+            },
+            {
+                "id": "c1_val_poc",
+                "phase": 1,
+                "text": f"निचले consolidation base पर Monthly Point of Control {poc_str} और Value Area Low {val_str} पर institutional buyers ने solid accumulation दिखाई। {vol_str} शेयर्स के heavy volume ने इस demand zone को मजबूत floor confirm कर दिया।",
+            },
+            {
+                "id": "c2_dema20",
+                "phase": 2,
+                "text": f"मोमेंटम बढ़ते ही LIC ने 20 DEMA को {d20_str} पर decisively reclaim कर लिया। अब यह 20 DEMA overhead resistance से flip होकर पहला strong dynamic support बन चुका है।",
+            },
+            {
+                "id": "c3_dema50",
+                "phase": 3,
+                "text": f"आज LIC ने Value Area High यानी {vah_str} के ऊपर solid breakout दिया है। {vah_str} के ऊपर sustain करना institutional long buildup को confirm करता है।",
+            },
+            {
+                "id": "c4_vah",
+                "phase": 4,
+                "text": f"Value Area High अब dynamic support बन चुका है। इसके ऊपर टिकने से 414 रुपये का session high और उसके बाद 420 से 425 रुपये का primary target corridor open हो जाता है।",
+            },
+            {
+                "id": "c5_macro",
+                "phase": 5,
+                "text": f"चार्ट पर सभी major averages—50 DEMA {info['d50_str']}, 100 DEMA {d100_str}, और 200 DEMA {d200_str}—price के नीचे perfectly aligned हैं। ट्रेंड bullish है, 20 DEMA के साथ trailing stop maintain करें।",
+            },
+        ]
 
-    # Universal Fallback Script
+    # Universal Fallback Script (Hinglish)
     return [
         {
             "id": "c0_master_rule",
             "phase": 0,
-            "text": f"Here is the golden trading rule for {name} at current market price {cmp_str}. Any level below current price becomes support. Any level above becomes resistance and upward targets.",
+            "text": f"{name} के लिए golden trading rule समझिए। Current market price {cmp_str} के नीचे के सभी लेवल्स dynamic support बन जाते हैं, और ऊपर के लेवल्स overhead resistance और upside targets।",
         },
         {
             "id": "c1_val_poc",
             "phase": 1,
-            "text": f"During the cascade down, price breached every short-term average until hitting the Monthly Point of Control at {poc_str}, right above Value Area Low {val_str}. Heavy institutional buy volume of {vol_str} shares confirmed the accumulation floor.",
+            "text": f"Consolidation base के दौरान institutional buyers ने Value Area Low {val_str} और Monthly Point of Control {poc_str} पर strong demand दिखाई। {vol_str} शेयर्स के heavy volume ने accumulation floor confirm कर दिया।",
         },
         {
             "id": "c2_dema20",
             "phase": 2,
-            "text": f"As price rallied up from Point of Control, expanding buy volume and fresh Open Interest pushed {name} above the 20 DEMA at {d20_str}, officially flipping it from overhead resistance into dynamic support.",
+            "text": f"Point of Control से bounce करते ही expanding volume ने price को 20 DEMA {d20_str} के ऊपर push किया, जिससे यह resistance से dynamic support में flip हो गया।",
         },
         {
             "id": "c3_dema50",
             "phase": 3,
-            "text": f"Today, {name} is testing the key inflection threshold at {hurdle_name} around {hurdle_str}. A decisive daily close above turns this hurdle into fresh support, while rejection keeps it as immediate resistance.",
+            "text": f"आज {name} अपने critical hurdle {hurdle_name} यानी {hurdle_str} को test कर रहा है। इसके ऊपर decisive close fresh support build करेगा।",
         },
         {
             "id": "c4_vah",
             "phase": 4,
-            "text": f"Clearing this inflection hurdle unlocks the primary upside target: Value Area High at {vah_str}. Because current price is below VAH, it stands as the major overhead resistance ceiling for this rally.",
+            "text": f"इस hurdle के clear होते ही primary upside target Value Area High {vah_str} unlock हो जाता है, जो immediate supply corridor है।",
         },
         {
             "id": "c5_macro",
             "phase": 5,
-            "text": f"If buy volume and Open Interest sustain momentum, the next macro resistance targets are the 100 DEMA at {d100_str} and the trend-reversal 200 DEMA at {d200_str}. Trade with the levels, confirm with volume.",
+            "text": f"अगर buy volume और open interest sustain करते हैं, तो अगले macro targets 100 DEMA {d100_str} और 200 DEMA {d200_str} रहेंगे। Levels के साथ trade करें, volume से confirm करें।",
         },
     ]
 
@@ -824,6 +989,159 @@ def get_strap_config(info: dict) -> dict:
                 "rightSource": "TARGET ₹82.40 - ₹84.50",
             },
         }
+    elif sym in ["HINDUNILVR", "HUL", "HINDUSTANUNILEVER"]:
+        return {
+            "0": {
+                "tabLabel": "CORE TRADING LAW",
+                "tabBg": "#F2CF1D",
+                "tabColor": "#0C0E12",
+                "contextChip": f"NSE · {info['symbol']}",
+                "headline": "BELOW CMP = SUPPORT | ABOVE CMP = TARGET & RESISTANCE",
+                "rightSource": f"CMP ₹{info['cmp']:.2f}",
+            },
+            "1": {
+                "tabLabel": "POC ACCUMULATION",
+                "tabBg": "#FF4D4D",
+                "tabColor": "#0C0E12",
+                "contextChip": "908K VOL SHELF",
+                "headline": f"SURGE FROM VAL ₹{info['val']:.2f} · ACCUMULATION AT POC ₹{info['poc']:.2f}",
+                "rightSource": "POC ACCUMULATION",
+            },
+            "2": {
+                "tabLabel": "20 DEMA BREAKOUT",
+                "tabBg": "#10B981",
+                "tabColor": "#0C0E12",
+                "contextChip": "+2.56% SURGE",
+                "headline": f"SURGING DECISIVELY ABOVE 20 DEMA (₹{info['d20']:.2f}) · RECLAIMED SUPPORT",
+                "rightSource": "DYNAMIC SUPPORT",
+            },
+            "3": {
+                "tabLabel": "STRUCTURAL BASE",
+                "tabBg": "#00E5FF",
+                "tabColor": "#0C0E12",
+                "contextChip": "50 & 200 DEMA",
+                "headline": f"200 DEMA ₹{info['d200']:.2f} & 50 DEMA ₹{info['d50']:.2f} PROVIDE SOLID BASE",
+                "rightSource": "STRUCTURAL FLOOR",
+            },
+            "4": {
+                "tabLabel": "₹2,118 TARGET",
+                "tabBg": "#22D3EE",
+                "tabColor": "#0C0E12",
+                "contextChip": "PRIMARY TARGET",
+                "headline": f"CLEARING ₹2,050 DAY HIGH UNLOCKS BUY PRICE RESISTANCE ₹{info['vah']:.2f}",
+                "rightSource": f"TARGET ₹{info['vah']:.2f}",
+            },
+            "5": {
+                "tabLabel": "85% BULLISH OI",
+                "tabBg": "#FFB800",
+                "tabColor": "#0C0E12",
+                "contextChip": "RSI 69.5 · 85% BULLISH",
+                "headline": f"RSI 69.5 EXPANSION · TRAIL ALONG 20 DEMA ₹{info['d20']:.2f} SUPPORT",
+                "rightSource": "BULLISH BIAS",
+            },
+        }
+    elif sym in ["LENSKART", "LENSKARTSOLUTIONS"]:
+        return {
+            "0": {
+                "tabLabel": "CORE TRADING LAW",
+                "tabBg": "#F2CF1D",
+                "tabColor": "#0C0E12",
+                "contextChip": f"NSE · {info['symbol']}",
+                "headline": "BELOW CMP = SUPPORT | ABOVE CMP = TARGET & RESISTANCE",
+                "rightSource": f"CMP ₹{info['cmp']:.2f}",
+            },
+            "1": {
+                "tabLabel": "POC ACCUMULATION BASE",
+                "tabBg": "#FF4D4D",
+                "tabColor": "#0C0E12",
+                "contextChip": "3.77M VOL SHELF",
+                "headline": f"DEMAND BASE AT VAL ₹{info['val']:.2f} · ACCUMULATION AT POC ₹{info['poc']:.2f}",
+                "rightSource": "POC ACCUMULATION",
+            },
+            "2": {
+                "tabLabel": "20 DEMA RECLAIMED",
+                "tabBg": "#10B981",
+                "tabColor": "#0C0E12",
+                "contextChip": "+0.92% EXPANSION",
+                "headline": f"RECLAIMED 20 DEMA (₹{info['d20']:.2f}) · FLIPPED INTO DYNAMIC SUPPORT",
+                "rightSource": "DYNAMIC SUPPORT",
+            },
+            "3": {
+                "tabLabel": "VAH BREAKOUT",
+                "tabBg": "#00E5FF",
+                "tabColor": "#0C0E12",
+                "contextChip": "SUPPLY CLEARED",
+                "headline": f"DECISIVE BREAKOUT OVER VALUE AREA HIGH ₹{info['vah']:.2f} · FLIPPED TO SUPPORT",
+                "rightSource": "VAH CLEARED",
+            },
+            "4": {
+                "tabLabel": "DEMA STRUCTURAL BASE",
+                "tabBg": "#22D3EE",
+                "tabColor": "#0C0E12",
+                "contextChip": "50, 100 & 200 DEMA",
+                "headline": f"50 DEMA ₹{info['d50']:.2f}, 100 DEMA ₹{info['d100']:.2f} & 200 DEMA ₹{info['d200']:.2f}",
+                "rightSource": "STRUCTURAL CUSHION",
+            },
+            "5": {
+                "tabLabel": "85% BULLISH TARGETS",
+                "tabBg": "#FFB800",
+                "tabColor": "#0C0E12",
+                "contextChip": "85% BULLISH OI",
+                "headline": f"85% BULLISH OPEN INTEREST · UPSIDE TARGET CORRIDOR ₹760 - ₹780",
+                "rightSource": "TARGET ₹760 - ₹780",
+            },
+        }
+    elif sym in ["GESHIP", "GREAT_EASTERN", "GREATEASTERN"]:
+        return {
+            "0": {
+                "tabLabel": "CORE TRADING LAW",
+                "tabBg": "#F2CF1D",
+                "tabColor": "#0C0E12",
+                "contextChip": f"NSE · {info['symbol']}",
+                "headline": "BELOW CMP = SUPPORT | ABOVE CMP = TARGET & RESISTANCE",
+                "rightSource": f"CMP ₹{info['cmp']:.2f}",
+            },
+            "1": {
+                "tabLabel": "POC SUPPORT FLOOR",
+                "tabBg": "#10B981",
+                "tabColor": "#0C0E12",
+                "contextChip": "601.58K VOL",
+                "headline": f"DEMAND SHELF AT POC ₹{info['poc']:.2f} · CONFIRMED VALUE AREA BASE",
+                "rightSource": "POC SUPPORT",
+            },
+            "2": {
+                "tabLabel": "20 & 50 DEMA SUPPORT",
+                "tabBg": "#F2CF1D",
+                "tabColor": "#0C0E12",
+                "contextChip": "DYNAMIC SUPPORT",
+                "headline": f"CONFLUENT CLUSTER: 20 DEMA (₹{info['d20']:.2f}) & 50 DEMA (₹{info['d50']:.2f})",
+                "rightSource": "DEMA SUPPORT",
+            },
+            "3": {
+                "tabLabel": "100 & 200 DEMA BASE",
+                "tabBg": "#00E5FF",
+                "tabColor": "#0C0E12",
+                "contextChip": "DUAL MACRO BUFFER",
+                "headline": f"100 DEMA ₹{info['d100']:.2f} & 200 DEMA ₹{info['d200']:.2f} STRUCTURAL CUSHION",
+                "rightSource": "MACRO BUFFER",
+            },
+            "4": {
+                "tabLabel": "VAH SUPPLY HURDLE",
+                "tabBg": "#FFB800",
+                "tabColor": "#0C0E12",
+                "contextChip": "PRIMARY TARGET",
+                "headline": f"PRIMARY OVERHEAD HURDLE AT VALUE AREA HIGH (₹{info['vah']:.2f})",
+                "rightSource": f"TARGET ₹{info['vah']:.2f}",
+            },
+            "5": {
+                "tabLabel": "85% BULLISH BIAS",
+                "tabBg": "#10B981",
+                "tabColor": "#0C0E12",
+                "contextChip": "SWING TARGETS",
+                "headline": "CLEARING ₹1,555.10 TARGETS EXTENDED SWING CORRIDOR ₹1,600 & ₹1,620",
+                "rightSource": "BULL EXPANSION",
+            },
+        }
     return {
         "0": {
             "tabLabel": "CORE TRADING LAW",
@@ -931,6 +1249,33 @@ def get_watermark_words(info: dict) -> dict:
             "3": "TREND PIVOT",
             "4": "POC TARGET",
             "5": "MACRO EXPANSION",
+        }
+    elif sym in ["HINDUNILVR", "HUL", "HINDUSTANUNILEVER"]:
+        return {
+            "0": "UNIVERSAL LAW",
+            "1": "ACCUMULATION BASE",
+            "2": "DYNAMIC SUPPORT",
+            "3": "STRUCTURAL FLOOR",
+            "4": "VAH BREAKOUT",
+            "5": "BULLISH BIAS",
+        }
+    elif sym in ["LENSKART", "LENSKARTSOLUTIONS"]:
+        return {
+            "0": "UNIVERSAL LAW",
+            "1": "ACCUMULATION BASE",
+            "2": "DYNAMIC SUPPORT",
+            "3": "VAH BREAKOUT",
+            "4": "STRUCTURAL CUSHION",
+            "5": "85% BULLISH",
+        }
+    elif sym in ["GESHIP", "GREAT_EASTERN", "GREATEASTERN"]:
+        return {
+            "0": "UNIVERSAL LAW",
+            "1": "POC SUPPORT",
+            "2": "DEMA CLUSTER",
+            "3": "MACRO SHELF",
+            "4": "VAH HURDLE",
+            "5": "85% BULLISH",
         }
     return {
         "0": "UNIVERSAL LAW",
@@ -1126,6 +1471,100 @@ async def process_single_stock(stock_info: dict, voice: str = DEFAULT_VOICE) -> 
     total_dur_sec = round(INTRO_SEC + body_dur_sec + OUTRO_SEC, 2)
     total_frames = INTRO_FRAMES + body_frames + OUTRO_FRAMES
 
+    levels_bottom_pct = None
+    levels_bottom_pct_9x16 = None
+    levels_bottom_pct_16x9 = None
+    if sym in ["hindunilvr", "hul"]:
+        levels_bottom_pct_9x16 = {
+            "vah": 70.80,
+            "buy": 70.80,
+            "cmp": 61.76,
+            "d20": 56.02,
+            "poc": 54.84,
+            "d200": 46.49,
+            "d50": 44.97,
+            "d100": 41.72,
+            "val": 30.31,
+        }
+        levels_bottom_pct_16x9 = {
+            "vah": 83.97,
+            "buy": 83.97,
+            "cmp": 69.21,
+            "d20": 59.83,
+            "poc": 57.91,
+            "d200": 44.27,
+            "d50": 41.78,
+            "d100": 36.47,
+            "val": 17.84,
+        }
+        levels_bottom_pct = levels_bottom_pct_9x16
+    elif sym in ["maruti", "marutisuzuki"]:
+        levels_bottom_pct_9x16 = {
+            "cmp": 57.46,
+            "vah": 53.70,
+            "d20": 49.71,
+            "poc": 47.51,
+            "d200": 41.89,
+            "d50": 40.40,
+            "d100": 39.06,
+            "val": 28.95,
+        }
+        levels_bottom_pct_16x9 = {
+            "cmp": 62.19,
+            "vah": 56.04,
+            "d20": 49.53,
+            "poc": 45.94,
+            "d200": 36.76,
+            "d50": 34.32,
+            "d100": 32.13,
+            "val": 15.62,
+        }
+        levels_bottom_pct = levels_bottom_pct_9x16
+    elif sym in ["lenskart", "lenskartsolutions"]:
+        levels_bottom_pct_9x16 = {
+            "cmp": 60.42,
+            "vah": 60.37,
+            "d20": 58.99,
+            "poc": 58.04,
+            "d50": 56.69,
+            "d100": 54.83,
+            "val": 51.05,
+            "d200": 47.78,
+        }
+        levels_bottom_pct_16x9 = {
+            "cmp": 67.01,
+            "vah": 66.93,
+            "d20": 64.68,
+            "poc": 63.13,
+            "d50": 60.93,
+            "d100": 57.89,
+            "val": 51.72,
+            "d200": 46.37,
+        }
+        levels_bottom_pct = levels_bottom_pct_9x16
+    elif sym in ["lici", "lic"]:
+        levels_bottom_pct_9x16 = {
+            "cmp": 64.0,
+            "vah": 58.0,
+            "d20": 48.0,
+            "poc": 46.5,
+            "d200": 44.5,
+            "d100": 39.0,
+            "d50": 37.0,
+            "val": 22.5,
+        }
+        levels_bottom_pct_16x9 = {
+            "cmp": 64.0,
+            "vah": 58.0,
+            "d20": 48.0,
+            "poc": 46.5,
+            "d200": 44.5,
+            "d100": 39.0,
+            "d50": 37.0,
+            "val": 22.5,
+        }
+        levels_bottom_pct = levels_bottom_pct_16x9
+
     manifest_data = {
         "title": f"{info['name']} Support, Resistance & Target Masterclass",
         "symbol": info["symbol"],
@@ -1142,6 +1581,9 @@ async def process_single_stock(stock_info: dict, voice: str = DEFAULT_VOICE) -> 
             "d200": info["d200"],
             "vah": info["vah"],
         },
+        "levels_bottom_pct": levels_bottom_pct,
+        "levels_bottom_pct_9x16": levels_bottom_pct_9x16,
+        "levels_bottom_pct_16x9": levels_bottom_pct_16x9,
         "intro_frames": INTRO_FRAMES,
         "body_frames": body_frames,
         "outro_frames": OUTRO_FRAMES,
