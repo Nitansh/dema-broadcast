@@ -592,6 +592,39 @@ def generate_6_beat_script(info: dict) -> list:
                 "text": f"Macro recovery के लिए 100 DEMA {d100_str} और 200 DEMA {d200_str} को cross करना जरूरी है, जहां institutional Buy Price 216.78 रुपये mark है। {val_str} के floor पर strict risk manage करें।",
             },
         ]
+    elif sym in ["LTIM", "MINDTREE", "LTIMINDTREE"]:
+        return [
+            {
+                "id": "c0_master_rule",
+                "phase": 0,
+                "text": f"LTIMindtree यानी Mindtree के लिए golden trading rule समझिए। Current market price 4,166 रुपये 40 पैसे के नीचे के सभी लेवल्स dynamic support बन जाते हैं, और ऊपर के लेवल्स overhead resistance और upside targets।",
+            },
+            {
+                "id": "c1_val_poc",
+                "phase": 1,
+                "text": f"चार्ट पर consolidation base के दौरान 100 DEMA 4,117 रुपये और Value Area Low 4,106 रुपये पर institutional demand confirm हुई है। 833K शेयर्स के steady volume ने 200 DEMA 4,057 रुपये के ऊपर strong accumulation floor बना दिया है।",
+            },
+            {
+                "id": "c2_dema20",
+                "phase": 2,
+                "text": f"Price 4,166 रुपये पर trade करते हुए immediate overhead resistance 50 DEMA 4,175 रुपये और 20 DEMA 4,180 रुपये को test कर रहा है। 4,180 के ऊपर daily close इन दोनों averages को active support में flip कर देगा।",
+            },
+            {
+                "id": "c3_dema50",
+                "phase": 3,
+                "text": f"20 DEMA reclaim होते ही पहला primary upside target आज का high यानी 4,292 रुपये रहेगा। यह breakout short covering rally को trigger करके fresh long buildup initiate करेगा।",
+            },
+            {
+                "id": "c4_vah",
+                "phase": 4,
+                "text": f"Secondary expansion corridor में Monthly Point of Control 4,398 रुपये और Value Area High 4,431 रुपये पर स्थित हैं। यह cluster stock का major institutional target zone और decisive supply ceiling है।",
+            },
+            {
+                "id": "c5_macro",
+                "phase": 5,
+                "text": f"Macro perspective से 100 DEMA 4,117 रुपये और 200 DEMA 4,057 रुपये structural uptrend को protect कर रहे हैं। Value Area Low 4,106 रुपये के नीचे strict risk maintain करते हुए 4,400 target corridor के लिए trade plan करें।",
+            },
+        ]
 
     # Universal Fallback Script (Hinglish)
     return [
@@ -1597,6 +1630,21 @@ async def process_single_stock(stock_info: dict, voice: str = DEFAULT_VOICE) -> 
             "val": 22.5,
         }
         levels_bottom_pct = levels_bottom_pct_16x9
+    elif sym in ["ltim", "mindtree", "ltimindtree"]:
+        levels_bottom_pct_16x9 = {
+            "vah": 61.9,
+            "poc": 58.7,
+            "target2": 58.7,
+            "target1": 48.9,
+            "d20": 38.6,
+            "d50": 38.0,
+            "cmp": 36.5,
+            "d100": 27.4,
+            "val": 24.9,
+            "d200": 21.5,
+        }
+        levels_bottom_pct_9x16 = levels_bottom_pct_16x9
+        levels_bottom_pct = levels_bottom_pct_16x9
     elif sym in ["silverbees", "silver"]:
         levels_bottom_pct_9x16 = {
             "cmp": 8.5,
@@ -1624,6 +1672,21 @@ async def process_single_stock(stock_info: dict, voice: str = DEFAULT_VOICE) -> 
             "target2": 33.4,
             "buy": 66.6,
         }
+        levels_bottom_pct = levels_bottom_pct_16x9
+    elif sym in ["ltim", "mindtree", "ltimindtree"]:
+        levels_bottom_pct_16x9 = {
+            "vah": 61.9,
+            "poc": 58.7,
+            "target2": 58.7,
+            "target1": 48.9,
+            "d20": 38.6,
+            "d50": 38.0,
+            "cmp": 36.5,
+            "d100": 27.4,
+            "val": 24.9,
+            "d200": 21.5,
+        }
+        levels_bottom_pct_9x16 = levels_bottom_pct_16x9
         levels_bottom_pct = levels_bottom_pct_16x9
 
     manifest_data = {
@@ -1769,6 +1832,30 @@ async def main_async():
                     "image": "charts/SILVERBEES_1D_chart.png",
                 }
                 print(f"[NOTE] Loaded verified technical levels for SILVERBEES from attached chart snapshot.")
+            elif sym_req in ["LTIM", "MINDTREE", "LTIMINDTREE"]:
+                match = {
+                    "symbol": "LTIM",
+                    "name": "LTIMindtree Limited",
+                    "cmp": 4166.40,
+                    "ltp": 4166.40,
+                    "volume": "833 K",
+                    "oiSentiment": "Bullish Consolidation Breakout",
+                    "dema": {
+                        "d20": 4180.45,
+                        "d50": 4175.05,
+                        "d100": 4117.95,
+                        "d200": 4057.90,
+                    },
+                    "vp": {
+                        "val": 4106.49,
+                        "poc": 4398.28,
+                        "vah": 4431.25,
+                    },
+                    "target1": 4292.00,
+                    "target2": 4398.28,
+                    "image": "charts/LTIM_1D_chart.png",
+                }
+                print(f"[NOTE] Loaded verified technical levels for LTIM / MINDTREE from attached chart snapshot.")
             else:
                 # Create minimal stock payload with attached chart image
                 chart_img = f"charts/{sym_req}_1D_chart.png"

@@ -101,6 +101,21 @@ try {
   liciManifest = require('../../public/data/lici_explainer_manifest.json');
 } catch (e) { }
 
+let silverbeesManifest = {};
+try {
+  silverbeesManifest = require('../../public/data/silverbees_explainer_manifest.json');
+} catch (e) { }
+
+let ltimManifest = {};
+try {
+  ltimManifest = require('../../public/data/ltim_explainer_manifest.json');
+} catch (e) { }
+
+let mindtreeManifest = {};
+try {
+  mindtreeManifest = require('../../public/data/mindtree_explainer_manifest.json');
+} catch (e) { }
+
 const MANIFEST_MAP = {
   cummins: defaultManifest,
   cumminsind: defaultManifest,
@@ -128,6 +143,11 @@ const MANIFEST_MAP = {
   greateastern: geshipManifest,
   lici: liciManifest,
   lic: liciManifest,
+  silverbees: silverbeesManifest,
+  silver: silverbeesManifest,
+  ltim: ltimManifest,
+  ltimindtree: ltimManifest,
+  mindtree: mindtreeManifest.symbol ? mindtreeManifest : ltimManifest,
 };
 
 import {
@@ -174,6 +194,27 @@ export const getStockManifest = (manifestPath, propManifest) => {
     .toLowerCase();
   const m = MANIFEST_MAP[cleanSym];
   if (m && m.symbol) return m;
+
+  // DYNAMIC REQUIRE FALLBACK TO PREVENT SILENT CUMMINS HIJACK BUG
+  try {
+    const dyn = require(`../../public/data/${cleanSym}_explainer_manifest.json`);
+    if (dyn && dyn.symbol) return dyn;
+  } catch (e) {}
+
+  if (cleanSym && cleanSym !== 'cummins' && cleanSym !== 'cumminsind') {
+    console.error(`[CRITICAL] Manifest not found for ${cleanSym}! Refusing to fallback to Cummins India.`);
+    return {
+      symbol: cleanSym.toUpperCase(),
+      name: cleanSym.toUpperCase(),
+      cmp: 1000,
+      chart_image: `charts/${cleanSym.toUpperCase()}_1D_chart.png`,
+      levels: { cmp: 1000, val: 950, poc: 980, d20: 990, d50: 1020, d100: 1050, d200: 1100, vah: 1060 },
+      levels_bottom_pct: { cmp: 50, val: 20, poc: 45, d20: 48, d50: 55, d100: 65, d200: 75, vah: 68 },
+      cue_frames: [120, 600, 1200, 1800, 2400, 3000],
+      chunks: [],
+    };
+  }
+
   return defaultManifest;
 };
 

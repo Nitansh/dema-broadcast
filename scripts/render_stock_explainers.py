@@ -210,6 +210,9 @@ def render_stock(
         "lic": "LiciExplainer",
         "silverbees": "SilverbeesExplainer",
         "silver": "SilverbeesExplainer",
+        "ltim": "LtimExplainer",
+        "ltimindtree": "LtimExplainer",
+        "mindtree": "MindtreeExplainer",
     }
     dedicated_16x9 = {
         "cumminsind": "CumminsYouTubeExplainer16x9",
@@ -238,6 +241,9 @@ def render_stock(
         "lic": "LiciYouTubeExplainer16x9",
         "silverbees": "SilverbeesYouTubeExplainer16x9",
         "silver": "SilverbeesYouTubeExplainer16x9",
+        "ltim": "LtimYouTubeExplainer16x9",
+        "ltimindtree": "LtimYouTubeExplainer16x9",
+        "mindtree": "MindtreeYouTubeExplainer16x9",
     }
 
     props_json = json.dumps({"manifestPath": f"data/{sym}_explainer_manifest.json"})
