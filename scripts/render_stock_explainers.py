@@ -213,6 +213,14 @@ def render_stock(
         "ltim": "LtimExplainer",
         "ltimindtree": "LtimExplainer",
         "mindtree": "MindtreeExplainer",
+        "sagility": "SagilityExplainer",
+        "sagilityindia": "SagilityExplainer",
+        "ugrocap": "UgrocapExplainer",
+        "ugrocapital": "UgrocapExplainer",
+        "sunpharma": "SunpharmaExplainer",
+        "trent": "TrentExplainer",
+        "tvsmotor": "TvsmotorExplainer",
+        "axisbank": "AxisbankExplainer",
     }
     dedicated_16x9 = {
         "cumminsind": "CumminsYouTubeExplainer16x9",
@@ -244,6 +252,14 @@ def render_stock(
         "ltim": "LtimYouTubeExplainer16x9",
         "ltimindtree": "LtimYouTubeExplainer16x9",
         "mindtree": "MindtreeYouTubeExplainer16x9",
+        "sagility": "SagilityYouTubeExplainer16x9",
+        "sagilityindia": "SagilityYouTubeExplainer16x9",
+        "ugrocap": "UgrocapYouTubeExplainer16x9",
+        "ugrocapital": "UgrocapYouTubeExplainer16x9",
+        "sunpharma": "SunpharmaYouTubeExplainer16x9",
+        "trent": "TrentYouTubeExplainer16x9",
+        "tvsmotor": "TvsmotorYouTubeExplainer16x9",
+        "axisbank": "AxisbankYouTubeExplainer16x9",
     }
 
     props_json = json.dumps({"manifestPath": f"data/{sym}_explainer_manifest.json"})

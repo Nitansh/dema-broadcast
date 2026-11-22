@@ -625,6 +625,204 @@ def generate_6_beat_script(info: dict) -> list:
                 "text": f"Macro perspective से 100 DEMA 4,117 रुपये और 200 DEMA 4,057 रुपये structural uptrend को protect कर रहे हैं। Value Area Low 4,106 रुपये के नीचे strict risk maintain करते हुए 4,400 target corridor के लिए trade plan करें।",
             },
         ]
+    elif sym in ["SAGILITY", "SAGILITYINDIA"]:
+        return [
+            {
+                "id": "c0_master_rule",
+                "phase": 0,
+                "text": f"Sagility India के लिए golden trading rule समझिए। Current market price 45 रुपये 25 पैसे के नीचे के सभी लेवल्स dynamic support बन जाते हैं, और ऊपर के लेवल्स overhead resistance और upside targets।",
+            },
+            {
+                "id": "c1_val_poc",
+                "phase": 1,
+                "text": f"चार्ट पर consolidation base के दौरान Value Area Low 40 रुपये 25 पैसे पर institutional demand confirm हुई है। Smart money ने Monthly Point of Control 42 रुपये 19 पैसे पर heavy floating supply absorb करके strong accumulation floor बना दिया है।",
+            },
+            {
+                "id": "c2_dema20",
+                "phase": 2,
+                "text": f"Fresh breakout momentum के साथ Sagility ने 20 DEMA और 50 DEMA के golden convergence 44 रुपये 50 पैसे को decisively reclaim कर लिया है। यह cluster अब immediate overhead resistance से rock-solid dynamic support में flip हो चुका है।",
+            },
+            {
+                "id": "c3_dema50",
+                "phase": 3,
+                "text": f"आज के session में Sagility India ने Value Area High 45 रुपये 25 पैसे पर explosive breakout execute किया है। 45.25 के ऊपर decisive daily close bears को trap करके aggressive short covering rally ignite कर रहा है।",
+            },
+            {
+                "id": "c4_vah",
+                "phase": 4,
+                "text": f"Value Area High clear होते ही upward technical highway खुल जाता है, जहां पहला upside target swing high 47 रुपये रहेगा। Secondary expansion corridor 48 रुपये 50 पैसे से 50 रुपये के psychological milestone की तरफ point कर रहा है।",
+            },
+            {
+                "id": "c5_macro",
+                "phase": 5,
+                "text": f"Broader trend को 100 DEMA 44 रुपये 15 पैसे और 200 DEMA 43 रुपये 85 पैसे support provide कर रहे हैं। 43 रुपये 85 पैसे के floor पर strict risk manage करते हुए 47 से 50 रुपये target corridor के लिए trade plan करें।",
+            },
+        ]
+    elif sym in ["UGROCAP", "UGROCAPITAL"]:
+        return [
+            {
+                "id": "c0_master_rule",
+                "phase": 0,
+                "text": f"Ugro Capital के लिए golden trading rule समझिए। Current market price 81 रुपये 10 पैसे के नीचे के सभी लेवल्स dynamic support बन जाते हैं, और ऊपर के लेवल्स overhead resistance और upside targets।",
+            },
+            {
+                "id": "c1_val_poc",
+                "phase": 1,
+                "text": f"आज के session में 683 करोड़ रुपये के भारी institutional turnover के साथ buyers ने Value Area Low और Monthly Point of Control 80 रुपये 72 पैसे को firmly defend किया है। Smart money ने 8 करोड़ shares absorb करके rock-solid accumulation floor बना दिया है।",
+            },
+            {
+                "id": "c2_dema20",
+                "phase": 2,
+                "text": f"Recent price surge के साथ Ugro Capital ने 20 DEMA 72 रुपये 89 पैसे और 200 DEMA 72 रुपये 08 पैसे से मजबूत breakout दिया है। यह entire moving average cluster अब major dynamic support में flip हो चुका है।",
+            },
+            {
+                "id": "c3_dema50",
+                "phase": 3,
+                "text": f"Day high 84 रुपये 63 पैसे छूने के बाद stock Value Area High 83 रुपये 82 पैसे के consolidation zone में trade कर रहा है। 83.82 के ऊपर sustained breakout fresh upward momentum ignite करेगा।",
+            },
+            {
+                "id": "c4_vah",
+                "phase": 4,
+                "text": f"Value Area High clear होते ही upward technical highway खुल जाता है, जहां primary swing target 88 रुपये 50 पैसे रहेगा, और extended momentum 94 से 96 रुपये के zone की तरफ point कर रहा है।",
+            },
+            {
+                "id": "c5_macro",
+                "phase": 5,
+                "text": f"Broader structural trend को 100 DEMA 71 रुपये 29 पैसे और 50 DEMA 71 रुपये 18 पैसे support provide कर रहे हैं। 80 रुपये के VAL floor पर strict risk manage करते हुए upward targets के लिए trade plan करें।",
+            },
+        ]
+    elif sym == "SUNPHARMA":
+        return [
+            {
+                "id": "c0_master_rule",
+                "phase": 0,
+                "text": f"Sun Pharma के institutional chart पर golden rule समझिए। Current market price 1,884 रुपये 90 पैसे से नीचे की तरफ solid red arrow point कर रहा है critical dynamic supports की ओर, और ऊपर की तरफ solid green arrow point कर रहा है breakout targets की ओर।",
+            },
+            {
+                "id": "c1_val_poc",
+                "phase": 1,
+                "text": f"Chart के bottom पर 361 करोड़ रुपये का massive session volume surge देखिए। Buyers ने 1,884 रुपये 90 पैसे के Monthly Point of Control पर भारी institutional volume absorb किया है। Downward red arrow नीचे Value Area Low 1,736 रुपये की ओर rock-solid demand zone को point कर रहा है।",
+            },
+            {
+                "id": "c2_dema20",
+                "phase": 2,
+                "text": f"Sun Pharma चारों DEMA averages के strictly ऊपर trade कर रहा है। Live price से नीचे red arrow 20 DEMA 1,879 रुपये 02 पैसे की ओर point कर रहा है, जो सिर्फ 0.31 percent नीचे primary dynamic shock absorber का काम कर रहा है।",
+            },
+            {
+                "id": "c3_dema50",
+                "phase": 3,
+                "text": f"Price अब Value Area High 1,901 रुपये 43 पैसे के consolidation hurdle को test कर रहा है। 200 DEMA 1,863 रुपये और 100 DEMA 1,846 रुपये trend को strong institutional cushion provide कर रहे हैं।",
+            },
+            {
+                "id": "c4_vah",
+                "phase": 4,
+                "text": f"Value Area High clear होते ही upward green arrow सक्रिय हो जाता है, जो live price से ऊपर Target 1 यानी 1,901 रुपये 43 पैसे, और secondary expansion corridor Target 2 यानी 1,940 रुपये की तरफ point कर रहा है।",
+            },
+            {
+                "id": "c5_macro",
+                "phase": 5,
+                "text": f"200 DEMA 1,863 रुपये को strict trailing stop मानते हुए, institutional buyers 1,901 से 1,940 रुपये के target highway के लिए position manage कर सकते हैं। Keep trailing stops active.",
+            },
+        ]
+    elif sym == "TRENT":
+        return [
+            {
+                "id": "c0_master_rule",
+                "phase": 0,
+                "text": f"Trent Limited के institutional chart पर golden rule समझिए। Current market price 3,256 रुपये 10 पैसे के नीचे red arrow dynamic cushions को point करता है, और ऊपर green arrow high-probability upside targets को trigger कर रहा है।",
+            },
+            {
+                "id": "c1_val_poc",
+                "phase": 1,
+                "text": f"Volume histogram पर 408 करोड़ रुपये का institutional turnover surge देखिए। Point of Control 3,024 रुपये और Value Area Low 2,792 रुपये की तरफ red arrow institutional demand base को point कर रहा है, जहां smart money की aggressive buying दर्ज हुई है।",
+            },
+            {
+                "id": "c2_dema20",
+                "phase": 2,
+                "text": f"Trent चारों DEMA averages 20, 50, 100 और 200 के strictly ऊपर bull run में है। Live price से नीचे red arrow 20 DEMA 3,236 रुपये 09 पैसे की ओर point कर रहा है, जो सिर्फ 0.61 percent के discount पर unshakeable moving average support है।",
+            },
+            {
+                "id": "c3_dema50",
+                "phase": 3,
+                "text": f"Stock आज 3,256 रुपये के Value Area High hurdle को test कर रहा है। 50 DEMA 3,088 रुपये और 100 DEMA 2,986 रुपये का steep upward slope institutional expansion को accelerate कर रहा है।",
+            },
+            {
+                "id": "c4_vah",
+                "phase": 4,
+                "text": f"VAH 3,256 रुपये के ऊपर breakout होते ही green arrow 94 रुपये ऊपर Target 1 यानी 3,350 रुपये, और secondary green arrow 224 रुपये ऊपर Target 2 यानी 3,480 रुपये के all-time high territory की तरफ point कर रहा है।",
+            },
+            {
+                "id": "c5_macro",
+                "phase": 5,
+                "text": f"20 DEMA 3,236 रुपये के cushion पर strict trailing stop maintain करते हुए, Trent 3,350 से 3,480 रुपये upside targets की तरफ momentum ride कर सकता है। Trade with trend discipline.",
+            },
+        ]
+    elif sym == "TVSMOTOR":
+        return [
+            {
+                "id": "c0_master_rule",
+                "phase": 0,
+                "text": f"TVS Motor के लिए golden trading rule नोट कीजिए। Current market price 4,590 रुपये से नीचे red arrow critical support cushions को point कर रहा है, और ऊपर green arrow breakout targets को guide कर रहा है।",
+            },
+            {
+                "id": "c1_val_poc",
+                "phase": 1,
+                "text": f"Bottom chart पर 511 करोड़ रुपये का massive session volume surge देखिए। Buyers ने Monthly Point of Control 4,447 रुपये पर institutional demand खड़ी की है, जिसकी तरफ downward red arrow solid base indicate कर रहा है।",
+            },
+            {
+                "id": "c2_dema20",
+                "phase": 2,
+                "text": f"TVS Motor चारों moving averages के strictly ऊपर ट्रेड कर रहा है। Live price से नीचे red arrow 20 DEMA 4,555 रुपये 41 पैसे की ओर point कर रहा है, जो मात्र 0.75 percent नीचे dynamic support provide कर रहा है।",
+            },
+            {
+                "id": "c3_dema50",
+                "phase": 3,
+                "text": f"Stock Value Area High 4,590 रुपये की breakout boundary पर खड़ा है। 50 DEMA 4,418 रुपये और 100 DEMA 4,346 रुपये का multi-month moving average ribbon complete upward alignment में है।",
+            },
+            {
+                "id": "c4_vah",
+                "phase": 4,
+                "text": f"Breakout trigger होते ही upward green arrow 130 रुपये ऊपर Target 1 यानी 4,720 रुपये, और secondary expansion corridor 260 रुपये ऊपर Target 2 यानी 4,850 रुपये की तरफ point कर रहा है।",
+            },
+            {
+                "id": "c5_macro",
+                "phase": 5,
+                "text": f"20 DEMA 4,555 रुपये के नीचे strict risk boundary maintain करते हुए, TVS Motor 4,720 और 4,850 रुपये के breakout targets के लिए perfectly positioned है। Trade with discipline.",
+            },
+        ]
+    elif sym == "AXISBANK":
+        return [
+            {
+                "id": "c0_master_rule",
+                "phase": 0,
+                "text": f"Axis Bank के massive volume breakout पर golden rule समझिए। Current market price 1,446 रुपये से नीचे red arrow dynamic moving average floors को point करता है, और ऊपर green arrow ambitious breakout targets को दिशा दे रहा है।",
+            },
+            {
+                "id": "c1_val_poc",
+                "phase": 1,
+                "text": f"3,106 करोड़ रुपये का jaw-dropping institutional volume surge देखिए। Chart पर Point of Control 1,222 रुपये और Value Area Low 1,197 रुपये की तरफ red arrow smart money accumulation foundation को point कर रहा है।",
+            },
+            {
+                "id": "c2_dema20",
+                "phase": 2,
+                "text": f"Axis Bank चारों DEMA averages 20, 50, 100 और 200 से काफी ऊपर trade कर रहा है। Live price से नीचे red arrow 20 DEMA 1,385 रुपये 05 पैसे की ओर point कर रहा है, जो trend pullbacks पर key institutional retest zone रहेगा।",
+            },
+            {
+                "id": "c3_dema50",
+                "phase": 3,
+                "text": f"Stock Value Area High 1,446 रुपये की critical hurdle boundary पर trade कर रहा है। 50 DEMA 1,314 रुपये और 100 DEMA 1,279 रुपये banking pack में institutional momentum boost confirm कर रहे हैं।",
+            },
+            {
+                "id": "c4_vah",
+                "phase": 4,
+                "text": f"VAH 1,446 रुपये clear होते ही upward green arrow 44 रुपये ऊपर Target 1 यानी 1,490 रुपये, और extended green arrow 104 रुपये ऊपर Target 2 यानी 1,550 रुपये के psychological milestone की तरफ point कर रहा है।",
+            },
+            {
+                "id": "c5_macro",
+                "phase": 5,
+                "text": f"20 DEMA 1,385 रुपये को macro trailing support मानते हुए, 1,490 से 1,550 रुपये target highway के लिए risk manage करते हुए trade plan करें।",
+            },
+        ]
 
     # Universal Fallback Script (Hinglish)
     return [
@@ -1208,6 +1406,312 @@ def get_strap_config(info: dict) -> dict:
                 "rightSource": "BULL EXPANSION",
             },
         }
+    elif sym in ["SAGILITY", "SAGILITYINDIA"]:
+        return {
+            "0": {
+                "tabLabel": "CORE TRADING LAW",
+                "tabBg": "#F2CF1D",
+                "tabColor": "#0C0E12",
+                "contextChip": "NSE · SAGILITY",
+                "headline": "BELOW CMP = SUPPORT | ABOVE CMP = TARGET & RESISTANCE",
+                "rightSource": f"CMP ₹{info['cmp']:.2f}",
+            },
+            "1": {
+                "tabLabel": "INSTITUTIONAL FLOOR",
+                "tabBg": "#FF4D4D",
+                "tabColor": "#0C0E12",
+                "contextChip": "ACCUMULATION BASE",
+                "headline": f"SMART MONEY DEFENDS MONTH POC ₹{info['poc']:.2f} ABOVE VAL ₹{info['val']:.2f}",
+                "rightSource": "ACCUMULATION",
+            },
+            "2": {
+                "tabLabel": "20 & 50 DEMA CONVERGENCE",
+                "tabBg": "#10B981",
+                "tabColor": "#0C0E12",
+                "contextChip": "DYNAMIC SUPPORT",
+                "headline": f"SURGED ABOVE 20 & 50 DEMA (₹{info['d20']:.2f}) · FLIPPED TO SUPPORT",
+                "rightSource": "GOLDEN CROSSOVER",
+            },
+            "3": {
+                "tabLabel": "VAH BREAKOUT",
+                "tabBg": "#00E5FF",
+                "tabColor": "#0C0E12",
+                "contextChip": "BULLISH BREAKOUT",
+                "headline": f"EXPLOSIVE BREAKOUT AT VALUE AREA HIGH ₹{info['vah']:.2f} · BEARS TRAPPED",
+                "rightSource": "BREAKOUT",
+            },
+            "4": {
+                "tabLabel": "UPSIDE TARGETS",
+                "tabBg": "#22D3EE",
+                "tabColor": "#0C0E12",
+                "contextChip": "EXPANSION TARGET",
+                "headline": "CLEARING VAH UNLOCKS TARGET 1 ₹47.00 & TARGET 2 ₹50.00 CORRIDOR",
+                "rightSource": "TARGET ₹47-50",
+            },
+            "5": {
+                "tabLabel": "MACRO UPTREND",
+                "tabBg": "#FFB800",
+                "tabColor": "#0C0E12",
+                "contextChip": "100 & 200 DEMA",
+                "headline": f"BULLISH ALIGNMENT: 100 DEMA ₹{info['d100']:.2f} & 200 DEMA ₹{info['d200']:.2f} BELOW PRICE",
+                "rightSource": "CONFIRMED TREND",
+            },
+        }
+    elif sym in ["UGROCAP", "UGROCAPITAL"]:
+        return {
+            "0": {
+                "tabLabel": "CORE TRADING LAW",
+                "tabBg": "#F2CF1D",
+                "tabColor": "#0C0E12",
+                "contextChip": "NSE · UGROCAP",
+                "headline": "BELOW CMP = SUPPORT | ABOVE CMP = TARGET & RESISTANCE",
+                "rightSource": f"CMP ₹{info['cmp']:.2f}",
+            },
+            "1": {
+                "tabLabel": "INSTITUTIONAL FLOOR",
+                "tabBg": "#FF4D4D",
+                "tabColor": "#0C0E12",
+                "contextChip": "ACCUMULATION BASE",
+                "headline": f"SMART MONEY DEFENDS POC & VAL ₹{info['val']:.2f} · ₹683 CR VOL",
+                "rightSource": "BUY VOL CONFIRMS",
+            },
+            "2": {
+                "tabLabel": "DYNAMIC SUPPORT",
+                "tabBg": "#10B981",
+                "tabColor": "#0C0E12",
+                "contextChip": "20 & 200 DEMA",
+                "headline": f"BREAKOUT ABOVE 20 DEMA ₹{info['d20']:.2f} & 200 DEMA ₹{info['d200']:.2f}",
+                "rightSource": "BULL EXPANSION",
+            },
+            "3": {
+                "tabLabel": "VAH INFLECTION",
+                "tabBg": "#00E5FF",
+                "tabColor": "#0C0E12",
+                "contextChip": "KEY RESISTANCE",
+                "headline": f"TESTING VALUE AREA HIGH ₹{info['vah']:.2f} · DAY HIGH ₹84.63",
+                "rightSource": "INFLECTION HURDLE",
+            },
+            "4": {
+                "tabLabel": "UPSIDE TARGETS",
+                "tabBg": "#22D3EE",
+                "tabColor": "#0C0E12",
+                "contextChip": "EXPANSION TARGET",
+                "headline": "CLEARING VAH UNLOCKS TARGET 1 ₹88.50 & TARGET 2 ₹94.00-96.00",
+                "rightSource": "TARGET ₹88.50",
+            },
+            "5": {
+                "tabLabel": "MACRO UPTREND",
+                "tabBg": "#FFB800",
+                "tabColor": "#0C0E12",
+                "contextChip": "STRUCTURAL FLOOR",
+                "headline": f"CONFIRMED UPTREND: 50 DEMA ₹{info['d50']:.2f} & 100 DEMA ₹{info['d100']:.2f} BELOW PRICE",
+                "rightSource": "CONFIRMED TREND",
+            },
+        }
+    elif sym == "SUNPHARMA":
+        return {
+            "0": {
+                "tabLabel": "CORE TRADING LAW",
+                "tabBg": "#F2CF1D",
+                "tabColor": "#0C0E12",
+                "contextChip": "NSE · SUNPHARMA",
+                "headline": "BELOW CMP = SUPPORT (RED ARROW) | ABOVE CMP = TARGET (GREEN ARROW)",
+                "rightSource": f"CMP ₹{info['cmp']:.2f}",
+            },
+            "1": {
+                "tabLabel": "INSTITUTIONAL ACCUMULATION",
+                "tabBg": "#FF4D4D",
+                "tabColor": "#0C0E12",
+                "contextChip": "TURNOVER ₹361 CR",
+                "headline": f"MASSIVE VOLUME SURGE AT POC ₹{info['poc']:.2f} · VAL FLOOR ₹{info['val']:.2f}",
+                "rightSource": "BUY VOL SURGE",
+            },
+            "2": {
+                "tabLabel": "20 DEMA DEFENSE",
+                "tabBg": "#10B981",
+                "tabColor": "#0C0E12",
+                "contextChip": "ALL DEMAS BELOW",
+                "headline": f"LIVE PRICE ABOVE 20 DEMA ₹{info['d20']:.2f} · 0.31% DYNAMIC CUSHION",
+                "rightSource": "BULL EXPANSION",
+            },
+            "3": {
+                "tabLabel": "VAH CONSOLIDATION",
+                "tabBg": "#00E5FF",
+                "tabColor": "#0C0E12",
+                "contextChip": "BREAKOUT BOUNDARY",
+                "headline": f"TESTING VALUE AREA HIGH ₹{info['vah']:.2f} · 200 DEMA ₹{info['d200']:.2f}",
+                "rightSource": "INFLECTION HURDLE",
+            },
+            "4": {
+                "tabLabel": "GREEN ARROW TARGETS",
+                "tabBg": "#22D3EE",
+                "tabColor": "#0C0E12",
+                "contextChip": "EXPANSION HIGHWAY",
+                "headline": "UPWARD GREEN ARROW UNLOCKS TARGET 1 ₹1,901.43 & TARGET 2 ₹1,940",
+                "rightSource": "TARGET ₹1,940",
+            },
+            "5": {
+                "tabLabel": "MACRO RISK FLOOR",
+                "tabBg": "#FFB800",
+                "tabColor": "#0C0E12",
+                "contextChip": "TRAILING STOP",
+                "headline": f"CONFIRMED UPTREND: 200 DEMA ₹{info['d200']:.2f} & 100 DEMA ₹{info['d100']:.2f} SUPPORT",
+                "rightSource": "CONFIRMED TREND",
+            },
+        }
+    elif sym == "TRENT":
+        return {
+            "0": {
+                "tabLabel": "CORE TRADING LAW",
+                "tabBg": "#F2CF1D",
+                "tabColor": "#0C0E12",
+                "contextChip": "NSE · TRENT",
+                "headline": "BELOW CMP = SUPPORT (RED ARROW) | ABOVE CMP = TARGET (GREEN ARROW)",
+                "rightSource": f"CMP ₹{info['cmp']:.2f}",
+            },
+            "1": {
+                "tabLabel": "VOLUME SURGE & POC",
+                "tabBg": "#FF4D4D",
+                "tabColor": "#0C0E12",
+                "contextChip": "TURNOVER ₹408 CR",
+                "headline": f"INSTITUTIONAL TURNOVER SURGE · POC ₹{info['poc']:.2f} & VAL ₹{info['val']:.2f}",
+                "rightSource": "BUY VOL SURGE",
+            },
+            "2": {
+                "tabLabel": "BULLISH DEMA STACK",
+                "tabBg": "#10B981",
+                "tabColor": "#0C0E12",
+                "contextChip": "ALL DEMAS BELOW",
+                "headline": f"20 DEMA CUSHION ₹{info['d20']:.2f} (-0.61%) · 50 DEMA ₹{info['d50']:.2f}",
+                "rightSource": "BULL EXPANSION",
+            },
+            "3": {
+                "tabLabel": "VAH BREAKOUT",
+                "tabBg": "#00E5FF",
+                "tabColor": "#0C0E12",
+                "contextChip": "KEY HURDLE",
+                "headline": f"PRICE AT VALUE AREA HIGH ₹{info['vah']:.2f} · ALL-TIME MOMENTUM",
+                "rightSource": "INFLECTION HURDLE",
+            },
+            "4": {
+                "tabLabel": "UPSIDE EXPANSION",
+                "tabBg": "#22D3EE",
+                "tabColor": "#0C0E12",
+                "contextChip": "TARGET CORRIDOR",
+                "headline": "UPWARD GREEN ARROW TO TARGET 1 ₹3,350 & TARGET 2 ₹3,480",
+                "rightSource": "TARGET ₹3,480",
+            },
+            "5": {
+                "tabLabel": "MACRO RISK DISCIPLINE",
+                "tabBg": "#FFB800",
+                "tabColor": "#0C0E12",
+                "contextChip": "TRAILING STOP",
+                "headline": f"20 DEMA ₹{info['d20']:.2f} TRAILING STOP · SEBI COMPLIANT STUDY",
+                "rightSource": "CONFIRMED TREND",
+            },
+        }
+    elif sym == "TVSMOTOR":
+        return {
+            "0": {
+                "tabLabel": "CORE TRADING LAW",
+                "tabBg": "#F2CF1D",
+                "tabColor": "#0C0E12",
+                "contextChip": "NSE · TVSMOTOR",
+                "headline": "BELOW CMP = SUPPORT (RED ARROW) | ABOVE CMP = TARGET (GREEN ARROW)",
+                "rightSource": f"CMP ₹{info['cmp']:.2f}",
+            },
+            "1": {
+                "tabLabel": "VOLUME SURGE FLOOR",
+                "tabBg": "#FF4D4D",
+                "tabColor": "#0C0E12",
+                "contextChip": "TURNOVER ₹511 CR",
+                "headline": f"511 CR VOLUME SURGE · POC ₹{info['poc']:.2f} INSTITUTIONAL DEMAND",
+                "rightSource": "BUY VOL SURGE",
+            },
+            "2": {
+                "tabLabel": "20 DEMA DEFENSE",
+                "tabBg": "#10B981",
+                "tabColor": "#0C0E12",
+                "contextChip": "ALL DEMAS BELOW",
+                "headline": f"LIVE PRICE ABOVE 20 DEMA ₹{info['d20']:.2f} · 0.75% CUSHION",
+                "rightSource": "BULL EXPANSION",
+            },
+            "3": {
+                "tabLabel": "VAH INFLECTION",
+                "tabBg": "#00E5FF",
+                "tabColor": "#0C0E12",
+                "contextChip": "BREAKOUT BOUNDARY",
+                "headline": f"BREAKOUT AT VALUE AREA HIGH ₹{info['vah']:.2f} · 50 DEMA ₹{info['d50']:.2f}",
+                "rightSource": "INFLECTION HURDLE",
+            },
+            "4": {
+                "tabLabel": "UPSIDE TARGET HIGHWAY",
+                "tabBg": "#22D3EE",
+                "tabColor": "#0C0E12",
+                "contextChip": "EXPANSION TARGET",
+                "headline": "UPWARD GREEN ARROW UNLOCKS TARGET 1 ₹4,720 & TARGET 2 ₹4,850",
+                "rightSource": "TARGET ₹4,850",
+            },
+            "5": {
+                "tabLabel": "MACRO RISK BOUNDARY",
+                "tabBg": "#FFB800",
+                "tabColor": "#0C0E12",
+                "contextChip": "TRAILING STOP",
+                "headline": f"CONFIRMED UPTREND: 20 DEMA ₹{info['d20']:.2f} STRICT RISK FLOOR",
+                "rightSource": "CONFIRMED TREND",
+            },
+        }
+    elif sym == "AXISBANK":
+        return {
+            "0": {
+                "tabLabel": "CORE TRADING LAW",
+                "tabBg": "#F2CF1D",
+                "tabColor": "#0C0E12",
+                "contextChip": "NSE · AXISBANK",
+                "headline": "BELOW CMP = SUPPORT (RED ARROW) | ABOVE CMP = TARGET (GREEN ARROW)",
+                "rightSource": f"CMP ₹{info['cmp']:.2f}",
+            },
+            "1": {
+                "tabLabel": "MASSIVE VOLUME SURGE",
+                "tabBg": "#FF4D4D",
+                "tabColor": "#0C0E12",
+                "contextChip": "TURNOVER ₹3,106 CR",
+                "headline": f"₹3,106 CR MEGA VOLUME SURGE · POC ₹{info['poc']:.2f} & VAL ₹{info['val']:.2f}",
+                "rightSource": "BUY VOL SURGE",
+            },
+            "2": {
+                "tabLabel": "20 DEMA MOMENTUM",
+                "tabBg": "#10B981",
+                "tabColor": "#0C0E12",
+                "contextChip": "ALL DEMAS BELOW",
+                "headline": f"PRICE BLAST ABOVE 20 DEMA ₹{info['d20']:.2f} · BULLISH MOMENTUM",
+                "rightSource": "BULL EXPANSION",
+            },
+            "3": {
+                "tabLabel": "VAH BREAKOUT",
+                "tabBg": "#00E5FF",
+                "tabColor": "#0C0E12",
+                "contextChip": "BREAKOUT BOUNDARY",
+                "headline": f"TESTING VALUE AREA HIGH ₹{info['vah']:.2f} · 50 DEMA ₹{info['d50']:.2f}",
+                "rightSource": "INFLECTION HURDLE",
+            },
+            "4": {
+                "tabLabel": "UPSIDE TARGET HIGHWAY",
+                "tabBg": "#22D3EE",
+                "tabColor": "#0C0E12",
+                "contextChip": "EXPANSION TARGET",
+                "headline": "UPWARD GREEN ARROW UNLOCKS TARGET 1 ₹1,490 & TARGET 2 ₹1,550",
+                "rightSource": "TARGET ₹1,550",
+            },
+            "5": {
+                "tabLabel": "MACRO RISK MANAGEMENT",
+                "tabBg": "#FFB800",
+                "tabColor": "#0C0E12",
+                "contextChip": "TRAILING STOP",
+                "headline": f"20 DEMA ₹{info['d20']:.2f} RETEST FLOOR · SEBI COMPLIANT STUDY",
+                "rightSource": "CONFIRMED TREND",
+            },
+        }
     return {
         "0": {
             "tabLabel": "CORE TRADING LAW",
@@ -1342,6 +1846,24 @@ def get_watermark_words(info: dict) -> dict:
             "3": "MACRO SHELF",
             "4": "VAH HURDLE",
             "5": "85% BULLISH",
+        }
+    elif sym in ["SAGILITY", "SAGILITYINDIA"]:
+        return {
+            "0": "UNIVERSAL LAW",
+            "1": "ACCUMULATION BASE",
+            "2": "DEMA CONVERGENCE",
+            "3": "VAH BREAKOUT",
+            "4": "TARGET CORRIDOR",
+            "5": "MACRO UPTREND",
+        }
+    elif sym in ["UGROCAP", "UGROCAPITAL"]:
+        return {
+            "0": "UNIVERSAL LAW",
+            "1": "ACCUMULATION BASE",
+            "2": "DYNAMIC CUSHION",
+            "3": "VAH INFLECTION",
+            "4": "TARGET HIGHWAY",
+            "5": "MACRO UPTREND",
         }
     return {
         "0": "UNIVERSAL LAW",
@@ -1645,6 +2167,32 @@ async def process_single_stock(stock_info: dict, voice: str = DEFAULT_VOICE) -> 
         }
         levels_bottom_pct_9x16 = levels_bottom_pct_16x9
         levels_bottom_pct = levels_bottom_pct_16x9
+    elif sym in ["sagility", "sagilityindia"]:
+        levels_bottom_pct_16x9 = {
+            "cmp": 81.4,
+            "vah": 77.3,
+            "d20": 67.1,
+            "d50": 62.5,
+            "d100": 58.2,
+            "d200": 53.5,
+            "poc": 48.9,
+            "val": 27.5,
+            "target1": 89.0,
+            "target2": 95.0,
+        }
+        levels_bottom_pct_9x16 = {
+            "cmp": 78.5,
+            "vah": 74.8,
+            "d20": 65.2,
+            "d50": 61.0,
+            "d100": 57.0,
+            "d200": 52.8,
+            "poc": 48.2,
+            "val": 28.0,
+            "target1": 86.5,
+            "target2": 92.0,
+        }
+        levels_bottom_pct = levels_bottom_pct_16x9
     elif sym in ["silverbees", "silver"]:
         levels_bottom_pct_9x16 = {
             "cmp": 8.5,
@@ -1687,6 +2235,32 @@ async def process_single_stock(stock_info: dict, voice: str = DEFAULT_VOICE) -> 
             "d200": 21.5,
         }
         levels_bottom_pct_9x16 = levels_bottom_pct_16x9
+        levels_bottom_pct = levels_bottom_pct_16x9
+    elif sym in ["sagility", "sagilityindia"]:
+        levels_bottom_pct_16x9 = {
+            "cmp": 81.4,
+            "vah": 77.3,
+            "d20": 67.1,
+            "d50": 62.5,
+            "d100": 58.2,
+            "d200": 53.5,
+            "poc": 48.9,
+            "val": 27.5,
+            "target1": 89.0,
+            "target2": 95.0,
+        }
+        levels_bottom_pct_9x16 = {
+            "cmp": 78.5,
+            "vah": 74.8,
+            "d20": 65.2,
+            "d50": 61.0,
+            "d100": 57.0,
+            "d200": 52.8,
+            "poc": 48.2,
+            "val": 28.0,
+            "target1": 86.5,
+            "target2": 92.0,
+        }
         levels_bottom_pct = levels_bottom_pct_16x9
 
     manifest_data = {
@@ -1856,6 +2430,155 @@ async def main_async():
                     "image": "charts/LTIM_1D_chart.png",
                 }
                 print(f"[NOTE] Loaded verified technical levels for LTIM / MINDTREE from attached chart snapshot.")
+            elif sym_req in ["SAGILITY", "SAGILITYINDIA"]:
+                match = {
+                    "symbol": "SAGILITY",
+                    "name": "Sagility India Limited",
+                    "cmp": 45.25,
+                    "ltp": 45.25,
+                    "volume": "14.2 M",
+                    "oiSentiment": "Bullish VAH Breakout",
+                    "dema": {
+                        "d20": 44.50,
+                        "d50": 44.50,
+                        "d100": 44.15,
+                        "d200": 43.85,
+                    },
+                    "vp": {
+                        "val": 40.25,
+                        "poc": 42.19,
+                        "vah": 45.25,
+                    },
+                    "target1": 47.00,
+                    "target2": 50.00,
+                    "image": "charts/SAGILITY_1D_chart.png",
+                }
+                print(f"[NOTE] Loaded verified technical levels for SAGILITY from attached chart snapshot.")
+            elif sym_req in ["UGROCAP", "UGROCAPITAL"]:
+                match = {
+                    "symbol": "UGROCAP",
+                    "name": "Ugro Capital Limited",
+                    "cmp": 81.10,
+                    "ltp": 81.10,
+                    "volume": "84.3 M",
+                    "oiSentiment": "Heavy Institutional Turnover ₹683 Cr",
+                    "dema": {
+                        "d20": 72.89,
+                        "d50": 71.18,
+                        "d100": 71.29,
+                        "d200": 72.08,
+                    },
+                    "vp": {
+                        "val": 80.72,
+                        "poc": 80.72,
+                        "vah": 83.82,
+                    },
+                    "target1": 83.82,
+                    "target2": 88.50,
+                    "stop": 79.80,
+                    "image": "charts/UGROCAP_1D_chart.png",
+                }
+                print(f"[NOTE] Loaded verified technical levels for UGROCAP from attached chart snapshot.")
+            elif sym_req == "SUNPHARMA":
+                match = {
+                    "symbol": "SUNPHARMA",
+                    "name": "Sun Pharmaceutical Industries",
+                    "cmp": 1884.90,
+                    "ltp": 1884.90,
+                    "volume": "1.91 M",
+                    "oiSentiment": "Turnover ₹361 Cr · POC Consolidation",
+                    "dema": {
+                        "d20": 1879.02,
+                        "d50": 1829.63,
+                        "d100": 1846.02,
+                        "d200": 1863.63,
+                    },
+                    "vp": {
+                        "val": 1736.13,
+                        "poc": 1884.90,
+                        "vah": 1901.43,
+                    },
+                    "target1": 1901.43,
+                    "target2": 1940.00,
+                    "stop": 1863.63,
+                    "image": "charts/SUNPHARMA_1D_chart.png",
+                }
+                print(f"[NOTE] Loaded verified technical levels for SUNPHARMA.")
+            elif sym_req == "TRENT":
+                match = {
+                    "symbol": "TRENT",
+                    "name": "Trent Limited",
+                    "cmp": 3256.10,
+                    "ltp": 3256.10,
+                    "volume": "1.25 M",
+                    "oiSentiment": "Turnover ₹408 Cr · VAH Breakout",
+                    "dema": {
+                        "d20": 3236.09,
+                        "d50": 3087.94,
+                        "d100": 2986.68,
+                        "d200": 2872.78,
+                    },
+                    "vp": {
+                        "val": 2792.66,
+                        "poc": 3024.38,
+                        "vah": 3256.10,
+                    },
+                    "target1": 3350.00,
+                    "target2": 3480.00,
+                    "stop": 3200.00,
+                    "image": "charts/TRENT_1D_chart.png",
+                }
+                print(f"[NOTE] Loaded verified technical levels for TRENT.")
+            elif sym_req == "TVSMOTOR":
+                match = {
+                    "symbol": "TVSMOTOR",
+                    "name": "TVS Motor Company",
+                    "cmp": 4590.00,
+                    "ltp": 4590.00,
+                    "volume": "1.11 M",
+                    "oiSentiment": "Turnover ₹511 Cr · VAH Breakout",
+                    "dema": {
+                        "d20": 4555.41,
+                        "d50": 4418.58,
+                        "d100": 4346.11,
+                        "d200": 4210.45,
+                    },
+                    "vp": {
+                        "val": 3946.59,
+                        "poc": 4447.02,
+                        "vah": 4590.00,
+                    },
+                    "target1": 4720.00,
+                    "target2": 4850.00,
+                    "stop": 4520.00,
+                    "image": "charts/TVSMOTOR_1D_chart.png",
+                }
+                print(f"[NOTE] Loaded verified technical levels for TVSMOTOR.")
+            elif sym_req == "AXISBANK":
+                match = {
+                    "symbol": "AXISBANK",
+                    "name": "Axis Bank Limited",
+                    "cmp": 1446.00,
+                    "ltp": 1446.00,
+                    "volume": "21.4 M",
+                    "oiSentiment": "Turnover ₹3,106 Cr · Huge Volume Breakout",
+                    "dema": {
+                        "d20": 1385.05,
+                        "d50": 1314.46,
+                        "d100": 1279.18,
+                        "d200": 1271.65,
+                    },
+                    "vp": {
+                        "val": 1197.00,
+                        "poc": 1221.90,
+                        "vah": 1446.00,
+                    },
+                    "target1": 1490.00,
+                    "target2": 1550.00,
+                    "stop": 1385.05,
+                    "image": "charts/AXISBANK_1D_chart.png",
+                }
+                print(f"[NOTE] Loaded verified technical levels for AXISBANK.")
             else:
                 # Create minimal stock payload with attached chart image
                 chart_img = f"charts/{sym_req}_1D_chart.png"

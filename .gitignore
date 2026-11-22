@@ -26,3 +26,9 @@ bundle/
 .DS_Store
 Thumbs.db
 
+# Scratch and inspection scripts
+scripts/check_*.py
+scripts/inspect_*.mjs
+scripts/test_*.mjs
+scripts/generate_ugrocap_*.py
+
