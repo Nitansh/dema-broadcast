@@ -234,9 +234,18 @@ Activate this skill whenever the user asks to:
 ---
 
 ### Phase 5: Packaging, Cross-Platform Repurposing & Direct YouTube API Publishing
-1. **Viral Thumbnail Generation (`cover-thumbnail-brief` + `generate_viral_thumbnail.py`)**:
-   - Simultaneous authoring of 16:9 Master (`1920×1080`) and 9:16 Reel (`1080×1920`) thumbnails.
-   - High-contrast typography, Hinglish curiosity hook (*"बड़ा उलटफेर शुरू?"*), gold/emerald glows, and unclipped chart crop.
+1. **Mandatory Sagility-Style Viral Thumbnail Standard (NON-NEGOTIABLE)**:
+   - All 16:9 YouTube Masterclass thumbnails must strictly adhere to the **Sagility Institutional Template** (`generate_sagility_style_thumbnails.mjs`):
+     * **Top-Left Branding**: Yellow square `[D]`, white `DEMA ANALYSIS`, and crimson red capsule pill `• DAILY STUDY PACK • 2026`.
+     * **Bold White Headline**: Single-line condensed uppercase headline (`{SYMBOL} {EVENT}`, e.g. `SAGILITY 50 DEMA BLAST` / `SUN PHARMA 20 DEMA BREAKOUT`).
+     * **Gold Hinglish Sub-Hook**: In vibrant gold (`#D4B064` / `#F2CF1D`), posing a high-curiosity decision question (`Breakout Hold या Target ₹{X}?`).
+     * **Telemetry Matrix Card**: Glassmorphic dark card on bottom-left with `1D STUDY`, listing verified support and resistance price rows with status markers (`✓`, `✗`).
+     * **Right Candlestick Chart with 3-Step Neon Staircase**:
+       - Step 1 (Orange `#F59E0B`): `ACCUMULATION ₹{VAL} - ₹{POC}`
+       - Step 2 (Yellow `#F2CF1D`): `20/50 DEMA RECLAIM ₹{DEMA20}`
+       - Step 3 (Neon Green `#10B981`): `CMP ₹{CMP} VAH BREAKOUT`
+     * **Cyan Expansion Target Box & Upward Arrow**: Top-right neon cyan box `EXPANSION TARGET ₹{TARGET2}` with a bright cyan vertical arrow pointing up into it from Step 3.
+     * **Bottom Legal Disclaimer**: Rounded capsule pill reading `STRICTLY EDUCATIONAL TECHNICAL STUDY • NO SEBI ADVISORY CLAIMS`.
 2. **Multi-Format Repurposing Engine (`content-repurposer`)**:
    - **9:16 Vertical Reels** (`cross-platform-reformatter`): Exported for YouTube Shorts, Instagram Reels, and TikTok.
    - **5-Slide Visual Carousel** (`carousel-builder` + `viral-carousel`): Slide 1 Scroll-Stopper, Slide 2 DEMA Stack, Slide 3 Volume Profile Footprint, Slide 4 Support Shelf, Slide 5 Levels Cheat-Sheet.
@@ -377,9 +386,9 @@ dema-scan produce -s UGROCAP
 
 ---
 
-### 5. Fourteen-Point Production Quality Gate (With Non-Negotiables)
+### 5. Fifteen-Point Production Quality Gate (With Non-Negotiables)
 
-Before publishing or delivering any video package, verify all 14 criteria:
+Before publishing or delivering any video package, verify all 15 criteria:
 
 - [ ] **1. Pure Dark Slate Background Law (NON-NEGOTIABLE)**: All captured chart screenshots strictly feature a pure black / dark slate background (`#131722` / `#0B0F19`); white or light backgrounds are 100% prohibited.
 - [ ] **2. All Targets in Single Picture / Dual View Law (NON-NEGOTIABLE)**: Chart screenshots must be captured with sufficient vertical headroom (by clicking `Center Today` and expanding the vertical price scale downward) so that **ALL TARGETS** (Target 1, Target 2, VAH) and **ALL SUPPORTS** (20 DEMA, 50 DEMA, 100 DEMA, 200 DEMA, POC, VAL) are **100% visible in a single picture**. Alternatively, capture two screenshots per stock: Macro full target view (`{SYMBOL}_macro_chart.png`) and Detail execution view (`{SYMBOL}_detail_chart.png`).
@@ -395,6 +404,7 @@ Before publishing or delivering any video package, verify all 14 criteria:
 - [ ] **12. 3-Second Visual Hook (`virality`)**: Frame 0 to 3s contains an active visual event (counter surge, cursor snap, split-flap flip); zero static title cards.
 - [ ] **13. Humanized Narration (`humanizer`)**: Audio script reads as natural spoken language; zero robotic AI triads, buzzwords, or corporate filler.
 - [ ] **14. Hardware Turbo Execution & Direct API Upload / Native Scheduling (`ytstudio`)**: Remotion renders executed with `--concurrency=8` and ANGLE WebGL acceleration; thumbnail `< 2MB` uploaded directly via `ytstudio_publisher.py`. Multi-video queues leverage native YouTube `publish_at` scheduling (ISO-8601 timestamps spaced 1 hour apart) to dispatch uploads immediately without local computer sleep delays.
+- [ ] **15. Mandatory Sagility Thumbnail Format Law (NON-NEGOTIABLE)**: All YouTube 16:9 thumbnails strictly follow the Sagility layout (`generate_sagility_style_thumbnails.mjs`) featuring top-left branding badge (`[D] DEMA ANALYSIS`), single-line uppercase headline, gold curiosity hook, bottom-left Telemetry Matrix card, 3-step neon staircase (Accumulation, DEMA Reclaim, CMP VAH Breakout), and glowing cyan Expansion Target box with vertical arrow.
 
 ---
 
