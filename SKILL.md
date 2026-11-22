@@ -1,17 +1,22 @@
 ---
 name: dema-broadcast-master
 description: Ultra-parallel multi-agent financial broadcast and video generation studio orchestrating Remotion, Lemo-Opuscar, kinetic motion graphics, viral hook engineering, humanized scriptwriting, and multi-platform publishing. Automatically coordinates 25+ specialized subskills across pre-production intelligence, 3-second virality hooks, velocity-matched easing, zero-clipping TradingView chart presentations, interactive beat-by-beat playbook approvals, hardware Turbo Mode rendering, and direct zero-browser YouTube Studio API uploads via ytstudio.
-version: 4.3.0
+version: 4.5.0
 ---
 
 # DEMA Broadcast Master: Unified Multi-Skill Autonomous Video Production Studio
 
-Produce institutional **16:9 Master Financial Broadcasts**, **16:9 Widescreen Technical Masterclasses**, **9:16 Viral Social Reels**, **Multi-Slide Carousels**, and **X Analytical Threads** with zero friction. Version 4.3.0 transforms `dema-broadcast-master` into a fully autonomous, API-first studio featuring:
+Produce institutional **16:9 Master Financial Broadcasts**, **16:9 Widescreen Technical Masterclasses**, **9:16 Viral 30-Second Social Reels / Shorts**, **Multi-Slide Carousels**, and **X Analytical Threads** with zero friction. Version 4.5.0 transforms `dema-broadcast-master` into a fully autonomous, API-first studio featuring:
 1. **Interactive Pre-Render Beat Playbook Gate**: Formulates and presents a complete beat-by-beat playbook (narration, kinetic text, visual radar, telemetry, and packaging) with attached frame stills for each beat and custom thumbnail for user approval before rendering.
 2. **Pure Dark Slate Background Law (Non-Negotiable)**: Strictly enforces black / dark slate background (`#131722` / `#0B0F19`) across all TradingView lightweight chart captures and visual containers; white chart backgrounds are prohibited.
 3. **Mandatory Directional Target Arrow Law (Non-Negotiable)**: Fully renders dynamic animated directional arrows from Live CMP (downward solid red with delta badge to support floors; upward solid green with delta badge to upside targets) AND explicitly discusses these arrow paths and percentage deltas in spoken narration.
 4. **Mandatory Volume Surge Law (Non-Negotiable)**: Prominently highlights session volume surge bars and Point of Control (POC) accumulation footprint on the chart, with vocal narrative emphasis proving institutional conviction.
-5. **Direct YouTube Studio API Uploads (`ytstudio`)**: Zero-browser, lightning-fast video and custom thumbnail uploads directly through the YouTube Data API with automatic YAML sidecars.
+5. **Direct YouTube Studio API Uploads & Native Scheduling (`ytstudio`)**: Zero-browser, lightning-fast video and custom thumbnail uploads directly through the YouTube Data API with automatic YAML sidecars and ISO-8601 hourly scheduling.
+6. **Autonomous 30-Second Shorts Companion & Related Video Bridge Law (Non-Negotiable)**: For every stock explainer masterclass, automatically generates a high-velocity 9:16 vertical companion reel strictly **maximum 30 seconds** (`<= 30.00s`). It features 4 high-retention kinetic beats:
+   - *Beat 0 (0-7s)*: 3-Second Viral Hook + Turnover Volume Surge + CMP Breakout
+   - *Beat 1 (7-14s)*: All Dynamic Supports (20 DEMA, POC, VAL) with center-mapped red arrows radiating from CMP pivot
+   - *Beat 2 (14-20s)*: All Breakout Targets (Target 1, Target 2) with center-mapped green arrows radiating from CMP pivot
+   - *Beat 3 (20-27s)*: Related Video Bridge with animated bouncing pointer (`👇 TAP HERE`) directing mobile viewers to the native YouTube Shorts "Related video" chip and linking the full 16:9 masterclass URL at the top of the description.
 
 ```mermaid
 graph TD
@@ -386,9 +391,9 @@ dema-scan produce -s UGROCAP
 
 ---
 
-### 5. Fifteen-Point Production Quality Gate (With Non-Negotiables)
+### 5. Sixteen-Point Production Quality Gate (With Non-Negotiables)
 
-Before publishing or delivering any video package, verify all 15 criteria:
+Before publishing or delivering any video package, verify all 16 criteria:
 
 - [ ] **1. Pure Dark Slate Background Law (NON-NEGOTIABLE)**: All captured chart screenshots strictly feature a pure black / dark slate background (`#131722` / `#0B0F19`); white or light backgrounds are 100% prohibited.
 - [ ] **2. All Targets in Single Picture / Dual View Law (NON-NEGOTIABLE)**: Chart screenshots must be captured with sufficient vertical headroom (by clicking `Center Today` and expanding the vertical price scale downward) so that **ALL TARGETS** (Target 1, Target 2, VAH) and **ALL SUPPORTS** (20 DEMA, 50 DEMA, 100 DEMA, 200 DEMA, POC, VAL) are **100% visible in a single picture**. Alternatively, capture two screenshots per stock: Macro full target view (`{SYMBOL}_macro_chart.png`) and Detail execution view (`{SYMBOL}_detail_chart.png`).
@@ -405,6 +410,11 @@ Before publishing or delivering any video package, verify all 15 criteria:
 - [ ] **13. Humanized Narration (`humanizer`)**: Audio script reads as natural spoken language; zero robotic AI triads, buzzwords, or corporate filler.
 - [ ] **14. Hardware Turbo Execution & Direct API Upload / Native Scheduling (`ytstudio`)**: Remotion renders executed with `--concurrency=8` and ANGLE WebGL acceleration; thumbnail `< 2MB` uploaded directly via `ytstudio_publisher.py`. Multi-video queues leverage native YouTube `publish_at` scheduling (ISO-8601 timestamps spaced 1 hour apart) to dispatch uploads immediately without local computer sleep delays.
 - [ ] **15. Mandatory Sagility Thumbnail Format Law (NON-NEGOTIABLE)**: All YouTube 16:9 thumbnails strictly follow the Sagility layout (`generate_sagility_style_thumbnails.mjs`) featuring top-left branding badge (`[D] DEMA ANALYSIS`), single-line uppercase headline, gold curiosity hook, bottom-left Telemetry Matrix card, 3-step neon staircase (Accumulation, DEMA Reclaim, CMP VAH Breakout), and glowing cyan Expansion Target box with vertical arrow.
+- [ ] **16. Autonomous 30-Second Shorts Companion & Related Video Bridge Law (NON-NEGOTIABLE)**: For every stock explainer masterclass, generate an autonomous 9:16 vertical companion reel strictly **maximum 30 seconds** (`<= 30.00s`). It features 4 high-retention kinetic beats:
+  - *Beat 0 (0-7s)*: 3-Second Viral Hook + Turnover Volume Surge + CMP Breakout
+  - *Beat 1 (7-14s)*: All Dynamic Supports (20 DEMA, POC, VAL) with center-mapped red arrows radiating from CMP pivot
+  - *Beat 2 (14-20s)*: All Breakout Targets (Target 1, Target 2) with center-mapped green arrows radiating from CMP pivot
+  - *Beat 3 (20-27s)*: Related Video Bridge with animated bouncing pointer (`👇 TAP HERE`) directing mobile viewers to the native YouTube Shorts "Related video" chip and linking the full 16:9 masterclass URL at the top of the description.
 
 ---
 
